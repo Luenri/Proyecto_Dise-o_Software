@@ -21,12 +21,12 @@
     </Button>
     <ImageView fitHeight="216.0" fitWidth="266.0" layoutX="315.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
       <image>
-        <Image url="@buscar.png" />
+        <Image url="@imagenes/buscar.png" />
       </image>
     </ImageView>
     <ImageView fitHeight="224.0" fitWidth="266.0" layoutX="315.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true">
       <image>
-        <Image url="@design.png" />
+        <Image url="@imagenes/design.png" />
       </image>
     </ImageView>
     <Label layoutX="345.0" layoutY="14.0" text="Cliente">

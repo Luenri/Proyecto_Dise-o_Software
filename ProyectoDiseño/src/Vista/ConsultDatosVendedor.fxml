@@ -20,7 +20,7 @@
   <children>
     <ImageView fitHeight="175.0" fitWidth="193.0" layoutX="80.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
       <image>
-        <Image url="@buscar.png" />
+        <Image url="@imagenes/buscar.png" />
       </image>
     </ImageView>
     <Label layoutX="316.0" layoutY="60.0" text="CONSULTAR DATOS">

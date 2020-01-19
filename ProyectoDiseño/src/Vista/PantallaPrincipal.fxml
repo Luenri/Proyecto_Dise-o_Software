@@ -16,23 +16,23 @@
   <children>
     <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="104.0" layoutY="516.0" pickOnBounds="true" preserveRatio="true">
       <image>
-        <Image url="@principal.png" />
+        <Image url="@imagenes/principal.png" />
       </image>
     </ImageView>
     <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="352.0" layoutY="517.0" pickOnBounds="true" preserveRatio="true">
       <image>
-        <Image url="@principal.png" />
+        <Image url="@imagenes/principal.png" />
       </image>
     </ImageView>
     <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="604.0" layoutY="517.0" pickOnBounds="true" preserveRatio="true">
       <image>
-        <Image url="@principal.png" />
+        <Image url="@imagenes/principal.png" />
       </image>
     </ImageView>
     <Button fx:id="btnAdministrador" layoutX="120.0" layoutY="694.0" mnemonicParsing="false" onMouseClicked="#abrirVadmin" text="Soy administrador" />
     <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="858.0" layoutY="517.0" pickOnBounds="true" preserveRatio="true">
       <image>
-        <Image url="@principal.png" />
+        <Image url="@imagenes/principal.png" />
       </image>
     </ImageView>
     <Button fx:id="btnvendedor" layoutX="379.0" layoutY="694.0" mnemonicParsing="false" onMouseClicked="#abrirVvendedor" text="Soy vendedor" />
@@ -45,7 +45,7 @@
     </Label>
     <ImageView fitHeight="291.00003108819766" fitWidth="388.0000305175781" layoutX="379.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
       <image>
-        <Image url="@casa-animado-png-3.png" />
+        <Image url="@imagenes/casa-animado-png-3.png" />
       </image>
     </ImageView>
   </children>

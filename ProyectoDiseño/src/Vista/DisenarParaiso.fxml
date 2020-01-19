@@ -17,7 +17,7 @@
     </Label>
     <ImageView fitHeight="222.99998474121094" fitWidth="419.9042453719837" layoutX="100.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
       <image>
-        <Image url="@Paraiso.jpg" />
+        <Image url="@imagenes/Paraiso.jpg" />
       </image>
     </ImageView>
     <TextArea editable="false" layoutX="559.0" layoutY="115.0" prefHeight="157.0" prefWidth="189.00009999999747" text="m²: 85&#10;n. plantas: 1&#10;Esquinera: no&#10;Orientación: Este&#10;Patio: Grande&#10;Habitaciones: 3&#10;Baños: 3&#10;" wrapText="true" />

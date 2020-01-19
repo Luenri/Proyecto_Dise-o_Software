@@ -22,17 +22,17 @@
     </Label>
     <ImageView fitHeight="223.41306261015885" fitWidth="339.9999694824219" layoutX="181.0" layoutY="206.0" onMouseClicked="#disenarOasis" pickOnBounds="true" preserveRatio="true">
       <image>
-        <Image url="@oasis.jpg" />
+        <Image url="@imagenes/oasis.jpg" />
       </image>
     </ImageView>
     <ImageView fitHeight="224.07015991210938" fitWidth="421.9193325202984" layoutX="609.0" layoutY="206.0" onMouseClicked="#disenarParaiso" pickOnBounds="true" preserveRatio="true">
       <image>
-        <Image url="@Paraiso.jpg" />
+        <Image url="@imagenes/Paraiso.jpg" />
       </image>
     </ImageView>
     <ImageView fitHeight="202.99998474121094" fitWidth="322.8926043304156" layoutX="416.0" layoutY="444.0" onMouseClicked="#disenarCielo" pickOnBounds="true" preserveRatio="true">
       <image>
-        <Image url="@Cielo.jpg" />
+        <Image url="@imagenes/Cielo.jpg" />
       </image>
     </ImageView>
     <TextArea editable="false" layoutX="181.0" layoutY="454.0" prefHeight="141.0" prefWidth="200.0" text="m²: 63&#10;n. plantas: 1&#10;Esquinera: no&#10;Orientación: Sur&#10;Patio: Pequeño&#10;Habitaciones: 2&#10;Baños: 2&#10;" wrapText="true" />

@@ -24,7 +24,7 @@
     <Label font="$x1" layoutX="375.0" layoutY="500.0" prefHeight="35.0" prefWidth="162.0" text="Contraseña:" />
     <ImageView fitHeight="291.0" fitWidth="324.0" layoutX="400.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
       <image>
-        <Image url="@login.png" />
+        <Image url="@imagenes/login.png" />
       </image>
     </ImageView>
     <PasswordField fx:id="txtcontra" layoutX="562.0" layoutY="502.0" prefHeight="28.9609375" />

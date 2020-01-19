@@ -18,7 +18,7 @@
   <children>
     <ImageView fitHeight="179.0" fitWidth="211.0" layoutX="80.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
       <image>
-        <Image url="@nuevo.png" />
+        <Image url="@imagenes/nuevo.png" />
       </image>
     </ImageView>
     <Label layoutX="316.0" layoutY="60.0" text="REGISTRARSE">
