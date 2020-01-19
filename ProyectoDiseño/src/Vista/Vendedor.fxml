@@ -14,7 +14,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="802.0" prefWidth="1077.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <children>
-    <Button layoutX="605.0" layoutY="222.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="201.0" text="Consultar datos ">
+    <Button fx:id="btnConsultar" layoutX="605.0" layoutY="222.0" mnemonicParsing="false" onMouseClicked="#consultarDatos" prefHeight="66.0" prefWidth="201.0" text="Consultar datos ">
       <font>
         <Font size="18.0" fx:id="x1" />
       </font>
@@ -34,7 +34,7 @@
         <Font name="System Bold" size="72.0" />
       </font>
     </Label>
-    <Button font="$x1" layoutX="605.0" layoutY="498.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="201.0" text="Disenar casa" />
-    <Button layoutX="894.0" layoutY="724.0" mnemonicParsing="false" text="Cerrar Sesion" />
+    <Button fx:id="btnDisenar" font="$x1" layoutX="605.0" layoutY="498.0" mnemonicParsing="false" onMouseClicked="#disenarCasa" prefHeight="66.0" prefWidth="201.0" text="Disenar casa" />
+    <Button fx:id="btncerrarsesion" layoutX="894.0" layoutY="724.0" mnemonicParsing="false" onMouseClicked="#cerrarSesion" text="Cerrar Sesion" />
   </children>
 </Pane>

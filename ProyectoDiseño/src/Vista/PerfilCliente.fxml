@@ -33,22 +33,30 @@
     </Label>
     <Label font="$x1" layoutX="102.0" layoutY="318.0" text="Apellidos" />
     <Label font="$x1" layoutX="102.0" layoutY="377.0" text="Cedula / Pasaporte" />
-    <Label font="$x1" layoutX="102.0" layoutY="436.0" text="Correo Electronico" />
+    <Label font="$x1" layoutX="550.0" layoutY="372.0" prefHeight="63.84375" prefWidth="127.0" text="Correo Electronico" wrapText="true" />
     <Label font="$x1" layoutX="550.0" layoutY="259.0" text="Telefono" />
     <Label font="$x1" layoutX="550.0" layoutY="318.0" text="Estado Civil" />
-    <Label font="$x1" layoutX="550.0" layoutY="377.0" text="Cargo" />
-    <Label layoutX="292.0" layoutY="259.0" prefHeight="36.0" prefWidth="189.0" text="Label" />
-    <Label layoutX="292.0" layoutY="318.0" prefHeight="36.0" prefWidth="189.0" text="Label" />
-    <Label layoutX="292.0" layoutY="377.0" prefHeight="36.0" prefWidth="189.0" text="Label" />
-    <Label layoutX="292.0" layoutY="436.0" prefHeight="36.0" prefWidth="189.0" text="Label" />
-    <Label layoutX="688.0" layoutY="259.0" prefHeight="36.0" prefWidth="189.0" text="Label" />
-    <Label layoutX="688.0" layoutY="318.0" prefHeight="36.0" prefWidth="189.0" text="Label" />
-    <Label layoutX="688.0" layoutY="377.0" prefHeight="36.0" prefWidth="189.0" text="Label" />
+    <Label fx:id="lblnombres" layoutX="292.0" layoutY="259.0" prefHeight="36.0" prefWidth="189.0" text="Label" />
+    <Label fx:id="lblapellidos" layoutX="292.0" layoutY="318.0" prefHeight="36.0" prefWidth="189.0" text="Label" />
+    <Label fx:id="lblcedula" layoutX="292.0" layoutY="376.0" prefHeight="36.0" prefWidth="189.0" text="Label" />
+    <Label fx:id="lblCorreo" layoutX="688.0" layoutY="376.0" prefHeight="36.0" prefWidth="189.0" text="Label" />
+    <Label fx:id="lblcelular" layoutX="688.0" layoutY="259.0" prefHeight="36.0" prefWidth="189.0" text="Label" />
+    <Label fx:id="lblEstadoC" layoutX="688.0" layoutY="318.0" prefHeight="36.0" prefWidth="189.0" text="Label" />
     <Label font="$x1" layoutX="102.0" layoutY="509.0" text="Casas disenadas" />
-    <TableView layoutX="102.0" layoutY="545.0" prefHeight="164.0" prefWidth="851.0">
+    <TableView fx:id="tbvCasas" layoutX="102.0" layoutY="545.0" prefHeight="164.0" prefWidth="868.0">
       <columns>
-        <TableColumn prefWidth="75.0" text="Column X" />
-        <TableColumn prefWidth="75.0" text="Column X" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="64.0" text="metros c" fx:id="clmMetros" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="65.0" text="Plantas" fx:id="clmPlantas" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="61.0" text="Esquinera" fx:id="clmEsquinera" />
+        <TableColumn prefWidth="75.0" text="Orientacion" fx:id="clmOrientacion" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="65.0" text="Patio" fx:id="clmPatio" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="62.0" text="Habitacion" fx:id="clmHabitacion" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="67.0" text="Banos" fx:id="clmBanos" />
+        <TableColumn prefWidth="75.0" text="Pisos" fx:id="clmPisos" />
+        <TableColumn prefWidth="75.0" text="Griferia" fx:id="clmgriferia" />
+        <TableColumn prefWidth="75.0" text="Iluminacion" fx:id="clmIluminacion" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="100.0" text="B. Insonorizados" fx:id="clmBanosI" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="81.0" text="Aislante term" fx:id="clmAislante" />
       </columns>
     </TableView>
     <Button layoutX="901.0" layoutY="725.0" mnemonicParsing="false" prefHeight="26.601462500002526" prefWidth="115.0" text="Generar PDF">
