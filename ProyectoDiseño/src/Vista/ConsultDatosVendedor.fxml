@@ -34,20 +34,20 @@
       </font>
     </Label>
     <Label font="$x1" layoutX="470.0" layoutY="250.0" text="Cedula" />
-    <TextField layoutX="552.0" layoutY="250.0" prefHeight="30.0" prefWidth="149.0" />
-    <Button layoutX="716.0" layoutY="250.0" mnemonicParsing="false" text="Buscar" />
-    <TableView layoutX="105.0" layoutY="331.0" prefHeight="348.0" prefWidth="853.0">
+    <TextField fx:id="txtBusC" layoutX="552.0" layoutY="250.0" prefHeight="30.0" prefWidth="149.0" />
+    <Button fx:id="btnBuscar" layoutX="716.0" layoutY="250.0" mnemonicParsing="false" prefHeight="26.6015625" prefWidth="61.0" text="Buscar" />
+    <TableView fx:id="tbvDatosC" layoutX="105.0" layoutY="331.0" prefHeight="348.0" prefWidth="853.0">
       <columns>
-        <TableColumn prefWidth="130.0" text="C1" />
-        <TableColumn prefWidth="101.0" text="C2" />
-        <TableColumn prefWidth="110.0" text="Column X" />
-        <TableColumn prefWidth="123.0" text="Column X" />
-        <TableColumn prefWidth="125.0" text="Column X" />
-        <TableColumn prefWidth="128.0" text="Column X" />
-        <TableColumn prefWidth="135.0" text="Column X" />
+        <TableColumn prefWidth="130.0" text="Cedula" fx:id="clmCedula" />
+        <TableColumn prefWidth="101.0" text="Nombres" fx:id="clmNombres" />
+        <TableColumn prefWidth="110.0" text="Apellidos" fx:id="clmApellidos" />
+        <TableColumn prefWidth="123.0" text="No. Celular" fx:id="clmCelular" />
+        <TableColumn prefWidth="125.0" text="Correo Electronico" fx:id="clmCorreo" />
+        <TableColumn prefWidth="128.0" text="Estado civil" fx:id="clmEstadoC" />
+        <TableColumn prefWidth="135.0" text="Direccion" fx:id="clmDireccion" />
       </columns>
     </TableView>
-    <Button layoutX="921.0" layoutY="725.0" mnemonicParsing="false" text="Menu">
+    <Button fx:id="btnMenu" layoutX="921.0" layoutY="725.0" mnemonicParsing="false" onMouseClicked="#volverMenu" text="Menu">
       <font>
         <Font size="18.0" />
       </font>
