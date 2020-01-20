@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import proyectodiseño.MyHome;
@@ -26,6 +27,8 @@ public class DisenarCasasController implements Initializable {
 
     @FXML
     private Font x1;
+    @FXML
+    private Button btnvolver;
 
     /**
      * Initializes the controller class.
@@ -51,6 +54,14 @@ public class DisenarCasasController implements Initializable {
 
     @FXML
     private void disenarCielo(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarCielo.fxml"));
+        Scene sc = new Scene(root);
+        MyHome.ventanaPrincipal.setScene(sc);
+    }
+    
+     @FXML
+    private void volver(MouseEvent event) throws IOException {
+        //Aun no se como decirle a donde debe volver esta pagina
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarCielo.fxml"));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);

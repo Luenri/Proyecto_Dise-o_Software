@@ -57,7 +57,10 @@ public class UsuarioController implements Initializable {
     }
 
     @FXML
-    private void Salir(MouseEvent event) {
+    private void Salir(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));
+        Scene sc = new Scene(root);
+        MyHome.ventanaPrincipal.setScene(sc);
     }
     
 }

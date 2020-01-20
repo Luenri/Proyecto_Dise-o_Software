@@ -31,7 +31,9 @@ public class ClienteController implements Initializable {
     private Font x1;
     @FXML
     private Button btnDisenarCasas;
-
+    @FXML
+    private Button btncerrarsesion;
+    
     /**
      * Initializes the controller class.
      */
@@ -54,4 +56,10 @@ public class ClienteController implements Initializable {
         MyHome.ventanaPrincipal.setScene(sc);
     }
     
+     @FXML
+    private void cerrarsesion(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));
+        Scene sc = new Scene(root);
+        MyHome.ventanaPrincipal.setScene(sc);
+    }
 }

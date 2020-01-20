@@ -36,6 +36,8 @@ public class LoginController implements Initializable {
     @FXML
     private Button btningresar;
     @FXML
+    private Button btncancelar;
+    @FXML
     private Font x2;
     @FXML
     private Button btnLimpiar;
@@ -71,6 +73,13 @@ public class LoginController implements Initializable {
     private void limpiar(MouseEvent event) {
         txtuser.setText("");
         txtcontra.setText("");
+    }
+    
+    @FXML
+    private void cancelar(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));
+        Scene sc = new Scene(root);
+        MyHome.ventanaPrincipal.setScene(sc);
     }
     
 }

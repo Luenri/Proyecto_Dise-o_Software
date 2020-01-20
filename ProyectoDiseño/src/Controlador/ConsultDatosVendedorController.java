@@ -51,7 +51,7 @@ public class ConsultDatosVendedorController implements Initializable {
     @FXML
     private TableColumn<?, ?> clmDireccion;
     @FXML
-    private Button btnMenu;
+    private Button btnvolver;
 
     /**
      * Initializes the controller class.
@@ -62,7 +62,7 @@ public class ConsultDatosVendedorController implements Initializable {
     }    
 
     @FXML
-    private void volverMenu(MouseEvent event) throws IOException {
+    private void volver(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/Vendedor.fxml"));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);

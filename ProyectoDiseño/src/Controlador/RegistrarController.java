@@ -5,14 +5,19 @@
  */
 package Controlador;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
+import proyectodiseño.MyHome;
 
 /**
  * FXML Controller class
@@ -37,6 +42,8 @@ public class RegistrarController implements Initializable {
     private TextField txtEstadoC;
     @FXML
     private Button btnregistrar;
+    @FXML
+    private Button btncancelar;
     @FXML
     private Font x2;
     @FXML
@@ -68,6 +75,13 @@ public class RegistrarController implements Initializable {
         txtcorreo.setText("");
         txtcelular.setText("");
         txtEstadoC.setText("");
+    }
+    
+     @FXML
+    private void cancelar(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/Usuario.fxml"));
+        Scene sc = new Scene(root);
+        MyHome.ventanaPrincipal.setScene(sc);
     }
     
 }

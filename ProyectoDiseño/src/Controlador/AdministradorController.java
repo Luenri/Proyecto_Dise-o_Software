@@ -31,6 +31,8 @@ public class AdministradorController implements Initializable {
     private Font x1;
     @FXML
     private Button btnCrearEmp;
+    @FXML
+    private Button btncerrarsesion;
 
     /**
      * Initializes the controller class.
@@ -50,6 +52,13 @@ public class AdministradorController implements Initializable {
     @FXML
     private void crearEmpleado(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/IngresarEmpleado.fxml"));
+        Scene sc = new Scene(root);
+        MyHome.ventanaPrincipal.setScene(sc);
+    }
+    
+     @FXML
+    private void cerrarsesion(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
     }

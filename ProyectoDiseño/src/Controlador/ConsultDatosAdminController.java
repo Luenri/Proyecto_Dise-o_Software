@@ -5,16 +5,22 @@
  */
 package Controlador;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
+import proyectodiseño.MyHome;
 
 /**
  * FXML Controller class
@@ -48,7 +54,7 @@ public class ConsultDatosAdminController implements Initializable {
     @FXML
     private TableColumn<?, ?> clmDireccion;
     @FXML
-    private Button btnMenu;
+    private Button btnVolver;
 
     /**
      * Initializes the controller class.
@@ -57,5 +63,12 @@ public class ConsultDatosAdminController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+     @FXML
+    private void volver(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/Administrador.fxml"));
+        Scene sc = new Scene(root);
+        MyHome.ventanaPrincipal.setScene(sc);
+    }
     
 }

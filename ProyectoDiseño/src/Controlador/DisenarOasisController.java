@@ -5,11 +5,15 @@
  */
 package Controlador;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -18,6 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
+import proyectodiseño.MyHome;
 
 /**
  * FXML Controller class
@@ -92,6 +97,8 @@ public class DisenarOasisController implements Initializable {
     private TextArea tamensaje;
     @FXML
     private Button btnReigstrar;
+    @FXML
+    private Button btnvolver;
 
     /**
      * Initializes the controller class.
@@ -115,6 +122,14 @@ public class DisenarOasisController implements Initializable {
 
     @FXML
     private void registrar(MouseEvent event) {
+    }
+    
+     @FXML
+    private void volver(MouseEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarCasas.fxml"));
+        Scene sc = new Scene(root);
+        MyHome.ventanaPrincipal.setScene(sc);
+
     }
     
 }
