@@ -5,12 +5,17 @@
  */
 package Controlador;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
+import proyectodiseño.MyHome;
 
 /**
  * FXML Controller class
@@ -31,15 +36,24 @@ public class DisenarCasasController implements Initializable {
     }    
 
     @FXML
-    private void disenarOasis(MouseEvent event) {
+    private void disenarOasis(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarOasis.fxml"));
+        Scene sc = new Scene(root);
+        MyHome.ventanaPrincipal.setScene(sc);
     }
 
     @FXML
-    private void disenarParaiso(MouseEvent event) {
+    private void disenarParaiso(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarParaiso.fxml"));
+        Scene sc = new Scene(root);
+        MyHome.ventanaPrincipal.setScene(sc);
     }
 
     @FXML
-    private void disenarCielo(MouseEvent event) {
+    private void disenarCielo(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarCielo.fxml"));
+        Scene sc = new Scene(root);
+        MyHome.ventanaPrincipal.setScene(sc);
     }
     
 }

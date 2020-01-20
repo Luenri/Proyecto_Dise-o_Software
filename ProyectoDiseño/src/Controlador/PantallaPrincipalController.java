@@ -43,28 +43,28 @@ public class PantallaPrincipalController implements Initializable {
 
     @FXML
     private void abrirVadmin(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Administrador.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/login.fxml"));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
     }
 
     @FXML
     private void abrirVvendedor(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Vendedor.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/login.fxml"));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
     }
 
     @FXML
     private void abrirVcliente(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Cliente.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/login.fxml"));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
     }
 
     @FXML
     private void abrirVusuario(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Usuario.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/Usuario.fxml"));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
     }

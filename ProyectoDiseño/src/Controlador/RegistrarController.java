@@ -62,6 +62,12 @@ public class RegistrarController implements Initializable {
 
     @FXML
     private void limpiar(MouseEvent event) {
+        txtnombres.setText("");
+        txtapellidos.setText("");
+        txtcedula.setText("");
+        txtcorreo.setText("");
+        txtcelular.setText("");
+        txtEstadoC.setText("");
     }
     
 }

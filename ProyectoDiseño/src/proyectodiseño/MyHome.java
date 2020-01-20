@@ -34,7 +34,7 @@ public class MyHome extends Application {
        // conexionbd = cn.getConnection();
       
 
-        Parent root = FXMLLoader.load(getClass().getResource("PantallaPrincipal.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));
 
         sc = new Scene(root);
 

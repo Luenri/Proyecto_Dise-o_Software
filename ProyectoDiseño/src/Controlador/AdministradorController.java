@@ -5,13 +5,18 @@
  */
 package Controlador;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
+import proyectodiseño.MyHome;
 
 /**
  * FXML Controller class
@@ -36,11 +41,17 @@ public class AdministradorController implements Initializable {
     }    
 
     @FXML
-    private void consultarDatos(MouseEvent event) {
+    private void consultarDatos(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/ConsultDatosAdmin.fxml"));
+        Scene sc = new Scene(root);
+        MyHome.ventanaPrincipal.setScene(sc);
     }
 
     @FXML
-    private void crearEmpleado(MouseEvent event) {
+    private void crearEmpleado(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/IngresarEmpleado.fxml"));
+        Scene sc = new Scene(root);
+        MyHome.ventanaPrincipal.setScene(sc);
     }
     
 }
