@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectodiseño;
+package Modelos;
 
 import java.util.ArrayList;
 
@@ -14,7 +14,6 @@ import java.util.ArrayList;
 public class vendedor {
     protected ArrayList<cliente> clientes;
     protected ArrayList<Casa> casas;
-    
     
     
     public void revisarDatosClientes(){

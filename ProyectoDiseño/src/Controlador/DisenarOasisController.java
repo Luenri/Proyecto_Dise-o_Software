@@ -22,7 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
-import proyectodiseño.MyHome;
+import Modelos.MyHome;
 
 /**
  * FXML Controller class

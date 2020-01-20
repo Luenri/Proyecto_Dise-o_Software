@@ -16,7 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
-import proyectodiseño.MyHome;
+import Modelos.MyHome;
 
 /**
  * FXML Controller class

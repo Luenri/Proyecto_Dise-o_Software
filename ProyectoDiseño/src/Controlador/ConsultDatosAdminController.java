@@ -20,7 +20,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
-import proyectodiseño.MyHome;
+import Modelos.MyHome;
 
 /**
  * FXML Controller class

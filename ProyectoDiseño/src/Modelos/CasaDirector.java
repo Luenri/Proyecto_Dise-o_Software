@@ -3,12 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectodiseño;
+package Modelos;
 
 /**
  *
- * @author Luis
+ * @author Odalys
  */
-public enum griferia {
-    ESTANDAR, ITALIANA
+public class CasaDirector {
+    
+    CasaBuilder builder;
+    
+    void construirCasa(){
+        
+    };
+    
+    
 }

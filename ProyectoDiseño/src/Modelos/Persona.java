@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectodiseño;
+package Modelos;
 
 /**
  *
@@ -13,7 +13,6 @@ public class Persona {
     protected String nombre;
     protected String apellido;
     protected String cedula;
-    protected String celular;
     protected String correo;
     protected String direccion;
     protected String telefonTrabajo;
@@ -45,13 +44,6 @@ public class Persona {
         this.cedula = cedula;
     }
 
-    public String getCelular() {
-        return celular;
-    }
-
-    public void setCelular(String celular) {
-        this.celular = celular;
-    }
 
     public String getCorreo() {
         return correo;

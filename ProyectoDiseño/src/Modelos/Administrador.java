@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectodiseño;
+package Modelos;
 
 /**
  *
- * @author Luis
+ * @author Odalys
  */
-public enum orientacion {
-    NORTE, SUR, ESTE, OESTE
+public class Administrador {
+    
 }

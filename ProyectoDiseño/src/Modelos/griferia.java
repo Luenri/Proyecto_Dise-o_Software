@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectodiseño;
+package Modelos;
 
 /**
  *
  * @author Luis
  */
-public class cliente extends Persona{
-    
+public enum griferia {
+    ESTANDAR, ITALIANA
 }
