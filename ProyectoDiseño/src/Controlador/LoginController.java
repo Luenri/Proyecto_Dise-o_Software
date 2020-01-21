@@ -19,6 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import Modelos.MyHome;
+import javafx.event.ActionEvent;
 
 /**
  * FXML Controller class
@@ -51,25 +52,6 @@ public class LoginController implements Initializable {
     }    
 
     @FXML
-    private void ingresar(MouseEvent event) throws IOException {
-        
-        if (txtuser.getText().equals("Admin")){
-             Parent root = FXMLLoader.load(getClass().getResource("/Vista/Administrador.fxml"));
-             Scene sc = new Scene(root);
-             MyHome.ventanaPrincipal.setScene(sc);
-        }else if (txtuser.getText().equals("Vendedor")){
-             Parent root = FXMLLoader.load(getClass().getResource("/Vista/Vendedor.fxml"));
-             Scene sc = new Scene(root);
-             MyHome.ventanaPrincipal.setScene(sc);
-        } else if (txtuser.getText().equals("Cliente")){
-             Parent root = FXMLLoader.load(getClass().getResource("/Vista/Cliente.fxml"));
-             Scene sc = new Scene(root);
-             MyHome.ventanaPrincipal.setScene(sc);
-        }
-        
-    }
-
-    @FXML
     private void limpiar(MouseEvent event) {
         txtuser.setText("");
         txtcontra.setText("");
@@ -80,6 +62,24 @@ public class LoginController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
+    }
+
+    @FXML
+    private void ingresar(ActionEvent event) throws IOException {
+        if (txtuser.getText().equals("Admin")){
+             Parent root = FXMLLoader.load(getClass().getResource("/Vista/Administrador.fxml"));
+             Scene sc = new Scene(root);
+             MyHome.ventanaPrincipal.setScene(sc);
+        }if (txtuser.getText().equals("Vendedor")){
+             Parent root = FXMLLoader.load(getClass().getResource("/Vista/Vendedor.fxml"));
+             Scene sc = new Scene(root);
+             MyHome.ventanaPrincipal.setScene(sc);
+        }if (txtuser.getText().equals("Cliente")){
+             Parent root = FXMLLoader.load(getClass().getResource("/Vista/Cliente.fxml"));
+             Scene sc = new Scene(root);
+             MyHome.ventanaPrincipal.setScene(sc);
+        }
+        
     }
     
 }
