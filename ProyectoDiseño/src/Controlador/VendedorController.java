@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import Modelos.MyHome;
+import javafx.event.ActionEvent;
 
 /**
  * FXML Controller class
@@ -26,13 +27,13 @@ import Modelos.MyHome;
 public class VendedorController implements Initializable {
 
     @FXML
-    private Button btnConsultar;
-    @FXML
     private Font x1;
     @FXML
     private Button btnDisenar;
     @FXML
-    private Button btncerrarsesion;
+    private Button btnRegistrarse;
+    @FXML
+    private Button btsalir;
 
     /**
      * Initializes the controller class.
@@ -42,7 +43,6 @@ public class VendedorController implements Initializable {
         // TODO
     }    
 
-    @FXML
     private void consultarDatos(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/ConsultDatosVendedor.fxml"));
         Scene sc = new Scene(root);
@@ -56,9 +56,20 @@ public class VendedorController implements Initializable {
         MyHome.ventanaPrincipal.setScene(sc);
     }
 
-    @FXML
     private void cerrarSesion(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));
+        Scene sc = new Scene(root);
+        MyHome.ventanaPrincipal.setScene(sc);
+    }
+
+
+    @FXML
+    private void Salir(MouseEvent event) {
+    }
+
+    @FXML
+    private void registrarse(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/Registrar.fxml"));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
     }
