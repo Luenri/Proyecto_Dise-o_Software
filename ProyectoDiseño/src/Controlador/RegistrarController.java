@@ -18,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import Modelos.MyHome;
+import javafx.event.ActionEvent;
 
 /**
  * FXML Controller class
@@ -39,8 +40,6 @@ public class RegistrarController implements Initializable {
     @FXML
     private TextField txtcelular;
     @FXML
-    private TextField txtEstadoC;
-    @FXML
     private Button btnregistrar;
     @FXML
     private Button btncancelar;
@@ -49,11 +48,27 @@ public class RegistrarController implements Initializable {
     @FXML
     private Button btnlimpiar;
     @FXML
-    private TextField txtDireccion;
-    @FXML
     private TextField txtuser;
     @FXML
     private TextField txtcontra;
+    @FXML
+    private TextField txtdirecciondom;
+    @FXML
+    private TextField txtdirecciontrab;
+    @FXML
+    private Font x11;
+    @FXML
+    private TextField txtcargo;
+    @FXML
+    private TextField txttelefonotrab;
+    @FXML
+    private TextField txtempresa;
+    @FXML
+    private Font x12;
+    @FXML
+    private TextField txtestadoc;
+    @FXML
+    private TextField txtnhijos;
 
     /**
      * Initializes the controller class.
@@ -63,22 +78,31 @@ public class RegistrarController implements Initializable {
         // TODO
     }    
 
+
     @FXML
-    private void registrar(MouseEvent event) {
+    private void registrar(ActionEvent event) {
     }
 
     @FXML
-    private void limpiar(MouseEvent event) {
+    private void limpiar(ActionEvent event) {
         txtnombres.setText("");
         txtapellidos.setText("");
         txtcedula.setText("");
         txtcorreo.setText("");
         txtcelular.setText("");
-        txtEstadoC.setText("");
+        txtestadoc.setText("");
+        txtuser.setText("");
+        txtcontra.setText("");
+        txtdirecciondom.setText("");
+        txtdirecciontrab.setText("");
+        txtcargo.setText("");
+        txttelefonotrab.setText("");
+        txtempresa.setText("");
+        txtnhijos.setText("");
     }
-    
-     @FXML
-    private void cancelar(MouseEvent event) throws IOException {
+
+    @FXML
+    private void cancelar(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/Usuario.fxml"));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);

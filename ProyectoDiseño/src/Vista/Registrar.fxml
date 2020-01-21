@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="802.0" prefWidth="1077.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.RegistrarController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="802.0" prefWidth="1077.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.RegistrarController">
   <children>
     <ImageView fitHeight="179.0" fitWidth="211.0" layoutX="80.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
       <image>
@@ -20,34 +20,88 @@
         <Font size="48.0" />
       </font>
     </Label>
-    <Label layoutX="102.0" layoutY="285.0" text="Nombres ">
+    <Label layoutX="102.0" layoutY="225.0" text="Nombres ">
       <font>
-        <Font size="20.0" fx:id="x1" />
+        <Font size="18.0" fx:id="x1" />
       </font>
     </Label>
-    <Label font="$x1" layoutX="102.0" layoutY="375.0" text="Apellidos" />
-    <Label font="$x1" layoutX="102.0" layoutY="465.0" text="Cedula / Pasaporte" />
-    <Label font="$x1" layoutX="102.0" layoutY="645.0" text="Correo Electronico" />
-    <Label font="$x1" layoutX="550.0" layoutY="285.0" text="Telefono" />
-    <Label font="$x1" layoutX="550.0" layoutY="375.0" text="Estado Civil" />
-    <TextField fx:id="txtnombres" layoutX="292.0" layoutY="285.0" prefHeight="36.0" prefWidth="189.0" />
-    <TextField fx:id="txtapellidos" layoutX="292.0" layoutY="375.0" prefHeight="36.0" prefWidth="189.0" />
-    <TextField fx:id="txtcedula" layoutX="292.0" layoutY="465.0" prefHeight="36.0" prefWidth="189.0" />
-    <TextField fx:id="txtcorreo" layoutX="292.0" layoutY="645.0" prefHeight="36.0" prefWidth="189.0" />
-    <TextField fx:id="txtcelular" layoutX="688.0" layoutY="285.0" prefHeight="36.0" prefWidth="189.0" />
-    <TextField fx:id="txtEstadoC" layoutX="688.0" layoutY="375.0" prefHeight="36.0" prefWidth="189.0" />
-    <Button id="btncrear" fx:id="btnregistrar" layoutX="921.0" layoutY="725.0" mnemonicParsing="false" onMouseClicked="#registrar" prefHeight="39.0" prefWidth="100.0" text="registrar">
+    <Label layoutX="102.0" layoutY="295.0" text="Apellidos">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+    <Label layoutX="102.0" layoutY="435.0" text="Contrasena">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+    <Label layoutX="102.0" layoutY="505.0" text="Cedula/Pasaporte">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+    <Label layoutX="102.0" layoutY="575.0" text="Correo electronico">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+    <Label layoutX="102.0" layoutY="645.0" text="N. Celular">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+    <TextField fx:id="txtnombres" layoutX="274.0" layoutY="225.0" prefHeight="36.0" prefWidth="179.0" />
+    <TextField fx:id="txtapellidos" layoutX="274.0" layoutY="295.0" prefHeight="36.0" prefWidth="179.0" />
+    <TextField fx:id="txtuser" layoutX="274.0" layoutY="365.0" prefHeight="36.0" prefWidth="179.0" />
+    <TextField fx:id="txtcedula" layoutX="274.0" layoutY="505.0" prefHeight="36.0" prefWidth="179.0" />
+    <TextField fx:id="txtcorreo" layoutX="274.0" layoutY="575.0" prefHeight="36.0" prefWidth="179.0" />
+    <TextField fx:id="txtcelular" layoutX="274.0" layoutY="645.0" prefHeight="36.0" prefWidth="189.0" />
+    <Button id="btncrear" fx:id="btnregistrar" layoutX="921.0" layoutY="725.0" mnemonicParsing="false" onAction="#registrar" prefHeight="39.0" prefWidth="100.0" text="registrar">
       <font>
         <Font size="18.0" fx:id="x2" />
       </font>
     </Button>
-    <Button fx:id="btnlimpiar" font="$x2" layoutX="811.0" layoutY="725.0" mnemonicParsing="false" onMouseClicked="#limpiar" prefHeight="39.0" prefWidth="95.0" text="Limpiar" />
-    <Label font="$x1" layoutX="550.0" layoutY="465.0" text="Direccion" />
-    <TextField id="txtEstadoC" fx:id="txtDireccion" layoutX="688.0" layoutY="465.0" prefHeight="36.0" prefWidth="189.0" />
-    <Label font="$x1" layoutX="102.0" layoutY="555.0" text="Usuario" />
-    <TextField id="txtcedula" fx:id="txtuser" layoutX="292.0" layoutY="555.0" prefHeight="36.0" prefWidth="189.0" />
-    <Label font="$x1" layoutX="550.0" layoutY="555.0" text="Contrasena" />
-    <TextField id="txtEstadoC" fx:id="txtcontra" layoutX="688.0" layoutY="555.0" prefHeight="36.0" prefWidth="189.0" />
-      <Button fx:id="btncancelar" layoutX="717.0" layoutY="725.0" mnemonicParsing="false" onMouseClicked="#cancelar" prefHeight="39.0" prefWidth="82.0" text="Cancelar" />
+    <Button fx:id="btnlimpiar" font="$x2" layoutX="811.0" layoutY="725.0" mnemonicParsing="false" onAction="#limpiar" prefHeight="39.0" prefWidth="95.0" text="Limpiar" />
+    <Label layoutX="550.0" layoutY="295.0" text="Direccion/Dom">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+    <TextField id="txtEstadoC" fx:id="txtdirecciondom" layoutX="700.0" layoutY="295.0" prefHeight="36.0" prefWidth="189.0" />
+    <Label layoutX="102.0" layoutY="365.0" text="Usuario">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+    <TextField id="txtcedula" fx:id="txtcontra" layoutX="274.0" layoutY="435.0" prefHeight="36.0" prefWidth="179.0" />
+    <Label layoutX="550.0" layoutY="365.0" text="Direccion/Trab">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+    <TextField id="txtEstadoC" fx:id="txtdirecciontrab" layoutX="700.0" layoutY="365.0" prefHeight="36.0" prefWidth="189.0" />
+      <Button fx:id="btncancelar" layoutX="717.0" layoutY="725.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="39.0" prefWidth="82.0" text="Cancelar" />
+      <Label layoutX="550.0" layoutY="435.0" text="Empresa">
+         <font>
+            <Font size="18.0" fx:id="x11" />
+         </font>
+      </Label>
+      <Label layoutX="550.0" layoutY="505.0" text="Cargo">
+         <font>
+            <Font size="18.0" fx:id="x11" />
+         </font>
+      </Label>
+      <Label layoutX="550.0" layoutY="575.0" text="Telefono/Trabajo">
+         <font>
+            <Font size="18.0" fx:id="x11" />
+         </font>
+      </Label>
+      <TextField fx:id="txtcargo" layoutX="700.0" layoutY="505.0" prefHeight="36.0" prefWidth="189.0" />
+      <TextField fx:id="txttelefonotrab" layoutX="700.0" layoutY="575.0" prefHeight="36.0" prefWidth="189.0" />
+      <TextField id="txtcedula" fx:id="txtempresa" layoutX="700.0" layoutY="435.0" prefHeight="36.0" prefWidth="189.0" />
+      <Label layoutX="550.0" layoutY="225.0" text="Estado civil">
+         <font>
+            <Font size="18.0" fx:id="x12" />
+         </font>
+      </Label>
+      <TextField fx:id="txtestadoc" layoutX="700.0" layoutY="225.0" prefHeight="36.0" prefWidth="179.0" />
+      <Label layoutX="550.0" layoutY="645.0" text="No. hijos">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtnhijos" layoutX="700.0" layoutY="645.0" prefHeight="36.0" prefWidth="189.0" />
   </children>
 </Pane>
