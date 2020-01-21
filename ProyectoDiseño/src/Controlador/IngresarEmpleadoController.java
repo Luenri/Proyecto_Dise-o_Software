@@ -50,13 +50,19 @@ public class IngresarEmpleadoController implements Initializable {
     @FXML
     private Font x2;
     @FXML
-    private Button btnlimpiar;
-    @FXML
     private TextField txtDireccion;
     @FXML
     private TextField txtuser;
     @FXML
     private TextField txtcontra;
+    @FXML
+    private TextField txttelefonotrab;
+    @FXML
+    private Button btnlimpiar1;
+    @FXML
+    private Font x21;
+    @FXML
+    private Font x11;
 
     /**
      * Initializes the controller class.
@@ -78,6 +84,11 @@ public class IngresarEmpleadoController implements Initializable {
         txtcorreo.setText("");
         txtcelular.setText("");
         txtEstadoC.setText("");
+        txtDireccion.setText("");
+        txtuser.setText("");
+        txtcontra.setText("");
+        txttelefonotrab.setText("");
+        
     }
     
      @FXML
