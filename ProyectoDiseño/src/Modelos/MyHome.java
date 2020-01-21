@@ -5,6 +5,7 @@
  */
 package Modelos;
 
+import java.sql.Connection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,7 +18,7 @@ import javafx.stage.Stage;
  */
 public class MyHome extends Application {
     
-    //public static Connection conexionbd;
+    public static Connection conection;
     public static Scene sc;
     public static Stage ventanaPrincipal = new Stage();
     public static Scene sc1;
@@ -25,8 +26,8 @@ public class MyHome extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-       // conexion cn = new conexion();
-       // conexionbd = cn.getConnection();
+       conexion cn = new conexion();
+       conection = cn.getConnection();
       
 
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));

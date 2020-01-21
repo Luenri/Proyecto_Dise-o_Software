@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Modelos.MyHome;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,7 +19,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
-import Modelos.MyHome;
+import static Modelos.MyHome.conection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * FXML Controller class
@@ -73,7 +76,18 @@ public class IngresarEmpleadoController implements Initializable {
     }    
 
     @FXML
-    private void CrearEmpleado(MouseEvent event) {
+    private void CrearEmpleado(MouseEvent event) throws SQLException {
+        
+        String linea1="Insert Into persona values"
+                + " ('"+txtnombres.getText()+"\','"+txtapellidos.getText()+"\','"+txtcedula.getText()+"\','"+txtcelular.getText()+"\','"+txtcorreo.getText()+"\','"+txtDireccion.getText()+"\','"+txtEstadoC.getText()+"\',20,'"+cbbCargo.getValue()+"\',1);";
+        String linea2="Insert Into empleado values"
+                + " ('"+cbbCargo.getValue()+"\','"+txtcedula.getText()+"\');";
+        String linea3="Insert Into registro values"
+                + " ('"+txtuser.getText()+"\','"+txtcontra.getText()+"\','"+txtcedula.getText()+"\','"+txtcedula.getText()+"\');";
+        Statement st= conection.createStatement();
+        st.execute(linea1);
+        st.execute(linea2);
+        st.execute(linea3);
     }
 
     @FXML
