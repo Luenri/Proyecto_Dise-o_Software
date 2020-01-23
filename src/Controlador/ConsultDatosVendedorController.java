@@ -29,6 +29,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
@@ -119,6 +120,10 @@ public class ConsultDatosVendedorController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/Vendedor.fxml"));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
+    }
+
+    @FXML
+    private void revisarCasas(ActionEvent event) {
     }
     
 }
