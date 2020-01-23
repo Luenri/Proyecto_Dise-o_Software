@@ -50,8 +50,6 @@ public class DisenarCieloController implements Initializable {
     @FXML
     private RadioButton rditaliana;
     @FXML
-    private RadioButton rdtradicional;
-    @FXML
     private ToggleGroup g3;
     @FXML
     private RadioButton rdled;
@@ -99,6 +97,24 @@ public class DisenarCieloController implements Initializable {
     private Button btnRegistrar;
      @FXML
     private Button btnvolver;
+    @FXML
+    private RadioButton rdtrad;
+    @FXML
+    private Label lblpreciopn;
+    @FXML
+    private Label lblpreciopi;
+    @FXML
+    private Label lblprecioge;
+    @FXML
+    private Label lblpreciogi;
+    @FXML
+    private Label lblprecioit;
+    @FXML
+    private Label lblprecioil;
+    @FXML
+    private Label lblpreciob;
+    @FXML
+    private Label lblprecioat;
     
     /**
      * Initializes the controller class.
@@ -116,9 +132,7 @@ public class DisenarCieloController implements Initializable {
     private void guardarCasa(MouseEvent event) {
     }
 
-    @FXML
-    private void rdnat(ActionEvent event) {
-    }
+
 
     @FXML
     private void registrar(MouseEvent event) {

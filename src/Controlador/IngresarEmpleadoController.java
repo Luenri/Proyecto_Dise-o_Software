@@ -80,8 +80,7 @@ public class IngresarEmpleadoController implements Initializable {
         ObservableList<String> opciones=FXCollections.observableArrayList();
         opciones.addAll("Empleado","Administrador");
         cbbCargo.setItems(opciones);
-        
-        
+          
     }    
 
     @FXML
