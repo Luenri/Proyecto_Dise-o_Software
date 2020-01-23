@@ -22,7 +22,7 @@ public class conexion {
        String url = "jdbc:mysql://localhost/myhome?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
        
         String user = "root";
-        String pass = "Luis1403";
+        String pass = "root";
         try {
             con = DriverManager.getConnection(url, user, pass);
             return con;

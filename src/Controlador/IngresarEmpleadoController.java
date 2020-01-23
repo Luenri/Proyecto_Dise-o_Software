@@ -86,26 +86,10 @@ public class IngresarEmpleadoController implements Initializable {
 
     @FXML
     private void CrearEmpleado(MouseEvent event) throws SQLException {
-        System.out.println(txtnombres.getText());
-        System.out.println(txtapellidos.getText());
-        System.out.println(txtcedula.getText());
-        System.out.println(txtcelular.getText());
-        System.out.println(txtcorreo.getText());
-        System.out.println(txtDireccion.getText());
-        System.out.println(txtEstadoC.getText());
-        System.out.println(cbbCargo.getValue());
-        System.out.println(txtuser.getText());
-        System.out.println(txtcontra.getText());
         
-       /* String linea1="Insert Into persona values"
-                + " ('"+txtnombres.getText()+"\','"+txtapellidos.getText()+"\','"+txtcedula.getText()+"\','"+txtcelular.getText()+"\','"+txtcorreo.getText()+"\','"+txtDireccion.getText()+"\','"+txtEstadoC.getText()+"\',20,'"+cbbCargo.getValue()+"\',1);";
-        String linea2="Insert Into empleado values"
-                + " ('"+cbbCargo.getValue()+"\','"+txtcedula.getText()+"\');";
-        String linea3="Insert Into registro values"
-                + " ('"+txtuser.getText()+"\','"+txtcontra.getText()+"\','"+txtcedula.getText()+"\','"+txtcedula.getText()+"\');";
-        */
         
-        String linea1="insert into persona values('"+txtnombres.getText()+"', '"+txtapellidos.getText()+"', '"+txtcedula.getText()+"','"+txtcelular.getText()+"','"+txtcorreo.getText()+"','"+txtDireccion.getText()+"','"+txttelefonotrab.getText()+"','"+txtEstadoC.getText()+"','"+cbbCargo.getValue()+"',1);";
+        String linea1="insert into persona values"
+                + "('"+txtnombres.getText()+"', '"+txtapellidos.getText()+"', '"+txtcedula.getText()+"','"+txtcelular.getText()+"','"+txtcorreo.getText()+"','"+txtDireccion.getText()+"','"+txttelefonotrab.getText()+"','"+txtEstadoC.getText()+"','"+cbbCargo.getValue()+"',1);";
         String linea2="insert into empleado values('"+cbbCargo.getValue()+"','"+txtcedula.getText()+"');";
         String linea3="insert into registro values('"+txtuser.getText()+"','"+txtcontra.getText()+"','"+txtcedula.getText()+"');";
         

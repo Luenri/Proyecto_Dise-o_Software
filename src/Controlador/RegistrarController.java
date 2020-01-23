@@ -18,6 +18,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import Modelos.MyHome;
+import static Modelos.MyHome.conection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javafx.event.ActionEvent;
 
 /**
@@ -80,7 +83,21 @@ public class RegistrarController implements Initializable {
 
 
     @FXML
-    private void registrar(ActionEvent event) {
+    private void registrar(ActionEvent event) throws SQLException {
+        
+         String linea1="insert into persona values"
+                + "('"+txtnombres.getText()+"', '"+txtapellidos.getText()+"', '"+txtcedula.getText()+"','"+txtcelular.getText()+"','"+txtcorreo.getText()+"','"+txtdirecciondom.getText()+"','"+txttelefonotrab.getText()+"','"+txtestadoc.getText()+"','"+txtcargo.getText()+"',1);";
+        String linea2="insert into cliente values('"+txtdirecciontrab.getText()+"','"+txtempresa.getText()+"',"+txtnhijos.getText()+",'"+txtcedula.getText()+"');";
+        String linea3="insert into registro values('"+txtuser.getText()+"','"+txtcontra.getText()+"','"+txtcedula.getText()+"');";
+        
+        System.out.println(linea1);
+        System.out.println(linea2);
+        System.out.println(linea3);
+        
+        Statement st= conection.createStatement();
+        st.execute(linea1);
+        st.execute(linea2);
+        st.execute(linea3);
     }
 
     @FXML
@@ -106,6 +123,5 @@ public class RegistrarController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/Usuario.fxml"));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
-    }
-    
+    }   
 }
