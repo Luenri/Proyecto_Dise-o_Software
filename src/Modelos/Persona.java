@@ -14,11 +14,22 @@ public class Persona {
     protected String apellido;
     protected String cedula;
     protected String correo;
+    protected String celular;
     protected String direccion;
     protected String telefonTrabajo;
     protected String estadoCivil;
-    protected int edad;
     protected boolean activo=false;
+    
+    public Persona(String nombre, String apellido, String cedula, String correo, String celular,  String estadoCivil,String direccion) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.cedula = cedula;
+        this.correo = correo;
+        this.celular = celular;
+        this.estadoCivil = estadoCivil;
+        this.direccion = direccion;
+        
+    }
 
     public String getNombre() {
         return nombre;
@@ -77,13 +88,7 @@ public class Persona {
         this.estadoCivil = estadoCivil;
     }
 
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
+    
 
     public boolean isActivo() {
         return activo;

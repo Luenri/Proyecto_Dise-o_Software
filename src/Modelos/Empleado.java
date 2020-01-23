@@ -12,5 +12,9 @@ package Modelos;
 public class Empleado extends Persona{
     
     String cargo;
+
+    public Empleado(String nombre, String apellido, String cedula, String correo, String celular, String estadoCivil, String direccion) {
+        super(nombre, apellido, cedula, correo, celular, estadoCivil, direccion);
+    }
     
 }

@@ -11,4 +11,8 @@ package Modelos;
  */
 public class cliente extends Persona{
     
+    public cliente(String nombre, String apellido, String cedula, String correo, String celular, String estadoCivil, String direccion) {
+        super(nombre, apellido, cedula, correo, celular, estadoCivil, direccion);
+    }
+    
 }
