@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="802.0" prefWidth="1077.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.DisenarCieloController">
+  <children>
+    <Label layoutX="552.0" layoutY="42.0" prefHeight="64.0" prefWidth="295.0" text="CIELO">
+      <font>
+        <Font size="48.0" />
+      </font>
+    </Label>
+    <ImageView fitHeight="250.35405462195797" fitWidth="380.99998474121094" layoutX="100.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+        <Image url="@imagenes/Cielo.jpg" />
+      </image>
+    </ImageView>
+    <TextArea editable="false" layoutX="559.0" layoutY="115.0" prefHeight="157.0" prefWidth="189.00009999999747" text="m²: 130&#10;n. plantas: 2&#10;Esquinera: si&#10;Orientación: Norte&#10;Patio: Grande&#10;Habitaciones: 4&#10;Baños: 3 1/2" wrapText="true" />
+    <Button fx:id="btnprecio" layoutX="730.0" layoutY="520.0" mnemonicParsing="false" onMouseClicked="#mostrarPrecio" prefHeight="32.0" prefWidth="101.0" text="Ver precio " />
+    <Button fx:id="btnguardar" layoutX="847.0" layoutY="520.0" mnemonicParsing="false" onMouseClicked="#guardarCasa" prefHeight="32.0" prefWidth="77.0" text="Guardar" />
+    <Label layoutX="103.0" layoutY="366.0" text="Pisos porcelana">
+      <font>
+        <Font size="16.0" fx:id="x2" />
+      </font>
+    </Label>
+    <Label font="$x2" layoutX="229.0" layoutY="366.0" text="Griferia" />
+    <Label font="$x2" layoutX="333.0" layoutY="366.0" text="Iluminacion" />
+    <Label font="$x2" layoutX="462.0" layoutY="359.0" prefHeight="53.0" prefWidth="101.0" text="Banos Insonorizados" wrapText="true" />
+    <Label font="$x2" layoutX="586.0" layoutY="359.0" prefHeight="45.0" prefWidth="89.0" text="Aislante termico" underline="false" wrapText="true" />
+    <RadioButton fx:id="rdnacional" font="$x2" layoutX="103.0" layoutY="415.0" mnemonicParsing="false" text="Nacional">
+      <toggleGroup>
+        <ToggleGroup fx:id="g1" />
+      </toggleGroup>
+    </RadioButton>
+    <RadioButton fx:id="rdimportado" font="$x2" layoutX="103.0" layoutY="444.0" mnemonicParsing="false" text="Importado" toggleGroup="$g1" />
+    <RadioButton fx:id="rdestandar" font="$x2" layoutX="229.0" layoutY="415.0" mnemonicParsing="false" text="Estandar">
+      <toggleGroup>
+        <ToggleGroup fx:id="g2" />
+      </toggleGroup>
+    </RadioButton>
+    <RadioButton fx:id="rditaliana" font="$x2" layoutX="229.0" layoutY="444.0" mnemonicParsing="false" text="Italiana" toggleGroup="$g2" />
+    <RadioButton fx:id="rdtradicional" font="$x2" layoutX="333.0" layoutY="415.0" mnemonicParsing="false" text="Tradicional">
+      <toggleGroup>
+        <ToggleGroup fx:id="g3" />
+      </toggleGroup>
+    </RadioButton>
+    <RadioButton fx:id="rdled" font="$x2" layoutX="333.0" layoutY="444.0" mnemonicParsing="false" text="Led" toggleGroup="$g3" />
+    <RadioButton fx:id="rdsbi" font="$x2" layoutX="462.0" layoutY="415.0" mnemonicParsing="false" text="Si">
+      <toggleGroup>
+        <ToggleGroup fx:id="g4" />
+      </toggleGroup>
+    </RadioButton>
+    <RadioButton fx:id="rdnbi" font="$x2" layoutX="462.0" layoutY="444.0" mnemonicParsing="false" text="No" toggleGroup="$g4" />
+    <RadioButton fx:id="rdsat" font="$x2" layoutX="586.0" layoutY="415.0" mnemonicParsing="false" text="Si">
+      <toggleGroup>
+        <ToggleGroup fx:id="x1" />
+      </toggleGroup>
+    </RadioButton>
+    <RadioButton font="$x2" layoutX="586.0" layoutY="444.0" mnemonicParsing="false" onAction="#rdnat" text="No" toggleGroup="$x1" />
+    <Label fx:id="lblnombre" layoutX="100.0" layoutY="645.0" text="Nombre " />
+    <Label fx:id="lblapellidos" layoutX="101.0" layoutY="684.0" text="Apellido" />
+    <TextField fx:id="txtnombre" layoutX="160.0" layoutY="645.0" prefWidth="136.0" />
+    <TextField fx:id="txtapellido" layoutX="160.0" layoutY="681.0" prefWidth="136.0" />
+    <Label fx:id="lblcedula" layoutX="305.0" layoutY="646.0" text="Cedula" />
+    <Label fx:id="lblcorreo" layoutX="306.0" layoutY="685.0" text="Correo - E" />
+    <TextField fx:id="txtcedula" layoutX="365.0" layoutY="646.0" prefWidth="136.0" />
+    <TextField fx:id="txtcorreo" layoutX="365.0" layoutY="682.0" prefWidth="136.0" />
+    <Label fx:id="lbltelefono" layoutX="512.0" layoutY="646.0" text="Telefono" />
+    <Label fx:id="lblEstadoC" layoutX="513.0" layoutY="685.0" text="Estado Civil" />
+    <TextField fx:id="txtcelular" layoutX="578.0" layoutY="646.0" prefWidth="136.0" />
+    <TextField fx:id="txtEstadoC" layoutX="578.0" layoutY="682.0" prefWidth="136.0" />
+    <Label fx:id="lbldireccion" layoutX="730.0" layoutY="646.0" text="Direccion" />
+    <TextField fx:id="txtdireccion" layoutX="790.0" layoutY="645.0" prefWidth="110.0" text="" />
+    <TextArea fx:id="tamensaje" layoutX="360.0" layoutY="513.0" prefHeight="53.0" prefWidth="302.0" text="Debe ser cliente registrado para poder ver el precio de la casa disenada" wrapText="true" />
+    <Button fx:id="btnRegistrar" layoutX="739.0" layoutY="680.0" mnemonicParsing="false" onMouseClicked="#registrar" prefWidth="83.0" text="Registrar" />
+    <Label layoutX="109.0" layoutY="313.0" text="Especificar caracteristicas">
+      <font>
+        <Font size="18.0" />
+      </font>
+    </Label>
+      <Button fx:id="btnvolver" layoutX="930.0" layoutY="730.0" mnemonicParsing="false" onMouseClicked="#volver" text="Volver" />
+  </children>
+</AnchorPane>

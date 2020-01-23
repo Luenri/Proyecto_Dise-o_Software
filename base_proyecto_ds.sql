@@ -8,10 +8,10 @@ apellido varchar(30),
 cedula varchar(10) primary key,
 celular varchar(10),
 correo varchar(100),
-domicilido varchar(100),
+domicilio varchar(100),
 telefonoTrabajo varchar(10),
 estadoCivil varchar(15),
-edad int,
+cargo varchar(50),
 activo int
 );
 
@@ -37,7 +37,6 @@ numPlantas int,
 esquinera int,
 orientacion varchar (30),
 patioGrande int,
-patiopequeño int,
 numHabitaciones int,
 numBaños int,
 pisoPorcelanato varchar (30),
@@ -52,7 +51,6 @@ foreign key (clienteID) references cliente(cedulaClient)
 create table registro (
 usuario varchar(10),
 contrasena varchar(10),
-cliente varchar(10),
-foreign key (cliente) references empleado(cedulaEmp),
-foreign key (cliente) references cliente(cedulaClient)
+propietario varchar(10),
+foreign key (propietario) references persona(cedula)
 );

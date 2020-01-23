@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="802.0" prefWidth="1077.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.AdministradorController">
+  <children>
+    <Button fx:id="btnconsultar" layoutX="605.0" layoutY="222.0" mnemonicParsing="false" onMouseClicked="#consultarDatos" prefHeight="66.0" prefWidth="201.0" text="Consultar datos ">
+      <font>
+        <Font size="18.0" fx:id="x1" />
+      </font>
+    </Button>
+    <ImageView fitHeight="216.0" fitWidth="266.0" layoutX="315.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+        <Image url="@imagenes/buscar.png" />
+      </image>
+    </ImageView>
+    <ImageView fitHeight="224.0" fitWidth="309.0" layoutX="336.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+        <Image url="@imagenes/nuevo.png" />
+      </image>
+    </ImageView>
+    <Label layoutX="280.0" layoutY="14.0" text="Administrador">
+      <font>
+        <Font name="System Bold" size="72.0" />
+      </font>
+    </Label>
+    <Button fx:id="btnCrearEmp" font="$x1" layoutX="605.0" layoutY="498.0" mnemonicParsing="false" onMouseClicked="#crearEmpleado" prefHeight="66.0" prefWidth="201.0" text="Crear Empleado" />
+    <Button fx:id="btncerrarsesion" layoutX="894.0" layoutY="724.0" mnemonicParsing="false" onMouseClicked="#cerrarsesion" text="Cerrar Sesion" />
+  </children>
+</Pane>
