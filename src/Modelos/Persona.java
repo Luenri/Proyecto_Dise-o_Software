@@ -20,6 +20,8 @@ public class Persona {
     protected String estadoCivil;
     protected boolean activo=false;
     
+    
+
     public Persona(String nombre, String apellido, String cedula, String correo, String celular,  String estadoCivil,String direccion) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -30,6 +32,9 @@ public class Persona {
         this.direccion = direccion;
         
     }
+            
+    
+    
 
     public String getNombre() {
         return nombre;
@@ -88,8 +93,6 @@ public class Persona {
         this.estadoCivil = estadoCivil;
     }
 
-    
-
     public boolean isActivo() {
         return activo;
     }
@@ -97,6 +100,18 @@ public class Persona {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+    
+
+    
+
     
     
     

@@ -28,7 +28,7 @@ public class MyHome extends Application {
     public void start(Stage stage) throws Exception {
        conexion cn = new conexion();
        conection = cn.getConnection();
-      
+     
 
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));
 
