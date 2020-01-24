@@ -25,13 +25,13 @@ import Modelos.MyHome;
 public class PantallaPrincipalController implements Initializable {
 
     @FXML
-    private Button btnAdministrador;
+    public static Button btnAdministrador;
     @FXML
-    private Button btnvendedor;
+    public static Button btnvendedor;
     @FXML
-    private Button btnCliente;
+    public static Button btnCliente;
     @FXML
-    private Button btnUusario;
+    public static Button btnUusario;
 
     /**
      * Initializes the controller class.
@@ -39,6 +39,10 @@ public class PantallaPrincipalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        /*btnAdministrador.setId("btnAdministrador");
+        btnvendedor.setId("btnvendedor");
+        btnCliente.setId("btnCliente");
+        btnUusario.setId("btnUsuario");*/
     }    
 
     @FXML

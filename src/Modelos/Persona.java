@@ -32,6 +32,12 @@ public class Persona {
         this.direccion = direccion;
         
     }
+
+    public Persona(String cedula) {
+        this.cedula = cedula;
+    }
+    
+    
             
     
     
@@ -109,9 +115,7 @@ public class Persona {
         this.celular = celular;
     }
     
-
     
-
     
     
     
