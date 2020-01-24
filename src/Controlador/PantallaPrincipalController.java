@@ -25,13 +25,11 @@ import Modelos.MyHome;
 public class PantallaPrincipalController implements Initializable {
 
     @FXML
-    public static Button btnAdministrador;
+    private Button btnvendedor;
     @FXML
-    public static Button btnvendedor;
-    @FXML
-    public static Button btnCliente;
-    @FXML
-    public static Button btnUusario;
+    private Button btnUusario;
+
+    
 
     /**
      * Initializes the controller class.
@@ -45,7 +43,6 @@ public class PantallaPrincipalController implements Initializable {
         btnUusario.setId("btnUsuario");*/
     }    
 
-    @FXML
     private void abrirVadmin(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/login.fxml"));
         Scene sc = new Scene(root);
@@ -59,7 +56,6 @@ public class PantallaPrincipalController implements Initializable {
         MyHome.ventanaPrincipal.setScene(sc);
     }
 
-    @FXML
     private void abrirVcliente(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/login.fxml"));
         Scene sc = new Scene(root);

@@ -29,10 +29,9 @@ public class Empleado extends Persona{
         super(nombre, apellido, cedula, correo, celular, estadoCivil, direccion);
     }
 
-    public Empleado(String cargo, Registro registro, String nombre, String apellido, String cedula, String correo, String celular, String estadoCivil, String direccion) {
+    public Empleado(String cargo, String nombre, String apellido, String cedula, String correo, String celular, String estadoCivil, String direccion) {
         super(nombre, apellido, cedula, correo, celular, estadoCivil, direccion);
         this.cargo = cargo;
-        this.registro = registro;
     }
 
     public Registro getRegistro() {

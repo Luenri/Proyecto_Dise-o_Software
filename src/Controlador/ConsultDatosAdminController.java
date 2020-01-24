@@ -72,12 +72,45 @@ public class ConsultDatosAdminController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        try {
+     
             // TODO
             ObservableList<String> opciones=FXCollections.observableArrayList();
             opciones.addAll("Vendedor","Administrador");
             cbbConsulta.setItems(opciones);
             
+            cbbConsulta.setOnAction(e->{
+                String cbb=cbbConsulta.getValue();
+                if (cbb.equalsIgnoreCase("Vendedor")){
+                    try {
+                        mostrarDatos("vendedor");
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ConsultDatosAdminController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }else{
+                    try {
+                        mostrarDatos("Administrador");
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ConsultDatosAdminController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                
+            });
+     
+            
+            //tbvDatos.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+            
+            
+    }   
+    
+     @FXML
+    private void volver(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/Administrador.fxml"));
+        Scene sc = new Scene(root);
+        MyHome.ventanaPrincipal.setScene(sc);
+    }
+    
+    
+    public void mostrarDatos(String cadena) throws SQLException{
             String sql="SELECT * FROM persona p inner join empleado c on p.cedula= c.cedulaEmp ";
             Statement st= conection.createStatement();
             
@@ -94,7 +127,7 @@ public class ConsultDatosAdminController implements Initializable {
             ObservableList<Persona> datos=FXCollections.observableArrayList();
             
             while(rt.next()){
-                if (Integer.valueOf(rt.getString("activo"))!=0){
+                if (Integer.valueOf(rt.getString("activo"))!=0 && rt.getString("cargo").equalsIgnoreCase(cadena)){
                     String cedula_=rt.getString("cedula");
                 String nombre_=rt.getString("nombre");
                 String apellido_=rt.getString("apellido");
@@ -103,28 +136,11 @@ public class ConsultDatosAdminController implements Initializable {
                 String estado_=rt.getString("estadoCivil");
                 String direccion_=rt.getString("domicilio");
                 datos.add(new Persona(nombre_,apellido_,cedula_,correo_,celular_,estado_,direccion_));
-                }
-                
-                
+                }         
             }
             
             
             tbvDatos.setItems(datos);
-                
-            
-            //tbvDatos.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-            
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ConsultDatosAdminController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }    
-    
-     @FXML
-    private void volver(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/Administrador.fxml"));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
+            tbvDatos.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
-    
 }

@@ -9,30 +9,18 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="802.0" prefWidth="1077.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.PantallaPrincipalController">
   <children>
-    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="104.0" layoutY="516.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="360.0" layoutY="466.0" pickOnBounds="true" preserveRatio="true">
       <image>
         <Image url="@imagenes/principal.png" />
       </image>
     </ImageView>
-    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="352.0" layoutY="517.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="646.0" layoutY="466.0" pickOnBounds="true" preserveRatio="true">
       <image>
         <Image url="@imagenes/principal.png" />
       </image>
     </ImageView>
-    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="604.0" layoutY="517.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-        <Image url="@imagenes/principal.png" />
-      </image>
-    </ImageView>
-    <Button id="admin" fx:id="btnAdministrador" ellipsisString="admin" layoutX="120.0" layoutY="694.0" mnemonicParsing="false" onMouseClicked="#abrirVadmin" text="Soy administrador" wrapText="true" />
-    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="858.0" layoutY="517.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-        <Image url="@imagenes/principal.png" />
-      </image>
-    </ImageView>
-    <Button fx:id="btnvendedor" layoutX="379.0" layoutY="694.0" mnemonicParsing="false" onMouseClicked="#abrirVvendedor" text="Soy vendedor" />
-    <Button id="btn" fx:id="btnCliente" layoutX="640.0" layoutY="694.0" mnemonicParsing="false" onMouseClicked="#abrirVcliente" text="Soy cliente" />
-    <Button fx:id="btnUusario" layoutX="881.0" layoutY="694.0" mnemonicParsing="false" onMouseClicked="#abrirVusuario" text="Usuario General" />
+    <Button fx:id="btnvendedor" layoutX="370.0" layoutY="663.0" mnemonicParsing="false" onMouseClicked="#abrirVvendedor" text="Estoy Registrado" />
+    <Button fx:id="btnUusario" layoutX="658.0" layoutY="663.0" mnemonicParsing="false" onMouseClicked="#abrirVusuario" text="Usuario General" />
     <Label layoutX="315.0" layoutY="70.0" text="MY HOME S.A.">
       <font>
         <Font name="System Bold" size="72.0" />
