@@ -31,10 +31,10 @@ import Modelos.MyHome;
  */
 public class DisenarOasisController implements Initializable {
 
-    @FXML
+   @FXML
     private Button btnprecio;
     @FXML
-    private Button btnGuardar;
+    private Button btnguardar;
     @FXML
     private Font x2;
     @FXML
@@ -48,7 +48,7 @@ public class DisenarOasisController implements Initializable {
     @FXML
     private ToggleGroup g2;
     @FXML
-    private RadioButton rdtradicional;
+    private RadioButton rditaliana;
     @FXML
     private ToggleGroup g3;
     @FXML
@@ -58,21 +58,19 @@ public class DisenarOasisController implements Initializable {
     @FXML
     private ToggleGroup g4;
     @FXML
-    private RadioButton rbnbi;
+    private RadioButton rdnbi;
     @FXML
     private RadioButton rdsat;
     @FXML
     private ToggleGroup x1;
     @FXML
-    private RadioButton rdnat;
-    @FXML
     private Label lblnombre;
     @FXML
-    private Label lblapellido;
+    private Label lblapellidos;
     @FXML
     private TextField txtnombre;
     @FXML
-    private TextField txtapellidos;
+    private TextField txtapellido;
     @FXML
     private Label lblcedula;
     @FXML
@@ -96,40 +94,53 @@ public class DisenarOasisController implements Initializable {
     @FXML
     private TextArea tamensaje;
     @FXML
-    private Button btnReigstrar;
-    @FXML
+    private Button btnRegistrar;
+     @FXML
     private Button btnvolver;
+    @FXML
+    private RadioButton rdtrad;
+    @FXML
+    private Label lblpreciopn;
+    @FXML
+    private Label lblpreciopi;
+    @FXML
+    private Label lblprecioge;
+    @FXML
+    private Label lblpreciogi;
+    @FXML
+    private Label lblprecioit;
+    @FXML
+    private Label lblprecioil;
+    @FXML
+    private Label lblpreciob;
+    @FXML
+    private Label lblprecioat;
 
     /**
      * Initializes the controller class.
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-
     @FXML
     private void mostrarPrecio(MouseEvent event) {
     }
 
     @FXML
-    private void guardarCasas(MouseEvent event) {
-    }
-
-    @FXML
-    private void rditaliana(ActionEvent event) {
+    private void guardarCasa(MouseEvent event) {
     }
 
     @FXML
     private void registrar(MouseEvent event) {
     }
-    
-     @FXML
+
+    @FXML
     private void volver(MouseEvent event) throws IOException {
-         Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarCasas.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarCasas.fxml"));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
 
     }
-    
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

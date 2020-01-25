@@ -145,5 +145,9 @@ public class DisenarCieloController implements Initializable {
         MyHome.ventanaPrincipal.setScene(sc);
 
     }
+
+    @FXML
+    private void rdnat(ActionEvent event) {
+    }
     
 }

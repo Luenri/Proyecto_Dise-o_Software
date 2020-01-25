@@ -49,8 +49,6 @@ public class DisenarParaisoController implements Initializable {
     @FXML
     private RadioButton rditaliana;
     @FXML
-    private RadioButton rdtradicional;
-    @FXML
     private ToggleGroup g3;
     @FXML
     private RadioButton rdled;
@@ -65,19 +63,17 @@ public class DisenarParaisoController implements Initializable {
     @FXML
     private ToggleGroup x1;
     @FXML
-    private RadioButton rdnat;
-    @FXML
     private Label lblnombre;
     @FXML
-    private Label lblapellido;
+    private Label lblapellidos;
     @FXML
-    private TextField txtnombres;
+    private TextField txtnombre;
     @FXML
     private TextField txtapellido;
     @FXML
     private Label lblcedula;
     @FXML
-    private Label lblCorreo;
+    private Label lblcorreo;
     @FXML
     private TextField txtcedula;
     @FXML
@@ -97,14 +93,30 @@ public class DisenarParaisoController implements Initializable {
     @FXML
     private TextArea tamensaje;
     @FXML
-    private Button btnregistrar;
-    @FXML
+    private Button btnRegistrar;
+     @FXML
     private Button btnvolver;
-
+    @FXML
+    private RadioButton rdtrad;
+    @FXML
+    private Label lblpreciopn;
+    @FXML
+    private Label lblpreciopi;
+    @FXML
+    private Label lblprecioge;
+    @FXML
+    private Label lblpreciogi;
+    @FXML
+    private Label lblprecioit;
+    @FXML
+    private Label lblprecioil;
+    @FXML
+    private Label lblpreciob;
+    @FXML
+    private Label lblprecioat;
     /**
      * Initializes the controller class.
      */
-    @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
@@ -117,16 +129,17 @@ public class DisenarParaisoController implements Initializable {
     private void guardarCasa(MouseEvent event) {
     }
 
+
+
     @FXML
     private void registrar(MouseEvent event) {
     }
     
-     @FXML
+    @FXML
     private void volver(MouseEvent event) throws IOException {
          Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarCasas.fxml"));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
 
     }
-    
 }
