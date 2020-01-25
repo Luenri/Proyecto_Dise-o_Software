@@ -110,8 +110,9 @@ public class ConsultDatosAdminController implements Initializable {
     }
     
     
-    public void mostrarDatos(String cadena) throws SQLException{
-            String sql="SELECT * FROM persona p inner join empleado c on p.cedula= c.cedulaEmp ";
+    private void mostrarDatos(String cadena) throws SQLException{
+        String sql="SELECT cedula,nombre,apellido,celular,correo,estadoCivil,domicilio,e.cargo,activo"
+                + " FROM persona p inner join empleado e on p.cedula= e.cedulaEmp ";
             Statement st= conection.createStatement();
             
             
@@ -127,6 +128,7 @@ public class ConsultDatosAdminController implements Initializable {
             ObservableList<Persona> datos=FXCollections.observableArrayList();
             
             while(rt.next()){
+            
                 if (Integer.valueOf(rt.getString("activo"))!=0 && rt.getString("cargo").equalsIgnoreCase(cadena)){
                     String cedula_=rt.getString("cedula");
                 String nombre_=rt.getString("nombre");
@@ -136,11 +138,15 @@ public class ConsultDatosAdminController implements Initializable {
                 String estado_=rt.getString("estadoCivil");
                 String direccion_=rt.getString("domicilio");
                 datos.add(new Persona(nombre_,apellido_,cedula_,correo_,celular_,estado_,direccion_));
-                }         
+                }
+                
+                
             }
             
             
             tbvDatos.setItems(datos);
+                
+            
             tbvDatos.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 }
