@@ -17,17 +17,8 @@ public abstract class CasaBuilder {
         return casaBase;
     }
     
-    void definirDimensiones(){
-        
-    }
-    
-    void definirInterior(){
-        
-    }
-    
-    void definirEstructura(){
-        
-    }
+    public abstract void definirDimensiones(); 
+    public abstract void definirInterior();
     
     
     

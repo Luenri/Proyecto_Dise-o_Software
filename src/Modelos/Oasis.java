@@ -11,4 +11,23 @@ package Modelos;
  */
 public class Oasis extends CasaBuilder {
     
+     Casa c = new Casa();
+    
+    @Override
+    public void definirDimensiones() {
+        
+        c.metrosCuadrados = 63;
+        c.numPlantas = 1;
+        c.esquinera = false;
+        orientacion o = null;
+        c.orientacion = o.SUR ;
+    }
+
+    @Override
+    public void definirInterior() {
+        c.patioGrande = false;
+        c.numHabitaciones = 2;
+        c.numBaños = 2;
+    }
+    
 }
