@@ -23,6 +23,7 @@ import javafx.scene.text.Font;
 import Modelos.MyHome;
 import static Modelos.MyHome.conection;
 import Modelos.Registro;
+import Modelos.cliente;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -52,6 +53,13 @@ public class LoginController implements Initializable {
     private Font x2;
     @FXML
     private Button btnLimpiar;
+    
+    static String usuario;
+    static String contra;
+    
+    
+    protected boolean ingresar;
+    protected String cargo;
 
     /**
      * Initializes the controller class.
@@ -59,6 +67,7 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+      
     }    
 
     @FXML
@@ -79,43 +88,50 @@ public class LoginController implements Initializable {
         
         String cadena="SELECT nombre,apellido,cedula,c.cargo,usuario,contrasena "
                 + "FROM persona p inner join empleado c on p.cedula= c.cedulaEmp inner join registro r on p.cedula=r.propietario;";
-        Statement st= conection.createStatement();
-        ResultSet rs=st.executeQuery(cadena);
-        String usuario=txtuser.getText();
-        String contra=txtcontra.getText();
+        String cadena2="Select nombre,apellido,cedula,usuario,contrasena from persona p inner join cliente c on p.cedula=c.cedulaClient inner join registro r on p.cedula=r.propietario;";
+        //Statement st= conection.createStatement();
+        
+        usuario=txtuser.getText();
+        contra=txtcontra.getText();
+        
+        //ResultSet rs=st.executeQuery(cadena);
         Registro reg=new Registro(usuario,contra);
+        
+        System.out.println(reg.getContrasena());
+        System.out.println(reg.getUsuario());
        
-        LinkedList<Empleado> empleados=new LinkedList<>();
+        /*LinkedList<Empleado> empleados=new LinkedList<>();
         while(rs.next()){
             String cedula=rs.getString("cedula");
             String usr=rs.getString("usuario");
             String cont=rs.getString("contrasena");
             String carg=rs.getString("cargo");
             empleados.add(new Empleado(carg,new Registro(usr,cont),cedula));
-        }
-        boolean ingresar=false;
-        String cargo="ninguno";
-        for(Empleado e:empleados){
+        }*/
+        
+        /*for(Empleado e:empleados){
             Registro r=e.getRegistro();
             if(reg.equals(r)){
                 ingresar=true;
                 cargo=e.getCargo();
-                
-                System.out.println(e.getRegistro().getUsuario());
-                System.out.println(e.getRegistro().getContrasena());
-                System.out.println(cargo);
             }
-        }
+        }*/
         
-        if (ingresar && cargo.equalsIgnoreCase("Administrador") ){
+        verificarLoginEmpleado(cadena,reg);
+        verificarLoginCliente(cadena2,reg);
+        
+        System.out.println(ingresar);
+        System.out.println(cargo);
+        
+        if (ingresar && cargo!=null &&cargo.equalsIgnoreCase("Administrador") ){
              Parent root = FXMLLoader.load(getClass().getResource("/Vista/Administrador.fxml"));
              Scene sc = new Scene(root);
              MyHome.ventanaPrincipal.setScene(sc);
-        }else if (ingresar && cargo.equalsIgnoreCase("Vendedor")){
+        }else if (ingresar && cargo!=null && cargo.equalsIgnoreCase("Vendedor")){
              Parent root = FXMLLoader.load(getClass().getResource("/Vista/Vendedor.fxml"));
              Scene sc = new Scene(root);
              MyHome.ventanaPrincipal.setScene(sc);
-        }else if (ingresar && cargo.equalsIgnoreCase("Cliente")){
+        }else if (ingresar){
              Parent root = FXMLLoader.load(getClass().getResource("/Vista/Cliente.fxml"));
              Scene sc = new Scene(root);
              MyHome.ventanaPrincipal.setScene(sc);
@@ -129,5 +145,52 @@ public class LoginController implements Initializable {
         }
         
     }
+    
+    
+    public void verificarLoginEmpleado(String queryEmp,Registro registro) throws SQLException{
+        Statement st= conection.createStatement();
+        ResultSet rs1=st.executeQuery(queryEmp);
+        //ResultSet rs2=st.executeQuery(queryClt);
+        LinkedList<Empleado> empleados=new LinkedList<>();
+        
+        
+        while(rs1.next()){
+            String cedula=rs1.getString("cedula");
+            String usr=rs1.getString("usuario");
+            String cont=rs1.getString("contrasena");
+            String carg=rs1.getString("cargo");
+            empleados.add(new Empleado(carg,new Registro(usr,cont),cedula));
+        }
+        for(Empleado e:empleados){
+            Registro r=e.getRegistro();
+            if(registro.equals(r)){
+                ingresar=true;
+                cargo=e.getCargo();
+            }
+        }
+        /**/
+    }
+    
+    public void verificarLoginCliente(String queryClt,Registro registro) throws SQLException{
+        Statement st= conection.createStatement();
+        LinkedList<cliente> clientes=new LinkedList<>();
+        ResultSet rs2=st.executeQuery(queryClt);
+        
+        while(rs2.next()){
+            String cedula=rs2.getString("cedula");
+            String usr=rs2.getString("usuario");
+            String cont=rs2.getString("contrasena");
+            clientes.add(new cliente(new Registro(usr,cont),cedula));
+        }
+        
+   
+        for (cliente c:clientes){
+            Registro r=c.getRegistro();
+            if(registro.equals(r)){
+                ingresar=true;
+            }
+        }
+    }
+    
     
 }
