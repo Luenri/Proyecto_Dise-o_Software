@@ -23,6 +23,8 @@ public class MyHome extends Application {
     public static Stage ventanaPrincipal = new Stage();
     public static Scene sc1;
     public static Stage ventAdd = new Stage();
+    public static String usuario;
+    public static String contra;
 
     @Override
     public void start(Stage stage) throws Exception {

@@ -24,6 +24,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import Modelos.MyHome;
 import static Modelos.MyHome.conection;
+import static Modelos.MyHome.usuario;
+import static Modelos.MyHome.contra;
+import Modelos.clienteRegistrado;
+import static Modelos.clienteRegistrado.obtenerCliente;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -124,6 +128,7 @@ public class DisenarCieloController implements Initializable {
     private Label lblpreciof;
     
     
+    
     /**
      * Initializes the controller class.
      */
@@ -135,7 +140,7 @@ public class DisenarCieloController implements Initializable {
     @FXML
     private void mostrarPrecio(MouseEvent event) {
         calcularPrecio();
-        lblpreciof.setText("$ " + String.valueOf(costo));
+        lblpreciof.setText(String.valueOf(costo));
         lblpreciof.setVisible(true);       
     }
 
@@ -151,13 +156,19 @@ public class DisenarCieloController implements Initializable {
         RadioButton srb2 = (RadioButton) g3.getSelectedToggle();
         String silum = srb2.getText();
         
+        
+        
         RadioButton srb3 = (RadioButton) g4.getSelectedToggle();
-        String sbanos = srb3.getText();
+        String sbanos = (srb3.getText().equalsIgnoreCase("no"))? "0":"1";
+        
         
         RadioButton srb4 = (RadioButton) x1.getSelectedToggle();
-        String saislante = srb4.getText();
+        String saislante = (srb4.getText().equalsIgnoreCase("no"))?"0":"1";
+       
+        clienteRegistrado cliente=obtenerCliente(usuario,contra);
+        System.out.println(cliente.getCedula());
     
-        String linea1 = "insert into casa values (130,2,1,'Norte',1,4,3,'" + spisos + "','" + sgrif + "','" + silum + "'," + sbanos + "," + saislante + "AQUI EN TEORIA PARA LA PARTE DEL CLIENTE,');";
+        String linea1 = "insert into casa values (130,2,1,'Norte',1,4,3,'" + spisos + "','" + sgrif + "','" + silum + "'," + sbanos + "," + saislante + ",'"+cliente.getCedula()+"');";
         
         System.out.println(linea1);
 

@@ -71,5 +71,11 @@ public class VendedorController implements Initializable {
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
     }
+
+    private void salir(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));
+        Scene sc = new Scene(root);
+        MyHome.ventanaPrincipal.setScene(sc);
+    }
     
 }
