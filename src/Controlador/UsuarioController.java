@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import Modelos.MyHome;
+import javafx.event.ActionEvent;
 
 /**
  * FXML Controller class
@@ -42,8 +43,7 @@ public class UsuarioController implements Initializable {
         // TODO
     }    
 
-    @FXML
-    private void registrarse(MouseEvent event) throws IOException {
+    private void registarse(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/Registrar.fxml"));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
@@ -61,6 +61,10 @@ public class UsuarioController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
+    }
+
+    @FXML
+    private void registarse(ActionEvent event) {
     }
     
 }

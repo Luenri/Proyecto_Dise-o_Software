@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import static Controlador.DisenarCieloController.costo;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,6 +24,9 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import Modelos.MyHome;
+import static Modelos.MyHome.conection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * FXML Controller class
@@ -117,16 +121,44 @@ public class DisenarOasisController implements Initializable {
     private Label lblpreciob;
     @FXML
     private Label lblprecioat;
+    @FXML
+    private Label lblpreciof;
 
     /**
      * Initializes the controller class.
      */
     @FXML
     private void mostrarPrecio(MouseEvent event) {
+        
+        calcularPrecio();
+        lblpreciof.setText("$ " + String.valueOf(costo));
+        lblpreciof.setVisible(true); 
     }
 
     @FXML
-    private void guardarCasa(MouseEvent event) {
+    private void guardarCasa(MouseEvent event) throws SQLException {
+        
+         RadioButton srb = (RadioButton) g1.getSelectedToggle();
+        String spisos = srb.getText();
+        
+        RadioButton srb1 = (RadioButton) g2.getSelectedToggle();
+        String sgrif = srb1.getText();
+        
+        RadioButton srb2 = (RadioButton) g3.getSelectedToggle();
+        String silum = srb2.getText();
+        
+        RadioButton srb3 = (RadioButton) g4.getSelectedToggle();
+        String sbanos = srb3.getText();
+        
+        RadioButton srb4 = (RadioButton) x1.getSelectedToggle();
+        String saislante = srb4.getText();
+    
+        String linea1 = "insert into casa values (63,1,0,'Sur',0,2,2,'" + spisos + "','" + sgrif + "','" + silum + "'," + sbanos + "," + saislante + "AQUI EN TEORIA PARA LA PARTE DEL CLIENTE,');";
+        
+        System.out.println(linea1);
+
+        Statement st = conection.createStatement();
+        st.execute(linea1);
     }
 
     @FXML
@@ -145,4 +177,37 @@ public class DisenarOasisController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @FXML
+    private void rdnat(ActionEvent event) {
+    }
+    
+        private void calcularPrecio() {
+        if (rdnacional.isSelected()) {
+            costo += 441;
+        } else if (rdimportado.isSelected()) {
+            costo += 819;
+        }
+
+        if (rdestandar.isSelected()) {
+            costo += 240;
+        } else if (rditaliana.isSelected()) {
+            costo += 300;
+        }
+
+        if (rdtrad.isSelected()) {
+            costo += 180;
+        } else if (rdled.isSelected()) {
+            costo += 230;
+        }
+
+        if (rdsbi.isSelected()) {
+            costo += 300;
+        }
+
+        if (rdsat.isSelected()) {
+            costo += 750;
+        }
+    }
+
 }

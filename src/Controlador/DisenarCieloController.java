@@ -135,7 +135,7 @@ public class DisenarCieloController implements Initializable {
     @FXML
     private void mostrarPrecio(MouseEvent event) {
         calcularPrecio();
-        lblpreciof.setText(String.valueOf(costo));
+        lblpreciof.setText("$ " + String.valueOf(costo));
         lblpreciof.setVisible(true);       
     }
 
@@ -146,16 +146,16 @@ public class DisenarCieloController implements Initializable {
         String spisos = srb.getText();
         
         RadioButton srb1 = (RadioButton) g2.getSelectedToggle();
-        String sgrif = srb.getText();
+        String sgrif = srb1.getText();
         
         RadioButton srb2 = (RadioButton) g3.getSelectedToggle();
-        String silum = srb.getText();
+        String silum = srb2.getText();
         
         RadioButton srb3 = (RadioButton) g4.getSelectedToggle();
-        String sbanos = srb.getText();
+        String sbanos = srb3.getText();
         
         RadioButton srb4 = (RadioButton) x1.getSelectedToggle();
-        String saislante = srb.getText();
+        String saislante = srb4.getText();
     
         String linea1 = "insert into casa values (130,2,1,'Norte',1,4,3,'" + spisos + "','" + sgrif + "','" + silum + "'," + sbanos + "," + saislante + "AQUI EN TEORIA PARA LA PARTE DEL CLIENTE,');";
         
