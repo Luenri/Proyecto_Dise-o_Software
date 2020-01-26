@@ -61,8 +61,16 @@ public class DisenarCasasController implements Initializable {
     
      @FXML
     private void volver(MouseEvent event) throws IOException {
-        //Aun no se como decirle a donde debe volver esta pagina
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));
+        
+        Parent root = null;
+        
+        if(MyHome.tipoU.equalsIgnoreCase("Vendedor")){
+           root = FXMLLoader.load(getClass().getResource("/Vista/Vendedor.fxml")); 
+        }else if (MyHome.tipoU.equalsIgnoreCase("Cliente")) {
+             root = FXMLLoader.load(getClass().getResource("/Vista/Cliente.fxml"));
+         }else{
+            root = FXMLLoader.load(getClass().getResource("/Vista/Usuario.fxml"));
+        }
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
     }

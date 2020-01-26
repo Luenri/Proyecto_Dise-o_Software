@@ -37,7 +37,7 @@ import java.sql.Statement;
  * @author Odalys
  */
 public class DisenarCieloController implements Initializable {
-    
+
     static int costo = 180000;
 
     @FXML
@@ -89,22 +89,16 @@ public class DisenarCieloController implements Initializable {
     @FXML
     private TextField txtcorreo;
     @FXML
-    private Label lbltelefono;
-    @FXML
     private Label lblEstadoC;
     @FXML
     private TextField txtcelular;
     @FXML
     private TextField txtEstadoC;
     @FXML
-    private Label lbldireccion;
-    @FXML
-    private TextField txtdireccion;
-    @FXML
     private TextArea tamensaje;
     @FXML
     private Button btnRegistrar;
-     @FXML
+    @FXML
     private Button btnvolver;
     @FXML
     private RadioButton rdtrad;
@@ -126,64 +120,125 @@ public class DisenarCieloController implements Initializable {
     private Label lblprecioat;
     @FXML
     private Label lblpreciof;
-    
-    
-    
+    @FXML
+    private Label lbltelefonotrab;
+    @FXML
+    private TextField txtteleftrab;
+    @FXML
+    private Label lbldirtrab;
+    @FXML
+    private TextField txtdirtrab;
+    @FXML
+    private Label lbluser;
+    @FXML
+    private Label lblcontra;
+    @FXML
+    private TextField txtuser;
+    @FXML
+    private TextField txtcontra;
+    @FXML
+    private Label lblcelular;
+    @FXML
+    private Label lbldirdom;
+    @FXML
+    private TextField txtdirdom;
+    @FXML
+    private Label lblempresa;
+    @FXML
+    private Label lblcargo;
+    @FXML
+    private TextField txtempresa;
+    @FXML
+    private TextField txtcargo;
+    @FXML
+    private Label lblhijos;
+    @FXML
+    private TextField txthijos;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
     @FXML
     private void mostrarPrecio(MouseEvent event) {
         calcularPrecio();
         lblpreciof.setText(String.valueOf(costo));
-        lblpreciof.setVisible(true);       
+        if (MyHome.tipoU.equalsIgnoreCase("Usuario")) {
+            tamensaje.setVisible(true);
+            lblnombre.setVisible(true);
+            lblapellidos.setVisible(true);
+            txtnombre.setVisible(true);
+            txtapellido.setVisible(true);
+            lblcedula.setVisible(true);
+            lblcorreo.setVisible(true);
+            txtcedula.setVisible(true);
+            txtcorreo.setVisible(true);
+            lblEstadoC.setVisible(true);
+            txtEstadoC.setVisible(true);
+            txtcelular.setVisible(true);
+            lbltelefonotrab.setVisible(true);
+            txtteleftrab.setVisible(true);
+            lbldirtrab.setVisible(true);
+            txtdirtrab.setVisible(true);
+            lbluser.setVisible(true);
+            lblcontra.setVisible(true);
+            txtuser.setVisible(true);
+            txtcontra.setVisible(true);
+            lblcelular.setVisible(true);
+            lbldirdom.setVisible(true);
+            txtdirdom.setVisible(true);
+            lblempresa.setVisible(true);
+            lblcargo.setVisible(true);
+            txtempresa.setVisible(true);
+            txtcargo.setVisible(true);
+            lblhijos.setVisible(true);
+            txthijos.setVisible(true);
+        } else {
+            lblpreciof.setVisible(true);
+        }
     }
 
     @FXML
     private void guardarCasa(MouseEvent event) throws SQLException {
-        
+
         RadioButton srb = (RadioButton) g1.getSelectedToggle();
         String spisos = srb.getText();
-        
+
         RadioButton srb1 = (RadioButton) g2.getSelectedToggle();
         String sgrif = srb1.getText();
-        
+
         RadioButton srb2 = (RadioButton) g3.getSelectedToggle();
         String silum = srb2.getText();
-        
-        
-        
+
         RadioButton srb3 = (RadioButton) g4.getSelectedToggle();
-        String sbanos = (srb3.getText().equalsIgnoreCase("no"))? "0":"1";
-        
-        
+        String sbanos = (srb3.getText().equalsIgnoreCase("no")) ? "0" : "1";
+
         RadioButton srb4 = (RadioButton) x1.getSelectedToggle();
-        String saislante = (srb4.getText().equalsIgnoreCase("no"))?"0":"1";
-       
-        clienteRegistrado cliente=obtenerCliente(usuario,contra);
+        String saislante = (srb4.getText().equalsIgnoreCase("no")) ? "0" : "1";
+
+        clienteRegistrado cliente = obtenerCliente(usuario, contra);
         System.out.println(cliente.getCedula());
-    
-        String linea1 = "insert into casa values (130,2,1,'Norte',1,4,3,'" + spisos + "','" + sgrif + "','" + silum + "'," + sbanos + "," + saislante + ",'"+cliente.getCedula()+"');";
-        
+
+        String linea1 = "insert into casa values (130,2,1,'Norte',1,4,3,'" + spisos + "','" + sgrif + "','" + silum + "'," + sbanos + "," + saislante + ",'" + cliente.getCedula() + "');";
+
         System.out.println(linea1);
 
         Statement st = conection.createStatement();
         st.execute(linea1);
-        
+
     }
 
     @FXML
     private void registrar(MouseEvent event) {
     }
-    
+
     @FXML
     private void volver(MouseEvent event) throws IOException {
-         Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarCasas.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarCasas.fxml"));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
 
@@ -192,20 +247,33 @@ public class DisenarCieloController implements Initializable {
     @FXML
     private void rdnat(ActionEvent event) {
     }
-    
-    private void calcularPrecio(){
-        if (rdnacional.isSelected()) costo+= 910;
-        else if(rdimportado.isSelected()) costo+=1700;
-        
-        if (rdestandar.isSelected()) costo+= 325;
-        else if(rditaliana.isSelected()) costo+=400;
-        
-        if (rdtrad.isSelected()) costo+= 240;
-        else if(rdled.isSelected()) costo+=300;
-        
-        if (rdsbi.isSelected()) costo+= 300;
-        
-        if (rdsat.isSelected()) costo+= 750;
+
+    private void calcularPrecio() {
+        if (rdnacional.isSelected()) {
+            costo += 910;
+        } else if (rdimportado.isSelected()) {
+            costo += 1700;
+        }
+
+        if (rdestandar.isSelected()) {
+            costo += 325;
+        } else if (rditaliana.isSelected()) {
+            costo += 400;
+        }
+
+        if (rdtrad.isSelected()) {
+            costo += 240;
+        } else if (rdled.isSelected()) {
+            costo += 300;
+        }
+
+        if (rdsbi.isSelected()) {
+            costo += 300;
+        }
+
+        if (rdsat.isSelected()) {
+            costo += 750;
+        }
     }
-   
+
 }

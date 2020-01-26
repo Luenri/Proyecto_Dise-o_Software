@@ -65,22 +65,22 @@
       </toggleGroup>
     </RadioButton>
     <RadioButton font="$x2" layoutX="800.0" layoutY="444.0" mnemonicParsing="false" onAction="#rdnat" text="No" toggleGroup="$x1" />
-    <Label fx:id="lblnombre" layoutX="100.0" layoutY="645.0" text="Nombre " />
-    <Label fx:id="lblapellidos" layoutX="101.0" layoutY="684.0" text="Apellido" />
-    <TextField fx:id="txtnombre" layoutX="160.0" layoutY="645.0" prefWidth="136.0" />
-    <TextField fx:id="txtapellido" layoutX="160.0" layoutY="681.0" prefWidth="136.0" />
-    <Label fx:id="lblcedula" layoutX="305.0" layoutY="646.0" text="Cedula" />
-    <Label fx:id="lblcorreo" layoutX="306.0" layoutY="685.0" text="Correo - E" />
-    <TextField fx:id="txtcedula" layoutX="365.0" layoutY="646.0" prefWidth="136.0" />
-    <TextField fx:id="txtcorreo" layoutX="365.0" layoutY="682.0" prefWidth="136.0" />
-    <Label fx:id="lbltelefono" layoutX="512.0" layoutY="646.0" text="Telefono" />
-    <Label fx:id="lblEstadoC" layoutX="513.0" layoutY="685.0" text="Estado Civil" />
-    <TextField fx:id="txtcelular" layoutX="578.0" layoutY="646.0" prefWidth="136.0" />
-    <TextField fx:id="txtEstadoC" layoutX="578.0" layoutY="682.0" prefWidth="136.0" />
-    <Label fx:id="lbldireccion" layoutX="730.0" layoutY="646.0" text="Direccion" />
-    <TextField fx:id="txtdireccion" layoutX="790.0" layoutY="645.0" prefWidth="110.0" text="" />
+    <Label fx:id="lblnombre" layoutX="100.0" layoutY="598.0" text="Nombre " visible="false" />
+    <Label fx:id="lblapellidos" layoutX="101.0" layoutY="637.0" text="Apellido" visible="false" />
+    <TextField fx:id="txtnombre" layoutX="163.0" layoutY="598.0" prefWidth="136.0" visible="false" />
+    <TextField fx:id="txtapellido" layoutX="163.0" layoutY="634.0" prefWidth="136.0" visible="false" />
+    <Label fx:id="lblcedula" layoutX="305.0" layoutY="599.0" text="Cedula" visible="false" />
+    <Label fx:id="lblcorreo" layoutX="306.0" layoutY="638.0" text="Correo - E" visible="false" />
+    <TextField fx:id="txtcedula" layoutX="365.0" layoutY="599.0" prefWidth="136.0" visible="false" />
+    <TextField fx:id="txtcorreo" layoutX="365.0" layoutY="635.0" prefWidth="136.0" visible="false" />
+    <Label fx:id="lbltelefonotrab" layoutX="512.0" layoutY="599.0" text="Telef/Trabaj" visible="false" />
+    <Label fx:id="lblEstadoC" layoutX="513.0" layoutY="638.0" text="Estado Civil" visible="false" />
+    <TextField fx:id="txtteleftrab" layoutX="578.0" layoutY="599.0" prefWidth="136.0" visible="false" />
+    <TextField fx:id="txtEstadoC" layoutX="578.0" layoutY="635.0" prefWidth="136.0" visible="false" />
+    <Label fx:id="lbldirtrab" layoutX="730.0" layoutY="599.0" text="Dir. Trabajo" visible="false" />
+    <TextField fx:id="txtdirtrab" layoutX="795.0" layoutY="598.0" prefWidth="110.0" text="" visible="false" />
     <TextArea fx:id="tamensaje" layoutX="360.0" layoutY="513.0" prefHeight="53.0" prefWidth="302.0" text="Debe ser cliente registrado para poder ver el precio de la casa disenada" wrapText="true" />
-    <Button fx:id="btnRegistrar" layoutX="739.0" layoutY="680.0" mnemonicParsing="false" onMouseClicked="#registrar" prefWidth="83.0" text="Registrar" />
+    <Button fx:id="btnRegistrar" layoutX="759.0" layoutY="671.0" mnemonicParsing="false" onMouseClicked="#registrar" prefWidth="83.0" text="Registrar" />
     <Label layoutX="109.0" layoutY="313.0" text="Especificar caracteristicas">
       <font>
         <Font size="18.0" />
@@ -96,5 +96,19 @@
       <Label fx:id="lblpreciob" layoutX="693.0" layoutY="417.0" prefHeight="25.0" prefWidth="42.0" text="\$500" />
       <Label fx:id="lblprecioat" layoutX="878.0" layoutY="415.0" prefHeight="25.0" prefWidth="42.0" text="\$750" />
       <Label fx:id="lblpreciof" layoutX="740.0" layoutY="566.0" prefHeight="32.0" prefWidth="82.0" visible="false" />
+     <Label fx:id="lbluser" layoutX="100.0" layoutY="671.0" text="Usuario" visible="false" />
+      <Label fx:id="lblcontra" layoutX="101.0" layoutY="710.0" text="Contrasena" visible="false" />
+      <TextField fx:id="txtuser" layoutX="163.0" layoutY="671.0" prefWidth="136.0" visible="false" />
+      <TextField fx:id="txtcontra" layoutX="163.0" layoutY="707.0" prefWidth="136.0" visible="false" />
+      <Label fx:id="lblcelular" layoutX="305.0" layoutY="672.0" text="Celular" visible="false" />
+      <Label fx:id="lbldirdom" layoutX="306.0" layoutY="711.0" text="Dir. Domic" visible="false" />
+      <TextField fx:id="txtcelular" layoutX="365.0" layoutY="672.0" prefWidth="136.0" visible="false" />
+      <TextField fx:id="txtdirdom" layoutX="365.0" layoutY="708.0" prefWidth="136.0" visible="false" />
+      <Label fx:id="lblempresa" layoutX="512.0" layoutY="672.0" text="Empresa" visible="false" />
+      <Label fx:id="lblcargo" layoutX="513.0" layoutY="711.0" text="Cargo" visible="false" />
+      <TextField fx:id="txtempresa" layoutX="578.0" layoutY="672.0" prefWidth="136.0" visible="false" />
+      <TextField fx:id="txtcargo" layoutX="578.0" layoutY="708.0" prefWidth="136.0" visible="false" />
+      <Label fx:id="lblhijos" layoutX="730.0" layoutY="637.0" text="No. Hijos" visible="false" />
+      <TextField fx:id="txthijos" layoutX="796.0" layoutY="635.0" prefWidth="110.0" text="" visible="false" />
   </children>
 </AnchorPane>

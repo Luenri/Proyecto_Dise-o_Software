@@ -58,6 +58,7 @@ public class AdministradorController implements Initializable {
     
      @FXML
     private void cerrarsesion(MouseEvent event) throws IOException {
+        MyHome.tipoU = null;
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);

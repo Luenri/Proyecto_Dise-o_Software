@@ -18,6 +18,7 @@ import javafx.stage.Stage;
  */
 public class MyHome extends Application {
     
+    public static String tipoU = null;
     public static Connection conection;
     public static Scene sc;
     public static Stage ventanaPrincipal = new Stage();

@@ -102,15 +102,18 @@ public class LoginController implements Initializable {
         verificarLoginCliente(cadena2,reg);
 
         if (ingresar && cargo!=null &&cargo.equalsIgnoreCase("Administrador") ){
+            MyHome.tipoU = "Administrador";
              Parent root = FXMLLoader.load(getClass().getResource("/Vista/Administrador.fxml"));
              Scene sc = new Scene(root);
              MyHome.ventanaPrincipal.setScene(sc);
         }else if (ingresar && cargo!=null && cargo.equalsIgnoreCase("Vendedor")){
+            MyHome.tipoU = "Vendedor";
              Parent root = FXMLLoader.load(getClass().getResource("/Vista/Vendedor.fxml"));
              Scene sc = new Scene(root);
              MyHome.ventanaPrincipal.setScene(sc);
         }else if (ingresar){
              Parent root = FXMLLoader.load(getClass().getResource("/Vista/Cliente.fxml"));
+             MyHome.tipoU = "Cliente";
              Scene sc = new Scene(root);
              MyHome.ventanaPrincipal.setScene(sc);
         }else{

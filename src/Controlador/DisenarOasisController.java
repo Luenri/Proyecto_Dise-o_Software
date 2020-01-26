@@ -25,6 +25,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import Modelos.MyHome;
 import static Modelos.MyHome.conection;
+import static Modelos.MyHome.contra;
+import static Modelos.MyHome.usuario;
+import Modelos.clienteRegistrado;
+import static Modelos.clienteRegistrado.obtenerCliente;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -86,17 +90,11 @@ public class DisenarOasisController implements Initializable {
     @FXML
     private TextField txtcorreo;
     @FXML
-    private Label lbltelefono;
-    @FXML
     private Label lblEstadoC;
     @FXML
     private TextField txtcelular;
     @FXML
     private TextField txtEstadoC;
-    @FXML
-    private Label lbldireccion;
-    @FXML
-    private TextField txtdireccion;
     @FXML
     private TextArea tamensaje;
     @FXML
@@ -123,6 +121,40 @@ public class DisenarOasisController implements Initializable {
     private Label lblprecioat;
     @FXML
     private Label lblpreciof;
+    @FXML
+    private Label lbltelefonotrab;
+    @FXML
+    private TextField txtteleftrab;
+    @FXML
+    private Label lbldirtrab;
+    @FXML
+    private TextField txtdirtrab;
+    @FXML
+    private Label lbluser;
+    @FXML
+    private Label lblcontra;
+    @FXML
+    private TextField txtuser;
+    @FXML
+    private TextField txtcontra;
+    @FXML
+    private Label lblcelular;
+    @FXML
+    private Label lbldirdom;
+    @FXML
+    private TextField txtdirdom;
+    @FXML
+    private Label lblempresa;
+    @FXML
+    private Label lblcargo;
+    @FXML
+    private TextField txtempresa;
+    @FXML
+    private TextField txtcargo;
+    @FXML
+    private Label lblhijos;
+    @FXML
+    private TextField txthijos;
 
     /**
      * Initializes the controller class.
@@ -138,23 +170,26 @@ public class DisenarOasisController implements Initializable {
     @FXML
     private void guardarCasa(MouseEvent event) throws SQLException {
         
-         RadioButton srb = (RadioButton) g1.getSelectedToggle();
+        RadioButton srb = (RadioButton) g1.getSelectedToggle();
         String spisos = srb.getText();
-        
+
         RadioButton srb1 = (RadioButton) g2.getSelectedToggle();
         String sgrif = srb1.getText();
-        
+
         RadioButton srb2 = (RadioButton) g3.getSelectedToggle();
         String silum = srb2.getText();
-        
+
         RadioButton srb3 = (RadioButton) g4.getSelectedToggle();
-        String sbanos = srb3.getText();
-        
+        String sbanos = (srb3.getText().equalsIgnoreCase("no")) ? "0" : "1";
+
         RadioButton srb4 = (RadioButton) x1.getSelectedToggle();
-        String saislante = srb4.getText();
-    
-        String linea1 = "insert into casa values (63,1,0,'Sur',0,2,2,'" + spisos + "','" + sgrif + "','" + silum + "'," + sbanos + "," + saislante + "AQUI EN TEORIA PARA LA PARTE DEL CLIENTE,');";
-        
+        String saislante = (srb4.getText().equalsIgnoreCase("no")) ? "0" : "1";
+
+        clienteRegistrado cliente = obtenerCliente(usuario, contra);
+        System.out.println(cliente.getCedula());
+
+        String linea1 = "insert into casa values (63,1,0,'Sur',0,2,2,'" + spisos + "','" + sgrif + "','" + silum + "'," + sbanos + "," + saislante + ",'" + cliente.getCedula() + "');";
+
         System.out.println(linea1);
 
         Statement st = conection.createStatement();

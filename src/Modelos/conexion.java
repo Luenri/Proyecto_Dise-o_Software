@@ -21,8 +21,8 @@ public class conexion {
         Connection con = null;
        String url = "jdbc:mysql://localhost/myhome?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
        
-        String user = "root";
-        String pass = "Luis1403";
+        String user = "oyguzman";
+        String pass = "Odalys1405";
         try {
             con = DriverManager.getConnection(url, user, pass);
             return con;

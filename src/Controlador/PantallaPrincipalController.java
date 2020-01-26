@@ -64,6 +64,7 @@ public class PantallaPrincipalController implements Initializable {
 
     @FXML
     private void abrirVusuario(MouseEvent event) throws IOException {
+        MyHome.tipoU = "Usuario";
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/Usuario.fxml"));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
