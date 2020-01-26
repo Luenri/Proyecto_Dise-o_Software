@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="802.0" prefWidth="1077.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.DisenarCieloController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="802.0" prefWidth="1077.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.DisenarParaisoController">
   <children>
     <Label layoutX="552.0" layoutY="42.0" prefHeight="64.0" prefWidth="295.0" text="PARAISO">
       <font>
@@ -95,5 +95,6 @@
       <Label fx:id="lblprecioil" layoutX="544.0" layoutY="444.0" prefHeight="25.0" prefWidth="42.0" text="\$250" />
       <Label fx:id="lblpreciob" layoutX="693.0" layoutY="417.0" prefHeight="25.0" prefWidth="42.0" text="\$500" />
       <Label fx:id="lblprecioat" layoutX="878.0" layoutY="415.0" prefHeight="25.0" prefWidth="42.0" text="\$750" />
+      <Label fx:id="lblpreciof" layoutX="742.0" layoutY="558.0" prefHeight="32.0" prefWidth="77.0" visible="false" />
   </children>
 </AnchorPane>

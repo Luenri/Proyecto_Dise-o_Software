@@ -41,13 +41,7 @@ public class UsuarioController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-
-    private void registarse(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/Registrar.fxml"));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
-    }
+    } 
 
     @FXML
     private void disenarCasa(MouseEvent event) throws IOException {
@@ -64,7 +58,11 @@ public class UsuarioController implements Initializable {
     }
 
     @FXML
-    private void registarse(ActionEvent event) {
+    private void registrarse(ActionEvent event) throws IOException {
+        
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/Registrar.fxml"));
+        Scene sc = new Scene(root);
+        MyHome.ventanaPrincipal.setScene(sc);
     }
     
 }
