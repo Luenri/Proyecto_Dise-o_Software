@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="802.0" prefWidth="1077.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.DisenarCieloController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="802.0" prefWidth="1077.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.DisenarCieloController">
   <children>
     <Label layoutX="552.0" layoutY="42.0" prefHeight="64.0" prefWidth="295.0" text="PARAISO">
       <font>
@@ -87,12 +87,12 @@
       </font>
     </Label>
       <Button fx:id="btnvolver" layoutX="930.0" layoutY="730.0" mnemonicParsing="false" onMouseClicked="#volver" text="Volver" />
-      <Label fx:id="lblpreciopn" layoutX="220.0" layoutY="415.0" prefHeight="25.0" prefWidth="42.0" text="\$910" />
-      <Label fx:id="lblpreciopi" layoutX="220.0" layoutY="444.0" prefHeight="25.0" prefWidth="42.0" text="\$1700" />
-      <Label fx:id="lblprecioge" layoutX="372.0" layoutY="415.0" prefHeight="25.0" prefWidth="42.0" text="\$325" />
-      <Label fx:id="lblpreciogi" layoutX="372.0" layoutY="444.0" prefHeight="25.0" prefWidth="42.0" text="\$400" />
-      <Label fx:id="lblprecioit" layoutX="544.0" layoutY="415.0" prefHeight="25.0" prefWidth="42.0" text="\$240" />
-      <Label fx:id="lblprecioil" layoutX="544.0" layoutY="444.0" prefHeight="25.0" prefWidth="42.0" text="\$300" />
+      <Label fx:id="lblpreciopn" layoutX="220.0" layoutY="415.0" prefHeight="25.0" prefWidth="42.0" text="\$595" />
+      <Label fx:id="lblpreciopi" layoutX="220.0" layoutY="444.0" prefHeight="25.0" prefWidth="42.0" text="\$1105" />
+      <Label fx:id="lblprecioge" layoutX="372.0" layoutY="415.0" prefHeight="25.0" prefWidth="42.0" text="\$276" />
+      <Label fx:id="lblpreciogi" layoutX="372.0" layoutY="444.0" prefHeight="25.0" prefWidth="42.0" text="\$342" />
+      <Label fx:id="lblprecioit" layoutX="544.0" layoutY="415.0" prefHeight="25.0" prefWidth="42.0" text="\$200" />
+      <Label fx:id="lblprecioil" layoutX="544.0" layoutY="444.0" prefHeight="25.0" prefWidth="42.0" text="\$250" />
       <Label fx:id="lblpreciob" layoutX="693.0" layoutY="417.0" prefHeight="25.0" prefWidth="42.0" text="\$500" />
       <Label fx:id="lblprecioat" layoutX="878.0" layoutY="415.0" prefHeight="25.0" prefWidth="42.0" text="\$750" />
   </children>

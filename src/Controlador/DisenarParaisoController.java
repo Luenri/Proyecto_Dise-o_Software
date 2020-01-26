@@ -29,6 +29,8 @@ import Modelos.MyHome;
  * @author Odalys
  */
 public class DisenarParaisoController implements Initializable {
+    
+    static int precio = 125000;
 
     @FXML
     private Button btnprecio;

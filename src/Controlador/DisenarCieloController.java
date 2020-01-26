@@ -23,6 +23,9 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import Modelos.MyHome;
+import static Modelos.MyHome.conection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * FXML Controller class
@@ -30,6 +33,8 @@ import Modelos.MyHome;
  * @author Odalys
  */
 public class DisenarCieloController implements Initializable {
+    
+    static int costo = 180000;
 
     @FXML
     private Button btnprecio;
@@ -115,6 +120,9 @@ public class DisenarCieloController implements Initializable {
     private Label lblpreciob;
     @FXML
     private Label lblprecioat;
+    @FXML
+    private Label lblpreciof;
+    
     
     /**
      * Initializes the controller class.
@@ -123,16 +131,40 @@ public class DisenarCieloController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
+    
     @FXML
     private void mostrarPrecio(MouseEvent event) {
+        calcularPrecio();
+        lblpreciof.setText(String.valueOf(costo));
+        lblpreciof.setVisible(true);       
     }
 
     @FXML
-    private void guardarCasa(MouseEvent event) {
+    private void guardarCasa(MouseEvent event) throws SQLException {
+        
+        RadioButton srb = (RadioButton) g1.getSelectedToggle();
+        String spisos = srb.getText();
+        
+        RadioButton srb1 = (RadioButton) g2.getSelectedToggle();
+        String sgrif = srb.getText();
+        
+        RadioButton srb2 = (RadioButton) g3.getSelectedToggle();
+        String silum = srb.getText();
+        
+        RadioButton srb3 = (RadioButton) g4.getSelectedToggle();
+        String sbanos = srb.getText();
+        
+        RadioButton srb4 = (RadioButton) x1.getSelectedToggle();
+        String saislante = srb.getText();
+    
+        String linea1 = "insert into casa values (130,2,1,'Norte',1,4,3,'" + spisos + "','" + sgrif + "','" + silum + "'," + sbanos + "," + saislante + "AQUI EN TEORIA PARA LA PARTE DEL CLIENTE,');";
+        
+        System.out.println(linea1);
+
+        Statement st = conection.createStatement();
+        st.execute(linea1);
+        
     }
-
-
 
     @FXML
     private void registrar(MouseEvent event) {
@@ -150,4 +182,19 @@ public class DisenarCieloController implements Initializable {
     private void rdnat(ActionEvent event) {
     }
     
+    private void calcularPrecio(){
+        if (rdnacional.isSelected()) costo+= 910;
+        else if(rdimportado.isSelected()) costo+=1700;
+        
+        if (rdestandar.isSelected()) costo+= 325;
+        else if(rditaliana.isSelected()) costo+=400;
+        
+        if (rdtrad.isSelected()) costo+= 240;
+        else if(rdled.isSelected()) costo+=300;
+        
+        if (rdsbi.isSelected()) costo+= 300;
+        
+        if (rdsat.isSelected()) costo+= 750;
+    }
+   
 }
