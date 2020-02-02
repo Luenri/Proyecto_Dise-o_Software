@@ -30,6 +30,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
@@ -61,6 +63,8 @@ public class ConsultDatosAdminController implements Initializable {
     private TableColumn<Persona,String> clmEstadoC;
     @FXML
     private TableColumn<Persona,String> clmDireccion;
+    @FXML
+    private MenuItem opcDelete;
 
     /**
      * Initializes the controller class.
@@ -91,11 +95,7 @@ public class ConsultDatosAdminController implements Initializable {
                 }
                 
             });
-     
-            
-            //tbvDatos.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-            
-            
+          
     }   
     
      @FXML
@@ -142,5 +142,12 @@ public class ConsultDatosAdminController implements Initializable {
             
             tbvDatos.setItems(datos);
             tbvDatos.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    }
+
+    @FXML
+    private void eliminar(ActionEvent event) {
+        
+        
+        
     }
 }

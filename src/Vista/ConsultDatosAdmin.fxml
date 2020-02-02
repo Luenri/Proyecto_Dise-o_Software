@@ -2,7 +2,9 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
@@ -38,6 +40,13 @@
         <TableColumn fx:id="clmEstadoC" maxWidth="5000.0" minWidth="10.0" prefWidth="162.0" text="Estado civil" />
         <TableColumn fx:id="clmDireccion" maxWidth="5000.0" minWidth="10.0" prefWidth="126.0" text="Direccion D" />
       </columns>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem fx:id="opcDelete" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
     </TableView>
     <Button fx:id="btnVolver" layoutX="921.0" layoutY="725.0" mnemonicParsing="false" onMouseClicked="#volver" text="Volver">
       <font>
