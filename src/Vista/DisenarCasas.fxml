@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="802.0" prefWidth="1077.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.DisenarCasasController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="802.0" prefWidth="1077.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.DisenarCasasController">
   <children>
     <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="106.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
       <image>
@@ -45,6 +45,6 @@
     </Label>
     <Label font="$x1" layoutX="929.0" layoutY="430.0" text="PARAISO" />
     <Label font="$x1" layoutX="433.0" layoutY="647.0" text="CIELO" />
-      <Button fx:id="btnvolver" layoutX="979.0" layoutY="743.0" mnemonicParsing="false" onMouseClicked="#volver" text="Volver" />
+      <Button fx:id="btnvolver" layoutX="979.0" layoutY="733.0" mnemonicParsing="false" onAction="#volver" text="Volver" />
   </children>
 </AnchorPane>

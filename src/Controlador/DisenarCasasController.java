@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import Modelos.MyHome;
+import javafx.event.ActionEvent;
 
 /**
  * FXML Controller class
@@ -62,9 +63,17 @@ public class DisenarCasasController implements Initializable {
         MyHome.ventanaPrincipal.setScene(sc);*/
     }
     
-     @FXML
-    private void volver(MouseEvent event) throws IOException {
+   
+    
+     public void setearPantalla(String ruta) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource(ruta));
+        Scene sc = new Scene(root);
+        MyHome.ventanaPrincipal.setScene(sc);
         
+    }
+
+    @FXML
+    private void volver(ActionEvent event) throws IOException {
         Parent root = null;
         
         if(MyHome.tipoU.equalsIgnoreCase("Vendedor")){
@@ -75,11 +84,6 @@ public class DisenarCasasController implements Initializable {
             root = FXMLLoader.load(getClass().getResource("/Vista/Usuario.fxml"));
         }
     }
+
     
-     public void setearPantalla(String ruta) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource(ruta));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
-        
-    }
 }

@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="802.0" prefWidth="1077.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ClienteController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="802.0" prefWidth="1077.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ClienteController">
   <children>
-    <Button id="btn" fx:id="btnConsultarCasas" layoutX="613.0" layoutY="222.0" mnemonicParsing="false" onMouseClicked="#consultarCasas" prefHeight="66.0" prefWidth="245.0" text="Consultar casas disenadas">
+    <Button id="btn" fx:id="btnConsultarCasas" layoutX="613.0" layoutY="222.0" mnemonicParsing="false" onAction="#consultar" prefHeight="66.0" prefWidth="245.0" text="Consultar casas disenadas">
       <font>
         <Font size="18.0" fx:id="x1" />
       </font>

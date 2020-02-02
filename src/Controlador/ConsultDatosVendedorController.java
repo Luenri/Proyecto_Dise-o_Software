@@ -129,7 +129,21 @@ public class ConsultDatosVendedorController implements Initializable {
     @FXML
     private void revisarCasas(ActionEvent event) throws SQLException, IOException {
         clienteRegistrado cliente=tbvDatosC.getSelectionModel().getSelectedItem();
-        String query="select c.*  from casa c inner join cliente clt on c.clienteID = clt.cedulaClient where c.clienteID='"+cliente.getCedula()+"';";
+        mostrarDatosCasa(cliente.getCedula());
+        
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/verCasas.fxml"));
+        Scene sc = new Scene(root);
+        ventanaSecundaria=new Stage();
+        ventanaSecundaria.setScene(sc);
+        ventanaSecundaria.show();
+        
+        
+        
+    }
+    
+    
+    public static void mostrarDatosCasa(String cedula) throws SQLException{
+        String query="select c.*  from casa c inner join cliente clt on c.clienteID = clt.cedulaClient where c.clienteID='"+cedula+"';";
         Statement st=conection.createStatement();
         ResultSet rs=st.executeQuery(query);
         
@@ -149,19 +163,9 @@ public class ConsultDatosVendedorController implements Initializable {
             boolean ais=rs.getString("aislanteTermico").equalsIgnoreCase("1");
             
             Casa cas=new Casa(metros,plantas,esq,or,pat,hab,numB,piso,grif,ilu,ban,ais);
-            str.append(cas.toString()); 
-            
+            str.append(cas.toString());    
            
         }
-        
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/verCasas.fxml"));
-        Scene sc = new Scene(root);
-        ventanaSecundaria=new Stage();
-        ventanaSecundaria.setScene(sc);
-        ventanaSecundaria.show();
-        
-        
-        
     }
     
 }
