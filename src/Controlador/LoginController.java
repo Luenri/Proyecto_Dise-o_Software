@@ -101,7 +101,8 @@ public class LoginController implements Initializable {
         verificarLoginEmpleado(cadena,reg);
         verificarLoginCliente(cadena2,reg);
 
-        if (ingresar && cargo!=null &&cargo.equalsIgnoreCase("Administrador") ){
+        if(!txtuser.getText().isEmpty() && !txtcontra.getText().isEmpty()){
+            if (ingresar && cargo!=null &&cargo.equalsIgnoreCase("Administrador") ){
             MyHome.tipoU = "Administrador";
              Parent root = FXMLLoader.load(getClass().getResource("/Vista/Administrador.fxml"));
              Scene sc = new Scene(root);
@@ -122,6 +123,13 @@ public class LoginController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("El usuario o la contraseña son Incorrectos");
 
+            alert.showAndWait();
+        }
+        }else{
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Error de ingreso");
+            alert.setHeaderText(null);
+            alert.setContentText("Los campos de texto no pueden estar Vacios");
             alert.showAndWait();
         }
         

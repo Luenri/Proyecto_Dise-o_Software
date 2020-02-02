@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Modelos.Casa;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,6 +23,11 @@ import javafx.scene.text.Font;
 import Modelos.MyHome;
 import static Modelos.MyHome.conection;
 import Modelos.cliente;
+import Modelos.clienteRegistrado;
+import Modelos.griferia;
+import Modelos.iluminacion;
+import Modelos.orientacion;
+import Modelos.pisoPorcelanato;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -31,6 +37,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -46,23 +53,26 @@ public class ConsultDatosVendedorController implements Initializable {
     @FXML
     private Button btnBuscar;
     @FXML
-    private TableView<cliente> tbvDatosC;
+    private TableView<clienteRegistrado> tbvDatosC;
     @FXML
-    private TableColumn<cliente, String> clmCedula;
+    private TableColumn<clienteRegistrado, String> clmCedula;
     @FXML
-    private TableColumn<cliente, String> clmNombres;
+    private TableColumn<clienteRegistrado, String> clmNombres;
     @FXML
-    private TableColumn<cliente, String> clmApellidos;
+    private TableColumn<clienteRegistrado, String> clmApellidos;
     @FXML
-    private TableColumn<cliente, String> clmCelular;
+    private TableColumn<clienteRegistrado, String> clmCelular;
     @FXML
-    private TableColumn<cliente, String> clmCorreo;
+    private TableColumn<clienteRegistrado, String> clmCorreo;
     @FXML
-    private TableColumn<cliente, String> clmEstadoC;
+    private TableColumn<clienteRegistrado, String> clmEstadoC;
     @FXML
-    private TableColumn<cliente, String> clmDireccion;
+    private TableColumn<clienteRegistrado, String> clmDireccion;
     @FXML
     private Button btnvolver;
+    
+    static Stage ventanaSecundaria;
+    static StringBuilder str;
 
     /**
      * Initializes the controller class.
@@ -86,7 +96,7 @@ public class ConsultDatosVendedorController implements Initializable {
             clmEstadoC.setCellValueFactory(new PropertyValueFactory<>("estadoCivil"));
             clmDireccion.setCellValueFactory(new PropertyValueFactory<>("direccion"));
             
-            ObservableList<cliente> datos=FXCollections.observableArrayList();
+            ObservableList<clienteRegistrado> datos=FXCollections.observableArrayList();
             
             while(rt.next()){
                 if (Integer.valueOf(rt.getString("activo"))!=0){
@@ -97,7 +107,7 @@ public class ConsultDatosVendedorController implements Initializable {
                 String correo_=rt.getString("correo");
                 String estado_=rt.getString("estadoCivil");
                 String direccion_=rt.getString("domicilio");
-                datos.add(new cliente(nombre_,apellido_,cedula_,correo_,celular_,estado_,direccion_));
+                datos.add(new clienteRegistrado(nombre_,apellido_,cedula_,correo_,celular_,estado_,direccion_));
                 }
                 
                 
@@ -117,7 +127,41 @@ public class ConsultDatosVendedorController implements Initializable {
     }
 
     @FXML
-    private void revisarCasas(ActionEvent event) {
+    private void revisarCasas(ActionEvent event) throws SQLException, IOException {
+        clienteRegistrado cliente=tbvDatosC.getSelectionModel().getSelectedItem();
+        String query="select c.*  from casa c inner join cliente clt on c.clienteID = clt.cedulaClient where c.clienteID='"+cliente.getCedula()+"';";
+        Statement st=conection.createStatement();
+        ResultSet rs=st.executeQuery(query);
+        
+       str=new StringBuilder();
+        while(rs.next()){
+            double metros=Double.valueOf(rs.getString("metrosCuadrados"));
+            int plantas=Integer.valueOf(rs.getString("numPlantas"));
+            boolean esq=rs.getString("esquinera").equalsIgnoreCase("1");
+            orientacion or=orientacion.valueOf(rs.getString("orientacion").toUpperCase());
+            boolean pat=rs.getString("patioGrande").equalsIgnoreCase("1");
+            int hab=Integer.valueOf(rs.getString("numHabitaciones"));
+            double numB=Double.valueOf(rs.getString("numBaños"));
+            pisoPorcelanato piso=pisoPorcelanato.valueOf(rs.getString("pisoPorcelanato").toUpperCase());
+            griferia grif=griferia.valueOf(rs.getString("griferia").toUpperCase());
+            iluminacion ilu=iluminacion.valueOf(rs.getString("iluminacion").toUpperCase());
+            boolean ban=rs.getString("bañosInsonorizados").equalsIgnoreCase("1");
+            boolean ais=rs.getString("aislanteTermico").equalsIgnoreCase("1");
+            
+            Casa cas=new Casa(metros,plantas,esq,or,pat,hab,numB,piso,grif,ilu,ban,ais);
+            str.append(cas.toString()); 
+            
+           
+        }
+        
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/verCasas.fxml"));
+        Scene sc = new Scene(root);
+        ventanaSecundaria=new Stage();
+        ventanaSecundaria.setScene(sc);
+        ventanaSecundaria.show();
+        
+        
+        
     }
     
 }

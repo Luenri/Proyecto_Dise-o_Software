@@ -56,4 +56,22 @@ public class Casa {
    public void agregarEspecificaciones(){
        
    }
+   
+   
+   @Override
+    public String toString() {
+        return "Casa:" + "\nmetrosCuadrados=" + metrosCuadrados + 
+                "\nnumPlantas=" + numPlantas + 
+                "\nesquinera=" + esquinera + 
+                "\norientacion=" + orientacion + 
+                "\npatioGrande=" + patioGrande + 
+                "\nnumHabitaciones=" + numHabitaciones + 
+                "\nnumBaños=" + numBaños + 
+                "\npiso=" + piso + 
+                "\ngriferia=" + griferia + 
+                "\niluminacion=" + iluminacion + 
+                "\nbañosIsonorizados=" + bañosIsonorizados + 
+                "\naislanteTermico=" + aislanteTermico+
+                "\n\n\n\n";
+    }
 }

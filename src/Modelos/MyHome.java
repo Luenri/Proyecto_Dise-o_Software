@@ -6,11 +6,15 @@
 package Modelos;
 
 import java.sql.Connection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -29,6 +33,7 @@ public class MyHome extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        
        conexion cn = new conexion();
        conection = cn.getConnection();
      
@@ -46,6 +51,20 @@ public class MyHome extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
         launch(args);
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+                Logger.getLogger(MyHome.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
+        
+        
     }
+        
+        
+    
 }
