@@ -73,7 +73,7 @@ public class ConsultDatosVendedorController implements Initializable {
         try {
             
             
-            String sql="SELECT * FROM persona p inner join empleado c on p.cedula= c.cedulaEmp ";
+            String sql="SELECT * FROM persona p inner join cliente c on p.cedula= c.cedulaClient ";
             Statement st= conection.createStatement();
             
             

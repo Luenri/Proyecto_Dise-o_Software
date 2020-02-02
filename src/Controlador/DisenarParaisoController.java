@@ -90,17 +90,11 @@ public class DisenarParaisoController implements Initializable {
     @FXML
     private TextField txtcorreo;
     @FXML
-    private Label lbltelefono;
-    @FXML
     private Label lblEstadoC;
     @FXML
     private TextField txtcelular;
     @FXML
     private TextField txtEstadoC;
-    @FXML
-    private Label lbldireccion;
-    @FXML
-    private TextField txtdireccion;
     @FXML
     private TextArea tamensaje;
     @FXML
@@ -127,6 +121,40 @@ public class DisenarParaisoController implements Initializable {
     private Label lblprecioat;
     @FXML
     private Label lblpreciof;
+    @FXML
+    private Label lbltelefonotrab;
+    @FXML
+    private TextField txtteleftrab;
+    @FXML
+    private Label lbldirtrab;
+    @FXML
+    private TextField txtdirtrab;
+    @FXML
+    private Label lbluser;
+    @FXML
+    private Label lblcontra;
+    @FXML
+    private TextField txtuser;
+    @FXML
+    private TextField txtcontra;
+    @FXML
+    private Label lblcelular;
+    @FXML
+    private Label lbldirdom;
+    @FXML
+    private TextField txtdirdom;
+    @FXML
+    private Label lblempresa;
+    @FXML
+    private Label lblcargo;
+    @FXML
+    private TextField txtempresa;
+    @FXML
+    private TextField txtcargo;
+    @FXML
+    private Label lblhijos;
+    @FXML
+    private TextField txthijos;
     /**
      * Initializes the controller class.
      */

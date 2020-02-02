@@ -24,6 +24,7 @@ public class clienteRegistrado extends Persona{
     
     public clienteRegistrado(String nombre, String apellido, String cedula, String correo, String celular, String estadoCivil, String direccion) {
         super(nombre, apellido, cedula, correo, celular, estadoCivil, direccion);
+        casasDisenadas=new ArrayList<>();
     }
 
     public clienteRegistrado(String direccionTrabajo, int numHijos, String empresa, Registro registro,String nombre, String apellido, String cedula, String correo, String celular, String estadoCivil, String direccion) {
@@ -40,6 +41,7 @@ public class clienteRegistrado extends Persona{
     public clienteRegistrado(Registro registro, String cedula) {
         super(cedula);
         this.registro = registro;
+        casasDisenadas=new ArrayList<>();
     }
 
     public Registro getRegistro() {
@@ -77,6 +79,40 @@ public class clienteRegistrado extends Persona{
         }
         return null;
     }
+
+    public String getDireccionTrabajo() {
+        return direccionTrabajo;
+    }
+
+    public void setDireccionTrabajo(String direccionTrabajo) {
+        this.direccionTrabajo = direccionTrabajo;
+    }
+
+    public int getNumHijos() {
+        return numHijos;
+    }
+
+    public void setNumHijos(int numHijos) {
+        this.numHijos = numHijos;
+    }
+
+    public String getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
+    }
+
+    public ArrayList<Casa> getCasasDisenadas() {
+        return casasDisenadas;
+    }
+
+    public void setCasasDisenadas(ArrayList<Casa> casasDisenadas) {
+        this.casasDisenadas = casasDisenadas;
+    }
+    
+    
 
     
 

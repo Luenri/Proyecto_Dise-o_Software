@@ -6,8 +6,16 @@
 package Controlador;
 
 import static Controlador.DisenarCieloController.costo;
+import Modelos.MyHome;
+import static Modelos.MyHome.conection;
+import static Modelos.MyHome.contra;
+import static Modelos.MyHome.usuario;
+import Modelos.clienteRegistrado;
+import static Modelos.clienteRegistrado.obtenerCliente;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,25 +31,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
-import Modelos.MyHome;
-import static Modelos.MyHome.conection;
-import static Modelos.MyHome.contra;
-import static Modelos.MyHome.usuario;
-import Modelos.clienteRegistrado;
-import static Modelos.clienteRegistrado.obtenerCliente;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  * FXML Controller class
  *
- * @author Odalys
+ * @author Luis
  */
 public class DisenarOasisController implements Initializable {
-    
-    static int precio = 75000;
 
-   @FXML
+    @FXML
     private Button btnprecio;
     @FXML
     private Button btnguardar;
@@ -59,6 +57,8 @@ public class DisenarOasisController implements Initializable {
     private ToggleGroup g2;
     @FXML
     private RadioButton rditaliana;
+    @FXML
+    private RadioButton rdtrad;
     @FXML
     private ToggleGroup g3;
     @FXML
@@ -90,19 +90,23 @@ public class DisenarOasisController implements Initializable {
     @FXML
     private TextField txtcorreo;
     @FXML
+    private Label lbltelefonotrab;
+    @FXML
     private Label lblEstadoC;
     @FXML
-    private TextField txtcelular;
+    private TextField txtteleftrab;
     @FXML
     private TextField txtEstadoC;
+    @FXML
+    private Label lbldirtrab;
+    @FXML
+    private TextField txtdirtrab;
     @FXML
     private TextArea tamensaje;
     @FXML
     private Button btnRegistrar;
-     @FXML
-    private Button btnvolver;
     @FXML
-    private RadioButton rdtrad;
+    private Button btnvolver;
     @FXML
     private Label lblpreciopn;
     @FXML
@@ -122,14 +126,6 @@ public class DisenarOasisController implements Initializable {
     @FXML
     private Label lblpreciof;
     @FXML
-    private Label lbltelefonotrab;
-    @FXML
-    private TextField txtteleftrab;
-    @FXML
-    private Label lbldirtrab;
-    @FXML
-    private TextField txtdirtrab;
-    @FXML
     private Label lbluser;
     @FXML
     private Label lblcontra;
@@ -141,6 +137,8 @@ public class DisenarOasisController implements Initializable {
     private Label lblcelular;
     @FXML
     private Label lbldirdom;
+    @FXML
+    private TextField txtcelular;
     @FXML
     private TextField txtdirdom;
     @FXML
@@ -159,17 +157,52 @@ public class DisenarOasisController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }    
+
     @FXML
     private void mostrarPrecio(MouseEvent event) {
-        
         calcularPrecio();
-        lblpreciof.setText("$ " + String.valueOf(costo));
-        lblpreciof.setVisible(true); 
+        lblpreciof.setText(String.valueOf(costo));
+        if (MyHome.tipoU.equalsIgnoreCase("Usuario")) {
+            tamensaje.setVisible(true);
+            lblnombre.setVisible(true);
+            lblapellidos.setVisible(true);
+            txtnombre.setVisible(true);
+            txtapellido.setVisible(true);
+            lblcedula.setVisible(true);
+            lblcorreo.setVisible(true);
+            txtcedula.setVisible(true);
+            txtcorreo.setVisible(true);
+            lblEstadoC.setVisible(true);
+            txtEstadoC.setVisible(true);
+            txtcelular.setVisible(true);
+            lbltelefonotrab.setVisible(true);
+            txtteleftrab.setVisible(true);
+            lbldirtrab.setVisible(true);
+            txtdirtrab.setVisible(true);
+            lbluser.setVisible(true);
+            lblcontra.setVisible(true);
+            txtuser.setVisible(true);
+            txtcontra.setVisible(true);
+            lblcelular.setVisible(true);
+            lbldirdom.setVisible(true);
+            txtdirdom.setVisible(true);
+            lblempresa.setVisible(true);
+            lblcargo.setVisible(true);
+            txtempresa.setVisible(true);
+            txtcargo.setVisible(true);
+            lblhijos.setVisible(true);
+            txthijos.setVisible(true);
+        } else {
+            lblpreciof.setVisible(true);
+        }
     }
 
     @FXML
     private void guardarCasa(MouseEvent event) throws SQLException {
-        
         RadioButton srb = (RadioButton) g1.getSelectedToggle();
         String spisos = srb.getText();
 
@@ -188,12 +221,16 @@ public class DisenarOasisController implements Initializable {
         clienteRegistrado cliente = obtenerCliente(usuario, contra);
         System.out.println(cliente.getCedula());
 
-        String linea1 = "insert into casa values (63,1,0,'Sur',0,2,2,'" + spisos + "','" + sgrif + "','" + silum + "'," + sbanos + "," + saislante + ",'" + cliente.getCedula() + "');";
+        String linea1 = "insert into casa values (130,2,1,'Norte',1,4,3,'" + spisos + "','" + sgrif + "','" + silum + "'," + sbanos + "," + saislante + ",'" + cliente.getCedula() + "');";
 
         System.out.println(linea1);
 
         Statement st = conection.createStatement();
         st.execute(linea1);
+    }
+
+    @FXML
+    private void rdnat(ActionEvent event) {
     }
 
     @FXML
@@ -205,35 +242,26 @@ public class DisenarOasisController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarCasas.fxml"));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
-
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @FXML
-    private void rdnat(ActionEvent event) {
     }
     
-        private void calcularPrecio() {
+    
+    private void calcularPrecio() {
         if (rdnacional.isSelected()) {
-            costo += 441;
+            costo += 910;
         } else if (rdimportado.isSelected()) {
-            costo += 819;
+            costo += 1700;
         }
 
         if (rdestandar.isSelected()) {
-            costo += 240;
+            costo += 325;
         } else if (rditaliana.isSelected()) {
-            costo += 300;
+            costo += 400;
         }
 
         if (rdtrad.isSelected()) {
-            costo += 180;
+            costo += 240;
         } else if (rdled.isSelected()) {
-            costo += 230;
+            costo += 300;
         }
 
         if (rdsbi.isSelected()) {
@@ -244,5 +272,5 @@ public class DisenarOasisController implements Initializable {
             costo += 750;
         }
     }
-
+    
 }
