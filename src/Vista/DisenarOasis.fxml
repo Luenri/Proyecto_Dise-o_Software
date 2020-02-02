@@ -79,7 +79,7 @@
     <TextField fx:id="txtEstadoC" layoutX="578.0" layoutY="635.0" prefWidth="136.0" visible="false" />
     <Label fx:id="lbldirtrab" layoutX="730.0" layoutY="599.0" text="Dir. Trabajo" visible="false" />
     <TextField fx:id="txtdirtrab" layoutX="795.0" layoutY="598.0" prefWidth="110.0" text="" visible="false" />
-    <TextArea fx:id="tamensaje" editable="false" layoutX="360.0" layoutY="513.0" prefHeight="53.0" prefWidth="302.0" text="Debe ser cliente registrado para poder ver el precio de la casa disenada" visible="false" wrapText="true" />
+    <TextArea fx:id="tamensaje" editable="false" layoutX="360.0" layoutY="513.0" prefHeight="53.0" prefWidth="302.0" text="Debe ser cliente registrado para poder ver el precio o guardar la casa. FAVOR REGISTRAR" visible="false" wrapText="true" />
     <Button fx:id="btnRegistrar" layoutX="739.0" layoutY="680.0" mnemonicParsing="false" onMouseClicked="#registrar" prefWidth="83.0" text="Registrar" visible="false" />
     <Label layoutX="109.0" layoutY="313.0" text="Especificar caracteristicas">
       <font>

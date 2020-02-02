@@ -201,8 +201,12 @@ public class DisenarCieloController implements Initializable {
         String saislante = (srb4.getText().equalsIgnoreCase("no")) ? "0" : "1";
         
         boolean ais=saislante.equalsIgnoreCase("1");
-
-        clienteRegistrado cliente = obtenerCliente(usuario, contra);
+        
+        if (MyHome.tipoU.equalsIgnoreCase("Usuario")) {
+            visibilidad();
+        } else {
+            
+            clienteRegistrado cliente = obtenerCliente(usuario, contra);
         System.out.println(cliente.getCedula());
         
         Casa c=new Casa(130,2,true,orientacion.NORTE,true,4, 3.5,spiso,sgri,silu,ban,ais);
@@ -215,14 +219,11 @@ public class DisenarCieloController implements Initializable {
 
         Statement st = conection.createStatement();
         st.execute(linea1);
-
+        }
     }
     
-     @FXML
-    private void mostrarPrecio(MouseEvent event) {
-        calcularPrecio();
-        lblpreciof.setText(String.valueOf(costo));
-        if (MyHome.tipoU.equalsIgnoreCase("Usuario")) {
+    public void visibilidad(){
+        
             tamensaje.setVisible(true);
             lblnombre.setVisible(true);
             lblapellidos.setVisible(true);
@@ -253,6 +254,15 @@ public class DisenarCieloController implements Initializable {
             lblhijos.setVisible(true);
             txthijos.setVisible(true);
             btnRegistrar.setVisible(true);
+        
+    }
+    
+     @FXML
+    private void mostrarPrecio(MouseEvent event) {
+        calcularPrecio();
+        lblpreciof.setText(String.valueOf(costo));
+        if (MyHome.tipoU.equalsIgnoreCase("Usuario")) {
+            visibilidad();
         } else {
             lblpreciof.setVisible(true);
         }
@@ -275,6 +285,9 @@ public class DisenarCieloController implements Initializable {
         st.execute(linea1);
         st.execute(linea2);
         st.execute(linea3);
+        
+        lblpreciof.setVisible(true);
+        MyHome.tipoU= "Cliente";
         
     }
 

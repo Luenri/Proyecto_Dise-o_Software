@@ -6,12 +6,23 @@
 package Controlador;
 
 import static Controlador.DisenarCieloController.costo;
+import Modelos.Casa;
 import Modelos.MyHome;
 import static Modelos.MyHome.conection;
 import static Modelos.MyHome.contra;
 import static Modelos.MyHome.usuario;
 import Modelos.clienteRegistrado;
 import static Modelos.clienteRegistrado.obtenerCliente;
+import Modelos.griferia;
+import static Modelos.griferia.ESTANDAR;
+import static Modelos.griferia.ITALIANA;
+import Modelos.iluminacion;
+import static Modelos.iluminacion.LED;
+import static Modelos.iluminacion.TRADICIONAL;
+import Modelos.orientacion;
+import Modelos.pisoPorcelanato;
+import static Modelos.pisoPorcelanato.IMPORTADO;
+import static Modelos.pisoPorcelanato.NACIONAL;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -165,10 +176,52 @@ public class DisenarOasisController implements Initializable {
     }    
 
     @FXML
-    private void mostrarPrecio(MouseEvent event) {
-        calcularPrecio();
-        lblpreciof.setText(String.valueOf(costo));
+    private void guardarCasa(MouseEvent event) throws SQLException {
+
+        RadioButton srb = (RadioButton) g1.getSelectedToggle();
+        String spisos = srb.getText();
+        pisoPorcelanato spiso=(srb.getText().equalsIgnoreCase("Nacional"))?NACIONAL:IMPORTADO;
+
+        RadioButton srb1 = (RadioButton) g2.getSelectedToggle();
+        String sgrif = srb1.getText();
+        griferia sgri=(srb1.getText().equalsIgnoreCase("Estandar"))?ESTANDAR:ITALIANA;
+
+        RadioButton srb2 = (RadioButton) g3.getSelectedToggle();
+        String silum = srb2.getText();
+        iluminacion silu=(srb2.getText().equalsIgnoreCase("Tradicional"))?TRADICIONAL:LED;
+
+        RadioButton srb3 = (RadioButton) g4.getSelectedToggle();
+        String sbanos = (srb3.getText().equalsIgnoreCase("no")) ? "0" : "1";
+        
+        boolean ban=(sbanos.equalsIgnoreCase("1"));
+
+        RadioButton srb4 = (RadioButton) x1.getSelectedToggle();
+        String saislante = (srb4.getText().equalsIgnoreCase("no")) ? "0" : "1";
+        
+        boolean ais=saislante.equalsIgnoreCase("1");
+        
         if (MyHome.tipoU.equalsIgnoreCase("Usuario")) {
+            visibilidad();
+        } else {
+            
+            clienteRegistrado cliente = obtenerCliente(usuario, contra);
+        System.out.println(cliente.getCedula());
+        
+        Casa c=new Casa(130,2,true,orientacion.NORTE,true,4, 3.5,spiso,sgri,silu,ban,ais);
+        
+        cliente.getCasasDisenadas().add(c);
+      
+        String linea1 = "insert into casa values (130,2,1,'Norte',1,4,3,'" + spisos + "','" + sgrif + "','" + silum + "'," + sbanos + "," + saislante + ",'" + cliente.getCedula() + "');";
+
+        System.out.println(linea1);
+
+        Statement st = conection.createStatement();
+        st.execute(linea1);
+        }
+    }
+    
+    public void visibilidad(){
+        
             tamensaje.setVisible(true);
             lblnombre.setVisible(true);
             lblapellidos.setVisible(true);
@@ -199,37 +252,18 @@ public class DisenarOasisController implements Initializable {
             lblhijos.setVisible(true);
             txthijos.setVisible(true);
             btnRegistrar.setVisible(true);
+        
+    }
+    
+     @FXML
+    private void mostrarPrecio(MouseEvent event) {
+        calcularPrecio();
+        lblpreciof.setText(String.valueOf(costo));
+        if (MyHome.tipoU.equalsIgnoreCase("Usuario")) {
+            visibilidad();
         } else {
             lblpreciof.setVisible(true);
         }
-    }
-
-    @FXML
-    private void guardarCasa(MouseEvent event) throws SQLException {
-        RadioButton srb = (RadioButton) g1.getSelectedToggle();
-        String spisos = srb.getText();
-
-        RadioButton srb1 = (RadioButton) g2.getSelectedToggle();
-        String sgrif = srb1.getText();
-
-        RadioButton srb2 = (RadioButton) g3.getSelectedToggle();
-        String silum = srb2.getText();
-
-        RadioButton srb3 = (RadioButton) g4.getSelectedToggle();
-        String sbanos = (srb3.getText().equalsIgnoreCase("no")) ? "0" : "1";
-
-        RadioButton srb4 = (RadioButton) x1.getSelectedToggle();
-        String saislante = (srb4.getText().equalsIgnoreCase("no")) ? "0" : "1";
-
-        clienteRegistrado cliente = obtenerCliente(usuario, contra);
-        System.out.println(cliente.getCedula());
-
-        String linea1 = "insert into casa values (130,2,1,'Norte',1,4,3,'" + spisos + "','" + sgrif + "','" + silum + "'," + sbanos + "," + saislante + ",'" + cliente.getCedula() + "');";
-
-        System.out.println(linea1);
-
-        Statement st = conection.createStatement();
-        st.execute(linea1);
     }
 
 
@@ -249,6 +283,10 @@ public class DisenarOasisController implements Initializable {
         st.execute(linea1);
         st.execute(linea2);
         st.execute(linea3);
+        
+        lblpreciof.setVisible(true);
+        MyHome.tipoU= "Cliente";
+        
     }
 
     @FXML
@@ -257,8 +295,7 @@ public class DisenarOasisController implements Initializable {
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
     }
-    
-    
+
     private void calcularPrecio() {
         if (rdnacional.isSelected()) {
             costo += 910;
