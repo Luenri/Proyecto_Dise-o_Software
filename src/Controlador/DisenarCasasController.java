@@ -40,23 +40,26 @@ public class DisenarCasasController implements Initializable {
 
     @FXML
     private void disenarOasis(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarOasis.fxml"));
+        setearPantalla("/Vista/DisenarOasis.fxml");
+        /*Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarOasis.fxml"));
         Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
+        MyHome.ventanaPrincipal.setScene(sc);*/
     }
 
     @FXML
     private void disenarParaiso(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarParaiso.fxml"));
+        setearPantalla("/Vista/DisenarParaiso.fxml");
+        /*Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarParaiso.fxml"));
         Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
+        MyHome.ventanaPrincipal.setScene(sc);*/
     }
 
     @FXML
     private void disenarCielo(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarCielo.fxml"));
+        setearPantalla("/Vista/DisenarParaiso.fxml");
+        /*Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarCielo.fxml"));
         Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
+        MyHome.ventanaPrincipal.setScene(sc);*/
     }
     
      @FXML
@@ -65,14 +68,18 @@ public class DisenarCasasController implements Initializable {
         Parent root = null;
         
         if(MyHome.tipoU.equalsIgnoreCase("Vendedor")){
-           root = FXMLLoader.load(getClass().getResource("/Vista/Vendedor.fxml")); 
+           setearPantalla("/Vista/Vendedor.fxml"); 
         }else if (MyHome.tipoU.equalsIgnoreCase("Cliente")) {
-             root = FXMLLoader.load(getClass().getResource("/Vista/Cliente.fxml"));
+            setearPantalla("/Vista/Cliente.fxml");
          }else{
             root = FXMLLoader.load(getClass().getResource("/Vista/Usuario.fxml"));
         }
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
     }
     
+     public void setearPantalla(String ruta) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource(ruta));
+        Scene sc = new Scene(root);
+        MyHome.ventanaPrincipal.setScene(sc);
+        
+    }
 }

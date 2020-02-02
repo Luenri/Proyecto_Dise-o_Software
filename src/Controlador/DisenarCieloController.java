@@ -165,6 +165,8 @@ public class DisenarCieloController implements Initializable {
     private Label lblhijos;
     @FXML
     private TextField txthijos;
+    @FXML
+    private RadioButton rdnat;
 
     /**
      * Initializes the controller class.
@@ -250,6 +252,7 @@ public class DisenarCieloController implements Initializable {
             txtcargo.setVisible(true);
             lblhijos.setVisible(true);
             txthijos.setVisible(true);
+            btnRegistrar.setVisible(true);
         } else {
             lblpreciof.setVisible(true);
         }
@@ -257,7 +260,22 @@ public class DisenarCieloController implements Initializable {
 
 
     @FXML
-    private void registrar(MouseEvent event) {
+    private void registrar(MouseEvent event) throws SQLException {
+        
+        String linea1="insert into persona values"
+                + "('"+txtnombre.getText()+"', '"+txtapellido.getText()+"', '"+txtcedula.getText()+"','"+txtcelular.getText()+"','"+txtcorreo.getText()+"','"+txtdirdom.getText()+"','"+txtteleftrab.getText()+"','"+txtEstadoC.getText()+"','"+txtcargo.getText()+"',1);";
+        String linea2="insert into cliente values('"+txtdirtrab.getText()+"','"+txtempresa.getText()+"',"+txthijos.getText()+",'"+txtcedula.getText()+"');";
+        String linea3="insert into registro values('"+txtuser.getText()+"','"+txtcontra.getText()+"','"+txtcedula.getText()+"');";
+        
+        System.out.println(linea1);
+        System.out.println(linea2);
+        System.out.println(linea3);
+        
+        Statement st= conection.createStatement();
+        st.execute(linea1);
+        st.execute(linea2);
+        st.execute(linea3);
+        
     }
 
     @FXML
@@ -265,11 +283,6 @@ public class DisenarCieloController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarCasas.fxml"));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
-
-    }
-
-    @FXML
-    private void rdnat(ActionEvent event) {
     }
 
     private void calcularPrecio() {

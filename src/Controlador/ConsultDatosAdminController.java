@@ -44,10 +44,6 @@ public class ConsultDatosAdminController implements Initializable {
     @FXML
     private ComboBox<String> cbbConsulta;
     @FXML
-    private TextField txtBusqCedula;
-    @FXML
-    private Button btnBuscar;
-    @FXML
     private TableView<Persona> tbvDatos;
     @FXML
     private Button btnVolver;
@@ -145,8 +141,6 @@ public class ConsultDatosAdminController implements Initializable {
             
             
             tbvDatos.setItems(datos);
-                
-            
             tbvDatos.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 }

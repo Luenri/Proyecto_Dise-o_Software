@@ -102,14 +102,8 @@ public class ConsultDatosVendedorController implements Initializable {
                 
                 
             }
-            
-            
+           
             tbvDatosC.setItems(datos);
-                
-            
-            //tbvDatos.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-            
-            
         } catch (SQLException ex) {
             Logger.getLogger(ConsultDatosAdminController.class.getName()).log(Level.SEVERE, null, ex);
         }
