@@ -45,38 +45,47 @@ public class VendedorController implements Initializable {
 
     @FXML
     private void consultarDatos(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/ConsultDatosVendedor.fxml"));
+        setearPantalla("/Vista/ConsultDatosVendedor.fxml");
+        /*Parent root = FXMLLoader.load(getClass().getResource());
         Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
+        MyHome.ventanaPrincipal.setScene(sc);*/
     }
 
     @FXML
     private void disenarCasa(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarCasas.fxml"));
+        setearPantalla("/Vista/DisenarCasas.fxml");
+        /*Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarCasas.fxml"));
         Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
+        MyHome.ventanaPrincipal.setScene(sc);*/
     }
 
     @FXML
     private void cerrarSesion(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));
+        setearPantalla("/Vista/PantallaPrincipal.fxml");
+        /*Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));
         Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
+        MyHome.ventanaPrincipal.setScene(sc);*/
     }
 
-
-
-    private void registrarse(ActionEvent event) throws IOException {
+    //POR QUE ESTE METODO ESTA AQUI!
+    /*private void registrarse(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/Registrar.fxml"));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
-    }
+    }*/
 
     private void salir(ActionEvent event) throws IOException {
         MyHome.tipoU = null;
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
+    }
+    
+    public void setearPantalla(String ruta) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource(ruta));
+        Scene sc = new Scene(root);
+        MyHome.ventanaPrincipal.setScene(sc);
+        
     }
     
 }

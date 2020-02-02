@@ -44,24 +44,26 @@ public class AdministradorController implements Initializable {
 
     @FXML
     private void consultarDatos(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/ConsultDatosAdmin.fxml"));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
+        setearPantalla("/Vista/ConsultDatosAdmin.fxml");
+       
     }
 
     @FXML
     private void crearEmpleado(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/IngresarEmpleado.fxml"));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
+        setearPantalla("/Vista/IngresarEmpleado.fxml");
     }
     
      @FXML
     private void cerrarsesion(MouseEvent event) throws IOException {
         MyHome.tipoU = null;
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));
+        setearPantalla("/Vista/PantallaPrincipal.fxml");
+    }
+    
+    public void setearPantalla(String ruta) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource(ruta));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
+        
     }
     
 }

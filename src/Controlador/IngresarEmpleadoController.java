@@ -78,7 +78,7 @@ public class IngresarEmpleadoController implements Initializable {
         // TODO
         
         ObservableList<String> opciones=FXCollections.observableArrayList();
-        opciones.addAll("Empleado","Administrador");
+        opciones.addAll("Vendedor","Administrador");
         cbbCargo.setItems(opciones);
           
     }    

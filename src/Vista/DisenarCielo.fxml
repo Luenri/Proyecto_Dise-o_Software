@@ -23,7 +23,7 @@
         <Image url="@imagenes/Cielo.jpg" />
       </image>
     </ImageView>
-    <TextArea editable="false" layoutX="559.0" layoutY="115.0" prefHeight="157.0" prefWidth="189.00009999999747" text="m²: 130&#10;n. plantas: 2&#10;Esquinera: si&#10;Orientación: Norte&#10;Patio: Grande&#10;Habitaciones: 4&#10;Baños: 3 1/2" wrapText="true" />
+    <TextArea editable="false" layoutX="559.0" layoutY="115.0" prefHeight="157.0" prefWidth="189.00009999999747" text="m²: 130&#10;n. plantas: 2&#10;Esquinera: si&#10;Orientación: Norte&#10;Patio: Grande&#10;Habitaciones: 4&#10;Baños: 3 1/2" wrapText="true" visible="false" />
     <Button fx:id="btnprecio" layoutX="730.0" layoutY="520.0" mnemonicParsing="false" onMouseClicked="#mostrarPrecio" prefHeight="32.0" prefWidth="101.0" text="Ver precio " />
     <Button fx:id="btnguardar" layoutX="847.0" layoutY="520.0" mnemonicParsing="false" onMouseClicked="#guardarCasa" prefHeight="32.0" prefWidth="77.0" text="Guardar" />
     <Label layoutX="103.0" layoutY="366.0" text="Pisos porcelana">

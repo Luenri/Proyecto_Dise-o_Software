@@ -51,16 +51,25 @@ public class ClienteController implements Initializable {
 
     @FXML
     private void disenarCasas(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarCasas.fxml"));
+        setearPantalla("/Vista/DisenarCasas.fxml");
+        /*Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarCasas.fxml"));
         Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
+        MyHome.ventanaPrincipal.setScene(sc);*/
     }
     
      @FXML
     private void cerrarsesion(MouseEvent event) throws IOException {
         MyHome.tipoU = null;
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));
+        setearPantalla("/Vista/PantallaPrincipal.fxml");
+        /*Parent root = FXMLLoader.load(getClass().getResource());
+        Scene sc = new Scene(root);
+        MyHome.ventanaPrincipal.setScene(sc);*/
+    }
+    
+    public void setearPantalla(String ruta) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource(ruta));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
+        
     }
 }

@@ -174,45 +174,7 @@ public class DisenarCieloController implements Initializable {
         // TODO
     }
 
-    @FXML
-    private void mostrarPrecio(MouseEvent event) {
-        calcularPrecio();
-        lblpreciof.setText(String.valueOf(costo));
-        if (MyHome.tipoU.equalsIgnoreCase("Usuario")) {
-            tamensaje.setVisible(true);
-            lblnombre.setVisible(true);
-            lblapellidos.setVisible(true);
-            txtnombre.setVisible(true);
-            txtapellido.setVisible(true);
-            lblcedula.setVisible(true);
-            lblcorreo.setVisible(true);
-            txtcedula.setVisible(true);
-            txtcorreo.setVisible(true);
-            lblEstadoC.setVisible(true);
-            txtEstadoC.setVisible(true);
-            txtcelular.setVisible(true);
-            lbltelefonotrab.setVisible(true);
-            txtteleftrab.setVisible(true);
-            lbldirtrab.setVisible(true);
-            txtdirtrab.setVisible(true);
-            lbluser.setVisible(true);
-            lblcontra.setVisible(true);
-            txtuser.setVisible(true);
-            txtcontra.setVisible(true);
-            lblcelular.setVisible(true);
-            lbldirdom.setVisible(true);
-            txtdirdom.setVisible(true);
-            lblempresa.setVisible(true);
-            lblcargo.setVisible(true);
-            txtempresa.setVisible(true);
-            txtcargo.setVisible(true);
-            lblhijos.setVisible(true);
-            txthijos.setVisible(true);
-        } else {
-            lblpreciof.setVisible(true);
-        }
-    }
-
+  
     @FXML
     private void guardarCasa(MouseEvent event) throws SQLException {
 
@@ -253,6 +215,46 @@ public class DisenarCieloController implements Initializable {
         st.execute(linea1);
 
     }
+    
+     @FXML
+    private void mostrarPrecio(MouseEvent event) {
+        calcularPrecio();
+        lblpreciof.setText(String.valueOf(costo));
+        if (MyHome.tipoU.equalsIgnoreCase("Usuario")) {
+            tamensaje.setVisible(true);
+            lblnombre.setVisible(true);
+            lblapellidos.setVisible(true);
+            txtnombre.setVisible(true);
+            txtapellido.setVisible(true);
+            lblcedula.setVisible(true);
+            lblcorreo.setVisible(true);
+            txtcedula.setVisible(true);
+            txtcorreo.setVisible(true);
+            lblEstadoC.setVisible(true);
+            txtEstadoC.setVisible(true);
+            txtcelular.setVisible(true);
+            lbltelefonotrab.setVisible(true);
+            txtteleftrab.setVisible(true);
+            lbldirtrab.setVisible(true);
+            txtdirtrab.setVisible(true);
+            lbluser.setVisible(true);
+            lblcontra.setVisible(true);
+            txtuser.setVisible(true);
+            txtcontra.setVisible(true);
+            lblcelular.setVisible(true);
+            lbldirdom.setVisible(true);
+            txtdirdom.setVisible(true);
+            lblempresa.setVisible(true);
+            lblcargo.setVisible(true);
+            txtempresa.setVisible(true);
+            txtcargo.setVisible(true);
+            lblhijos.setVisible(true);
+            txthijos.setVisible(true);
+        } else {
+            lblpreciof.setVisible(true);
+        }
+    }
+
 
     @FXML
     private void registrar(MouseEvent event) {

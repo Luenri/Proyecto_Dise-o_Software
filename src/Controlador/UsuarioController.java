@@ -45,24 +45,30 @@ public class UsuarioController implements Initializable {
 
     @FXML
     private void disenarCasa(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarCasas.fxml"));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
+        setearPantalla("/Vista/DisenarCasas.fxml");
     }
 
     @FXML
     private void Salir(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));
+        setearPantalla("/Vista/PantallaPrincipal.fxml");
+        /*Parent root = FXMLLoader.load(getClass().getResource());
         Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
+        MyHome.ventanaPrincipal.setScene(sc);*/
     }
 
     @FXML
     private void registrarse(ActionEvent event) throws IOException {
-        
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/Registrar.fxml"));
+        setearPantalla("/Vista/Registrar.fxml");
+        /*Parent root = FXMLLoader.load(getClass().getResource());
+        Scene sc = new Scene(root);
+        MyHome.ventanaPrincipal.setScene(sc);*/
+    }
+    
+    public void setearPantalla(String ruta) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource(ruta));
         Scene sc = new Scene(root);
         MyHome.ventanaPrincipal.setScene(sc);
+        
     }
     
 }
