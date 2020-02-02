@@ -145,9 +145,26 @@ public class ConsultDatosAdminController implements Initializable {
     }
 
     @FXML
-    private void eliminar(ActionEvent event) {
+    private void eliminar(ActionEvent event) throws SQLException {
         
-        
+        Persona p=tbvDatos.getSelectionModel().getSelectedItem();
+        String query="Update persona Set activo='0' Where cedula='"+p.getCedula()+"';";
+        Statement st= conection.createStatement();
+        st.execute(query);
+        String cbb=cbbConsulta.getValue();
+        if (cbb.equalsIgnoreCase("Vendedor")){
+                    try {
+                        mostrarDatos("vendedor");
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ConsultDatosAdminController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }else{
+                    try {
+                        mostrarDatos("Administrador");
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ConsultDatosAdminController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
         
     }
 }
