@@ -22,7 +22,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import Modelos.MyHome;
 import static Modelos.MyHome.conection;
-import Modelos.cliente;
 import Modelos.clienteRegistrado;
 import Modelos.Decorator.griferia;
 import Modelos.Decorator.iluminacion;

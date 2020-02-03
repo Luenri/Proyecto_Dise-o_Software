@@ -9,7 +9,6 @@ import Modelos.Builder.Casa;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -169,7 +168,7 @@ public class DisenarCieloController implements Initializable {
     private TextField txthijos;
     @FXML
     private RadioButton rdnat;
-
+    
     /**
      * Initializes the controller class.
      */
@@ -337,7 +336,7 @@ public class DisenarCieloController implements Initializable {
         }
     }
     
-    public  void limpiarDatos(){
+    private void limpiarDatos(){
         txtnombre.setText("");
         txtapellido.setText("");
         txtcedula.setText("");
@@ -371,7 +370,6 @@ public class DisenarCieloController implements Initializable {
         txthijos.getText().isEmpty());
         return ver;
     }
-    
-    
+     
 
 }

@@ -150,14 +150,13 @@ public class LoginController implements Initializable {
             String carg=rs1.getString("cargo");
             empleados.add(new Empleado(carg,new Registro(usr,cont),cedula));
         }
-        for(Empleado e:empleados){
+        empleados.forEach((e) -> {
             Registro r=e.getRegistro();
-            if(registro.equals(r)){
+            if (registro.equals(r)) {
                 ingresar=true;
                 cargo=e.getCargo();
             }
-        }
-        /**/
+        }); /**/
     }
     
     public void verificarLoginCliente(String queryClt,Registro registro) throws SQLException{
@@ -173,12 +172,9 @@ public class LoginController implements Initializable {
         }
         
    
-        for (clienteRegistrado c:clientes){
-            Registro r=c.getRegistro();
-            if(registro.equals(r)){
-                ingresar=true;
-            }
-        }
+        clientes.stream().map((c) -> c.getRegistro()).filter((r) -> (registro.equals(r))).forEachOrdered((_item) -> {
+            ingresar=true;
+        });
     }
     
     

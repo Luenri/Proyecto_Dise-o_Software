@@ -5,8 +5,6 @@
  */
 package Modelos.Builder;
 
-import Modelos.Builder.CasaBuilder;
-
 /**
  *
  * @author Odalys

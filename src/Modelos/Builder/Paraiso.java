@@ -5,8 +5,6 @@
  */
 package Modelos.Builder;
 
-import Modelos.Builder.Casa;
-import Modelos.Builder.CasaBuilder;
 import Modelos.Decorator.orientacion;
 
 /**
