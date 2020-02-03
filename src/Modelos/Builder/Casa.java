@@ -3,7 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelos;
+package Modelos.Builder;
+
+import Modelos.Decorator.griferia;
+import Modelos.Decorator.iluminacion;
+import Modelos.Decorator.orientacion;
+import Modelos.Decorator.pisoPorcelanato;
 
 /**
  *

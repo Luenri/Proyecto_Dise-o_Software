@@ -164,7 +164,6 @@ public class ConsultDatosAdminController implements Initializable {
                     } catch (SQLException ex) {
                         Logger.getLogger(ConsultDatosAdminController.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                }
-        
+                }     
     }
 }

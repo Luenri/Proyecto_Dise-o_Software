@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelos;
+package Modelos.Decorator;
 
 /**
  *
  * @author Luis
  */
-public enum griferia {
-    ESTANDAR, ITALIANA
+public enum pisoPorcelanato {
+    NACIONAL, IMPORTADO
 }

@@ -42,25 +42,16 @@ public class DisenarCasasController implements Initializable {
     @FXML
     private void disenarOasis(MouseEvent event) throws IOException {
         setearPantalla("/Vista/DisenarOasis.fxml");
-        /*Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarOasis.fxml"));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);*/
     }
 
     @FXML
     private void disenarParaiso(MouseEvent event) throws IOException {
         setearPantalla("/Vista/DisenarParaiso.fxml");
-        /*Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarParaiso.fxml"));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);*/
     }
 
     @FXML
     private void disenarCielo(MouseEvent event) throws IOException {
         setearPantalla("/Vista/DisenarParaiso.fxml");
-        /*Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarCielo.fxml"));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);*/
     }
     
    
@@ -84,6 +75,4 @@ public class DisenarCasasController implements Initializable {
             root = FXMLLoader.load(getClass().getResource("/Vista/Usuario.fxml"));
         }
     }
-
-    
 }

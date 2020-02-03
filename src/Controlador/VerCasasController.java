@@ -14,13 +14,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.text.Font;
 import static Controlador.ConsultDatosVendedorController.ventanaSecundaria;
-import Modelos.Casa;
+import Modelos.Builder.Casa;
 import static Modelos.MyHome.conection;
 import Modelos.clienteRegistrado;
-import Modelos.griferia;
-import Modelos.iluminacion;
-import Modelos.orientacion;
-import Modelos.pisoPorcelanato;
+import Modelos.Decorator.griferia;
+import Modelos.Decorator.iluminacion;
+import Modelos.Decorator.orientacion;
+import Modelos.Decorator.pisoPorcelanato;
 import com.itextpdf.text.Document;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -88,6 +88,5 @@ public class VerCasasController implements Initializable {
     @FXML
     private void cancelar(ActionEvent event) {
         ventanaSecundaria.close();
-    }
-    
+    }  
 }

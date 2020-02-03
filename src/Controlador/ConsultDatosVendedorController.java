@@ -5,7 +5,7 @@
  */
 package Controlador;
 
-import Modelos.Casa;
+import Modelos.Builder.Casa;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,10 +24,10 @@ import Modelos.MyHome;
 import static Modelos.MyHome.conection;
 import Modelos.cliente;
 import Modelos.clienteRegistrado;
-import Modelos.griferia;
-import Modelos.iluminacion;
-import Modelos.orientacion;
-import Modelos.pisoPorcelanato;
+import Modelos.Decorator.griferia;
+import Modelos.Decorator.iluminacion;
+import Modelos.Decorator.orientacion;
+import Modelos.Decorator.pisoPorcelanato;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;

@@ -46,33 +46,17 @@ public class VendedorController implements Initializable {
     @FXML
     private void consultarDatos(MouseEvent event) throws IOException {
         setearPantalla("/Vista/ConsultDatosVendedor.fxml");
-        /*Parent root = FXMLLoader.load(getClass().getResource());
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);*/
     }
 
     @FXML
     private void disenarCasa(MouseEvent event) throws IOException {
         setearPantalla("/Vista/DisenarCasas.fxml");
-        /*Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarCasas.fxml"));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);*/
     }
 
     @FXML
     private void cerrarSesion(MouseEvent event) throws IOException {
         setearPantalla("/Vista/PantallaPrincipal.fxml");
-        /*Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);*/
     }
-
-    //POR QUE ESTE METODO ESTA AQUI!
-    /*private void registrarse(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/Registrar.fxml"));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
-    }*/
 
     private void salir(ActionEvent event) throws IOException {
         MyHome.tipoU = null;

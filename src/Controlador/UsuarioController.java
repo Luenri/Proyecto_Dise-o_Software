@@ -51,17 +51,11 @@ public class UsuarioController implements Initializable {
     @FXML
     private void Salir(MouseEvent event) throws IOException {
         setearPantalla("/Vista/PantallaPrincipal.fxml");
-        /*Parent root = FXMLLoader.load(getClass().getResource());
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);*/
     }
 
     @FXML
     private void registrarse(ActionEvent event) throws IOException {
         setearPantalla("/Vista/Registrar.fxml");
-        /*Parent root = FXMLLoader.load(getClass().getResource());
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);*/
     }
     
     public void setearPantalla(String ruta) throws IOException{

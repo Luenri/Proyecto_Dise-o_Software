@@ -3,31 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelos;
+package Modelos.Builder;
+
+import Modelos.Builder.Casa;
+import Modelos.Builder.CasaBuilder;
+import Modelos.Decorator.orientacion;
 
 /**
  *
  * @author Odalys
  */
-public class Paraiso extends CasaBuilder{
+public class Oasis extends CasaBuilder {
     
      Casa c = new Casa();
     
     @Override
     public void definirDimensiones() {
         
-        c.metrosCuadrados = 85;
+        c.metrosCuadrados = 63;
         c.numPlantas = 1;
         c.esquinera = false;
         orientacion o = null;
-        c.orientacion = o.ESTE ;
+        c.orientacion = o.SUR ;
     }
 
     @Override
     public void definirInterior() {
-        c.patioGrande = true;
-        c.numHabitaciones = 3;
-        c.numBaños = 3;
+        c.patioGrande = false;
+        c.numHabitaciones = 2;
+        c.numBaños = 2;
     }
     
 }

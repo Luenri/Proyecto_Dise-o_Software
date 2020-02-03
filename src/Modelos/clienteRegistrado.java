@@ -5,6 +5,7 @@
  */
 package Modelos;
 
+import Modelos.Builder.Casa;
 import static Modelos.MyHome.conection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

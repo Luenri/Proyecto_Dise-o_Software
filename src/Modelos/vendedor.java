@@ -5,6 +5,7 @@
  */
 package Modelos;
 
+import Modelos.Builder.Casa;
 import java.util.ArrayList;
 
 /**

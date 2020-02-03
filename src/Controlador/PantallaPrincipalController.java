@@ -45,33 +45,21 @@ public class PantallaPrincipalController implements Initializable {
 
     private void abrirVadmin(MouseEvent event) throws IOException {
         setearPantalla("/Vista/login.fxml");
-        /*Parent root = FXMLLoader.load(getClass().getResource("/Vista/login.fxml"));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);*/
     }
 
     @FXML
     private void abrirVvendedor(MouseEvent event) throws IOException {
         setearPantalla("/Vista/login.fxml");
-        /*Parent root = FXMLLoader.load(getClass().getResource("/Vista/login.fxml"));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);*/
     }
 
     private void abrirVcliente(MouseEvent event) throws IOException {
         setearPantalla("/Vista/login.fxml");
-        /*Parent root = FXMLLoader.load(getClass().getResource("/Vista/login.fxml"));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);*/
     }
 
     @FXML
     private void abrirVusuario(MouseEvent event) throws IOException {
         MyHome.tipoU = "Usuario";
         setearPantalla("/Vista/Usuario.fxml");
-        /*Parent root = FXMLLoader.load(getClass().getResource("/Vista/Usuario.fxml"));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);*/
     }
     
     public void setearPantalla(String ruta) throws IOException{
