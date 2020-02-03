@@ -139,7 +139,6 @@ public class LoginController implements Initializable {
     public void verificarLoginEmpleado(String queryEmp,Registro registro) throws SQLException{
         Statement st= conection.createStatement();
         ResultSet rs1=st.executeQuery(queryEmp);
-        //ResultSet rs2=st.executeQuery(queryClt);
         LinkedList<Empleado> empleados=new LinkedList<>();
         
         
@@ -156,7 +155,7 @@ public class LoginController implements Initializable {
                 ingresar=true;
                 cargo=e.getCargo();
             }
-        }); /**/
+        }); 
     }
     
     public void verificarLoginCliente(String queryClt,Registro registro) throws SQLException{

@@ -37,10 +37,7 @@ public class PantallaPrincipalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        /*btnAdministrador.setId("btnAdministrador");
-        btnvendedor.setId("btnvendedor");
-        btnCliente.setId("btnCliente");
-        btnUusario.setId("btnUsuario");*/
+       
     }    
 
     private void abrirVadmin(MouseEvent event) throws IOException {

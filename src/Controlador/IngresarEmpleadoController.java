@@ -93,10 +93,7 @@ public class IngresarEmpleadoController implements Initializable {
         String linea2="insert into empleado values('"+cbbCargo.getValue()+"','"+txtcedula.getText()+"');";
         String linea3="insert into registro values('"+txtuser.getText()+"','"+txtcontra.getText()+"','"+txtcedula.getText()+"');";
         
-        System.out.println(linea1);
-        System.out.println(linea2);
-        System.out.println(linea3);
-        
+              
         Statement st= conection.createStatement();
         st.execute(linea1);
         st.execute(linea2);

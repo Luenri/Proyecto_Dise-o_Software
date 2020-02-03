@@ -50,7 +50,7 @@ import javafx.scene.control.Alert;
  */
 public class DisenarCieloController implements Initializable {
 
-    static int costo = 180000;
+    public static int costo = 180000;
 
     @FXML
     private Button btnprecio;
