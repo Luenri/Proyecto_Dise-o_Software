@@ -273,7 +273,7 @@ public class DisenarCieloController implements Initializable {
     @FXML
     private void registrar(MouseEvent event) throws SQLException {
         
-        if(!verificarCampos()){
+       // if(!verificarCampos()){
             String linea1="insert into persona values"
                 + "('"+txtnombre.getText()+"', '"+txtapellido.getText()+"', '"+txtcedula.getText()+"','"+txtcelular.getText()+"','"+txtcorreo.getText()+"','"+txtdirdom.getText()+"','"+txtteleftrab.getText()+"','"+txtEstadoC.getText()+"','"+txtcargo.getText()+"',1);";
         String linea2="insert into cliente values('"+txtdirtrab.getText()+"','"+txtempresa.getText()+"',"+txthijos.getText()+",'"+txtcedula.getText()+"');";
@@ -290,14 +290,14 @@ public class DisenarCieloController implements Initializable {
         
         lblpreciof.setVisible(true);
         MyHome.tipoU= "Cliente";
-           limpiarDatos();
+         //  limpiarDatos();
            mostrarAlerta("Registro","El registro se ha completado con exito",Alert.AlertType.CONFIRMATION);
             
             
-        }else{
-            mostrarAlerta("Registro","Todos los campos deben estar llenos",Alert.AlertType.ERROR);
+       // }else{
+         //   mostrarAlerta("Registro","Todos los campos deben estar llenos",Alert.AlertType.ERROR);
             
-        }
+        //}
         
     }
 
@@ -336,7 +336,7 @@ public class DisenarCieloController implements Initializable {
         }
     }
     
-    private void limpiarDatos(){
+   /* private void limpiarDatos(){
         txtnombre.setText("");
         txtapellido.setText("");
         txtcedula.setText("");
@@ -370,6 +370,6 @@ public class DisenarCieloController implements Initializable {
         txthijos.getText().isEmpty());
         return ver;
     }
-     
+     */
 
 }

@@ -2,5 +2,5 @@ projectKey=AGR
 serverUrl=http://200.126.12.164
 serverVersion=6.7.6.38781
 dashboardUrl=http://200.126.12.164/dashboard/index/AGR
-ceTaskId=AXAJYj7-n2b0NoJj1O_y
-ceTaskUrl=http://200.126.12.164/api/ce/task?id=AXAJYj7-n2b0NoJj1O_y
+ceTaskId=AXAJe1cwn2b0NoJj1O_0
+ceTaskUrl=http://200.126.12.164/api/ce/task?id=AXAJe1cwn2b0NoJj1O_0
