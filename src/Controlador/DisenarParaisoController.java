@@ -39,9 +39,11 @@ import Modelos.Decorator.orientacion;
 import Modelos.Decorator.pisoPorcelanato;
 import static Modelos.Decorator.pisoPorcelanato.IMPORTADO;
 import static Modelos.Decorator.pisoPorcelanato.NACIONAL;
+import static Modelos.MyHome.mostrarAlerta;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 
 /**
  * FXML Controller class
@@ -270,7 +272,8 @@ public class DisenarParaisoController implements Initializable {
     @FXML
     private void registrar(MouseEvent event) throws SQLException {
         
-        String linea1="insert into persona values"
+        if(!verificarCampos()){
+            String linea1="insert into persona values"
                 + "('"+txtnombre.getText()+"', '"+txtapellido.getText()+"', '"+txtcedula.getText()+"','"+txtcelular.getText()+"','"+txtcorreo.getText()+"','"+txtdirdom.getText()+"','"+txtteleftrab.getText()+"','"+txtEstadoC.getText()+"','"+txtcargo.getText()+"',1);";
         String linea2="insert into cliente values('"+txtdirtrab.getText()+"','"+txtempresa.getText()+"',"+txthijos.getText()+",'"+txtcedula.getText()+"');";
         String linea3="insert into registro values('"+txtuser.getText()+"','"+txtcontra.getText()+"','"+txtcedula.getText()+"');";
@@ -286,6 +289,12 @@ public class DisenarParaisoController implements Initializable {
         
         lblpreciof.setVisible(true);
         MyHome.tipoU= "Cliente";
+                   mostrarAlerta("Registro","El registro se ha completado con exito",Alert.AlertType.CONFIRMATION);
+
+        }else{
+            mostrarAlerta("Registro","Todos los campos deben estar llenos",Alert.AlertType.ERROR);
+        }
+        
         
     }
 
@@ -324,5 +333,39 @@ public class DisenarParaisoController implements Initializable {
         }
     }
    
+    public  void limpiarDatos(){
+        txtnombre.setText("");
+        txtapellido.setText("");
+        txtcedula.setText("");
+        txtcorreo.setText("");
+        txtcelular.setText("");
+        txtEstadoC.setText("");
+        txtuser.setText("");
+        txtcontra.setText("");
+        txtdirdom.setText("");
+        txtdirtrab.setText("");
+        txtcargo.setText("");
+        txtteleftrab.setText("");
+        txtempresa.setText("");
+        txthijos.setText("");
+    }
+    
+    private boolean verificarCampos(){
+        boolean ver=(txtnombre.getText().isEmpty()&&
+        txtapellido.getText().isEmpty()&&
+        txtcedula.getText().isEmpty()&&
+        txtcorreo.getText().isEmpty()&&
+        txtcelular.getText().isEmpty()&&
+        txtEstadoC.getText().isEmpty()&&
+        txtuser.getText().isEmpty()&&
+        txtcontra.getText().isEmpty()&&
+        txtdirdom.getText().isEmpty()&&
+        txtdirtrab.getText().isEmpty()&&
+        txtcargo.getText().isEmpty()&&
+        txtteleftrab.getText().isEmpty()&&
+        txtempresa.getText().isEmpty()&&
+        txthijos.getText().isEmpty());
+        return ver;
+    }
     
 }

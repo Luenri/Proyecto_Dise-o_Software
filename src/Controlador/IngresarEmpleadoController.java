@@ -20,11 +20,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import static Modelos.MyHome.conection;
+import static Modelos.MyHome.mostrarAlerta;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 /**
  * FXML Controller class
@@ -86,8 +89,8 @@ public class IngresarEmpleadoController implements Initializable {
     @FXML
     private void CrearEmpleado(MouseEvent event) throws SQLException {
         
-        
-        String linea1="insert into persona values"
+        if(!verificar()){
+            String linea1="insert into persona values"
                 + "('"+txtnombres.getText()+"', '"+txtapellidos.getText()+"', '"+txtcedula.getText()+"','"+txtcelular.getText()+"','"+txtcorreo.getText()+"','"+txtDireccion.getText()+"','"+txttelefonotrab.getText()+"','"+txtEstadoC.getText()+"','"+cbbCargo.getValue()+"',1);";
         String linea2="insert into empleado values('"+cbbCargo.getValue()+"','"+txtcedula.getText()+"');";
         String linea3="insert into registro values('"+txtuser.getText()+"','"+txtcontra.getText()+"','"+txtcedula.getText()+"');";
@@ -100,10 +103,28 @@ public class IngresarEmpleadoController implements Initializable {
         st.execute(linea1);
         st.execute(linea2);
         st.execute(linea3);
+        mostrarAlerta("Registro","El registro fue exitoso",AlertType.CONFIRMATION);
+        limpiarCampos();
+        }else{
+            mostrarAlerta("Registro","Todos los campos deben estar llenos",AlertType.ERROR);
+        }
+        
     }
 
     @FXML
     private void limpiar(MouseEvent event) {
+        limpiarCampos();
+        
+    }
+    
+     @FXML
+    private void cancelar(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/Administrador.fxml"));
+        Scene sc = new Scene(root);
+        MyHome.ventanaPrincipal.setScene(sc);
+    }
+    
+    private void limpiarCampos(){
         txtnombres.setText("");
         txtapellidos.setText("");
         txtcedula.setText("");
@@ -114,14 +135,20 @@ public class IngresarEmpleadoController implements Initializable {
         txtuser.setText("");
         txtcontra.setText("");
         txttelefonotrab.setText("");
-        
     }
     
-     @FXML
-    private void cancelar(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/Administrador.fxml"));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
+    private boolean verificar(){
+        boolean ver=(txtnombres.getText().isEmpty()&&
+        txtapellidos.getText().isEmpty()&&
+        txtcedula.getText().isEmpty()&&
+        txtcorreo.getText().isEmpty()&&
+        txtcelular.getText().isEmpty()&&
+        txtuser.getText().isEmpty()&&
+        txtcontra.getText().isEmpty()&&
+        txttelefonotrab.getText().isEmpty());
+        
+        return ver;
     }
+ 
     
 }

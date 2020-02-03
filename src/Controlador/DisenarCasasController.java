@@ -72,7 +72,7 @@ public class DisenarCasasController implements Initializable {
         }else if (MyHome.tipoU.equalsIgnoreCase("Cliente")) {
             setearPantalla("/Vista/Cliente.fxml");
          }else{
-            root = FXMLLoader.load(getClass().getResource("/Vista/Usuario.fxml"));
+            setearPantalla("/Vista/Usuario.fxml");
         }
     }
 }
