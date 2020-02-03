@@ -24,7 +24,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author Luis
  */
 public class MyHome extends Application {
-    
+    conexion cn = new conexion();
     public static String tipoU = null;
     public static Connection conection;
     public static Scene sc;
@@ -37,7 +37,7 @@ public class MyHome extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         
-       conexion cn = new conexion();
+       
        conection = cn.getConnection();
      
 

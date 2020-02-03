@@ -17,6 +17,8 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import Modelos.MyHome;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * FXML Controller class
@@ -39,30 +41,34 @@ public class AdministradorController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       
     }    
 
     @FXML
-    private void consultarDatos(MouseEvent event) throws IOException {
+    private void consultarDatos(MouseEvent event) {
         setearPantalla("/Vista/ConsultDatosAdmin.fxml");
        
     }
 
     @FXML
-    private void crearEmpleado(MouseEvent event) throws IOException {
+    private void crearEmpleado(MouseEvent event) {
         setearPantalla("/Vista/IngresarEmpleado.fxml");
     }
     
      @FXML
-    private void cerrarsesion(MouseEvent event) throws IOException {
+    private void cerrarsesion(MouseEvent event)  {
         MyHome.tipoU = null;
         setearPantalla("/Vista/PantallaPrincipal.fxml");
     }
     
-    public void setearPantalla(String ruta) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource(ruta));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
+    public  void setearPantalla(String ruta) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(ruta));
+            Scene sc = new Scene(root);
+            MyHome.ventanaPrincipal.setScene(sc);
+        } catch (IOException ex) {
+            Logger.getLogger(AdministradorController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     

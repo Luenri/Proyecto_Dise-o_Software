@@ -70,9 +70,7 @@ public class ConsultDatosAdminController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-     
-            // TODO
+        
             ObservableList<String> opciones=FXCollections.observableArrayList();
             opciones.addAll("Vendedor","Administrador");
             cbbConsulta.setItems(opciones);
@@ -80,17 +78,9 @@ public class ConsultDatosAdminController implements Initializable {
             cbbConsulta.setOnAction(e->{
                 String cbb=cbbConsulta.getValue();
                 if (cbb.equalsIgnoreCase("Vendedor")){
-                    try {
-                        mostrarDatos("vendedor");
-                    } catch (SQLException ex) {
-                        Logger.getLogger(ConsultDatosAdminController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    mostrarDatos("vendedor");
                 }else{
-                    try {
-                        mostrarDatos("Administrador");
-                    } catch (SQLException ex) {
-                        Logger.getLogger(ConsultDatosAdminController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    mostrarDatos("Administrador");
                 }
                 
             });
@@ -98,71 +88,74 @@ public class ConsultDatosAdminController implements Initializable {
     }   
     
      @FXML
-    private void volver(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/Administrador.fxml"));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
+    private void volver(MouseEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/Vista/Administrador.fxml"));
+            Scene sc = new Scene(root);
+            MyHome.ventanaPrincipal.setScene(sc);
+        } catch (IOException ex) {
+            Logger.getLogger(ConsultDatosAdminController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     
-    private void mostrarDatos(String cadena) throws SQLException{
-        String sql="SELECT cedula,nombre,apellido,celular,correo,estadoCivil,domicilio,e.cargo,activo"
-                + " FROM persona p inner join empleado e on p.cedula= e.cedulaEmp ";
+    private void mostrarDatos(String cadena){
+        try {
+            String sql="SELECT cedula,nombre,apellido,celular,correo,estadoCivil,domicilio,e.cargo,activo"
+                    + " FROM persona p inner join empleado e on p.cedula= e.cedulaEmp ";
             Statement st= conection.createStatement();
             
             
-            ResultSet rt=st.executeQuery(sql);
-            clmNombres.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-            clmApellidos.setCellValueFactory(new PropertyValueFactory<>("apellido"));
-            clmCedula.setCellValueFactory(new PropertyValueFactory<>("cedula"));
-            clmCelular.setCellValueFactory(new PropertyValueFactory<>("celular"));
-            clmCorreo.setCellValueFactory(new PropertyValueFactory<>("correo"));
-            clmEstadoC.setCellValueFactory(new PropertyValueFactory<>("estadoCivil"));
-            clmDireccion.setCellValueFactory(new PropertyValueFactory<>("direccion"));
-            
-            ObservableList<Persona> datos=FXCollections.observableArrayList();
-            
-            while(rt.next()){
-            
-                if (Integer.valueOf(rt.getString("activo"))!=0 && rt.getString("cargo").equalsIgnoreCase(cadena)){
-                    String cedula_=rt.getString("cedula");
-                String nombre_=rt.getString("nombre");
-                String apellido_=rt.getString("apellido");
-                String celular_=rt.getString("celular");
-                String correo_=rt.getString("correo");
-                String estado_=rt.getString("estadoCivil");
-                String direccion_=rt.getString("domicilio");
-                datos.add(new Persona(nombre_,apellido_,cedula_,correo_,celular_,estado_,direccion_));
+            ObservableList<Persona> datos;
+            try (ResultSet rt = st.executeQuery(sql)) {
+                clmNombres.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+                clmApellidos.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+                clmCedula.setCellValueFactory(new PropertyValueFactory<>("cedula"));
+                clmCelular.setCellValueFactory(new PropertyValueFactory<>("celular"));
+                clmCorreo.setCellValueFactory(new PropertyValueFactory<>("correo"));
+                clmEstadoC.setCellValueFactory(new PropertyValueFactory<>("estadoCivil"));
+                clmDireccion.setCellValueFactory(new PropertyValueFactory<>("direccion"));
+                datos = FXCollections.observableArrayList();
+                while(rt.next()){
+                    
+                    if (Integer.valueOf(rt.getString("activo"))!=0 && rt.getString("cargo").equalsIgnoreCase(cadena)){
+                        String cedula_=rt.getString("cedula");
+                        String nombre_=rt.getString("nombre");
+                        String apellido_=rt.getString("apellido");
+                        String celular_=rt.getString("celular");
+                        String correo_=rt.getString("correo");
+                        String estado_=rt.getString("estadoCivil");
+                        String direccion_=rt.getString("domicilio");
+                        datos.add(new Persona(nombre_,apellido_,cedula_,correo_,celular_,estado_,direccion_));
+                    }
+                    
+                    
                 }
-                
-                
             }
-            
             
             tbvDatos.setItems(datos);
             tbvDatos.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultDatosAdminController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
-    private void eliminar(ActionEvent event) throws SQLException {
+    private void eliminar(ActionEvent event)  {
         
-        Persona p=tbvDatos.getSelectionModel().getSelectedItem();
-        String query="Update persona Set activo='0' Where cedula='"+p.getCedula()+"';";
-        Statement st= conection.createStatement();
-        st.execute(query);
-        String cbb=cbbConsulta.getValue();
-        if (cbb.equalsIgnoreCase("Vendedor")){
-                    try {
-                        mostrarDatos("vendedor");
-                    } catch (SQLException ex) {
-                        Logger.getLogger(ConsultDatosAdminController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }else{
-                    try {
-                        mostrarDatos("Administrador");
-                    } catch (SQLException ex) {
-                        Logger.getLogger(ConsultDatosAdminController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }     
+        try {
+            Persona p=tbvDatos.getSelectionModel().getSelectedItem();
+            String query="Update persona Set activo='0' Where cedula='"+p.getCedula()+"';";
+            Statement st= conection.createStatement();
+            st.execute(query);
+            String cbb=cbbConsulta.getValue();
+            if (cbb.equalsIgnoreCase("Vendedor")){
+                mostrarDatos("vendedor");
+            }else{
+                mostrarDatos("Administrador");     
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultDatosAdminController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

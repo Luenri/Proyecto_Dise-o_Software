@@ -33,6 +33,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import static Modelos.MyHome.usuario;
 import static Modelos.MyHome.contra;
+import static Modelos.MyHome.mostrarAlerta;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * FXML Controller class
@@ -67,7 +70,7 @@ public class LoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       
       
     }    
 
@@ -78,102 +81,111 @@ public class LoginController implements Initializable {
     }
     
     @FXML
-    private void cancelar(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
+    private void cancelar(MouseEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));
+            Scene sc = new Scene(root);
+            MyHome.ventanaPrincipal.setScene(sc);
+        } catch (IOException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
-    private void ingresar(ActionEvent event) throws IOException, SQLException {
+    private void ingresar(ActionEvent event) {
         
-        String cadena="SELECT nombre,apellido,cedula,c.cargo,usuario,contrasena "
-                + "FROM persona p inner join empleado c on p.cedula= c.cedulaEmp inner join registro r on p.cedula=r.propietario;";
-        String cadena2="Select nombre,apellido,cedula,usuario,contrasena from persona p inner join cliente c on p.cedula=c.cedulaClient inner join registro r on p.cedula=r.propietario;";
+        try {
+            String cadena="SELECT nombre,apellido,cedula,c.cargo,usuario,contrasena "
+                    + "FROM persona p inner join empleado c on p.cedula= c.cedulaEmp inner join registro r on p.cedula=r.propietario;";
+            String cadena2="Select nombre,apellido,cedula,usuario,contrasena from persona p inner join cliente c on p.cedula=c.cedulaClient inner join registro r on p.cedula=r.propietario;";
+            
+            usuario=txtuser.getText();
+            contra=txtcontra.getText();
+            
+            Registro reg=new Registro(MyHome.usuario,MyHome.contra);
+            
+            
+            
+            verificarLoginEmpleado(cadena,reg);
+            verificarLoginCliente(cadena2,reg);
+            
+            if(!txtuser.getText().isEmpty() && !txtcontra.getText().isEmpty()){
+                if (ingresar && cargo!=null &&cargo.equalsIgnoreCase("Administrador") ){
+                    MyHome.tipoU = "Administrador";
+                    Parent root = FXMLLoader.load(getClass().getResource("/Vista/Administrador.fxml"));
+                    Scene sc = new Scene(root);
+                    MyHome.ventanaPrincipal.setScene(sc);
+                }else if (ingresar && cargo!=null && cargo.equalsIgnoreCase("Vendedor")){
+                    MyHome.tipoU = "Vendedor";
+                    Parent root = FXMLLoader.load(getClass().getResource("/Vista/Vendedor.fxml"));
+                    Scene sc = new Scene(root);
+                    MyHome.ventanaPrincipal.setScene(sc);
+                }else if (ingresar){
+                    Parent root = FXMLLoader.load(getClass().getResource("/Vista/Cliente.fxml"));
+                    MyHome.tipoU = "Cliente";
+                    Scene sc = new Scene(root);
+                    MyHome.ventanaPrincipal.setScene(sc);
+                }else{
+                   
+                    mostrarAlerta("Error de ingreso","El usuario o la contraseña son Incorrectos",AlertType.ERROR);
+                }
+            }else{
                 
-        usuario=txtuser.getText();
-        contra=txtcontra.getText();
-        
-        Registro reg=new Registro(MyHome.usuario,MyHome.contra);
-        
-       
-        
-        verificarLoginEmpleado(cadena,reg);
-        verificarLoginCliente(cadena2,reg);
-
-        if(!txtuser.getText().isEmpty() && !txtcontra.getText().isEmpty()){
-            if (ingresar && cargo!=null &&cargo.equalsIgnoreCase("Administrador") ){
-            MyHome.tipoU = "Administrador";
-             Parent root = FXMLLoader.load(getClass().getResource("/Vista/Administrador.fxml"));
-             Scene sc = new Scene(root);
-             MyHome.ventanaPrincipal.setScene(sc);
-        }else if (ingresar && cargo!=null && cargo.equalsIgnoreCase("Vendedor")){
-            MyHome.tipoU = "Vendedor";
-             Parent root = FXMLLoader.load(getClass().getResource("/Vista/Vendedor.fxml"));
-             Scene sc = new Scene(root);
-             MyHome.ventanaPrincipal.setScene(sc);
-        }else if (ingresar){
-             Parent root = FXMLLoader.load(getClass().getResource("/Vista/Cliente.fxml"));
-             MyHome.tipoU = "Cliente";
-             Scene sc = new Scene(root);
-             MyHome.ventanaPrincipal.setScene(sc);
-        }else{
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Error de ingreso");
-            alert.setHeaderText(null);
-            alert.setContentText("El usuario o la contraseña son Incorrectos");
-
-            alert.showAndWait();
-        }
-        }else{
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Error de ingreso");
-            alert.setHeaderText(null);
-            alert.setContentText("Los campos de texto no pueden estar Vacios");
-            alert.showAndWait();
-        }
-        
-    }
-    
-    
-    public void verificarLoginEmpleado(String queryEmp,Registro registro) throws SQLException{
-        Statement st= conection.createStatement();
-        ResultSet rs1=st.executeQuery(queryEmp);
-        LinkedList<Empleado> empleados=new LinkedList<>();
-        
-        
-        while(rs1.next()){
-            String cedula=rs1.getString("cedula");
-            String usr=rs1.getString("usuario");
-            String cont=rs1.getString("contrasena");
-            String carg=rs1.getString("cargo");
-            empleados.add(new Empleado(carg,new Registro(usr,cont),cedula));
-        }
-        empleados.forEach((e) -> {
-            Registro r=e.getRegistro();
-            if (registro.equals(r)) {
-                ingresar=true;
-                cargo=e.getCargo();
+                mostrarAlerta("Error de ingreso","Los campos de texto no pueden estar Vacios",AlertType.ERROR);
+                
             }
-        }); 
-    }
-    
-    public void verificarLoginCliente(String queryClt,Registro registro) throws SQLException{
-        Statement st= conection.createStatement();
-        LinkedList<clienteRegistrado> clientes=new LinkedList<>();
-        ResultSet rs2=st.executeQuery(queryClt);
-        
-        while(rs2.next()){
-            String cedula=rs2.getString("cedula");
-            String usr=rs2.getString("usuario");
-            String cont=rs2.getString("contrasena");
-            clientes.add(new clienteRegistrado(new Registro(usr,cont),cedula));
+        } catch (IOException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-   
-        clientes.stream().map((c) -> c.getRegistro()).filter((r) -> (registro.equals(r))).forEachOrdered((_item) -> {
-            ingresar=true;
-        });
+    }
+    
+    
+    public void verificarLoginEmpleado(String queryEmp,Registro registro){
+        try {
+            Statement st= conection.createStatement();
+            LinkedList<Empleado> empleados;
+            try (ResultSet rs1 = st.executeQuery(queryEmp)) {
+                empleados = new LinkedList<>();
+                while(rs1.next()){
+                    String cedula=rs1.getString("cedula");
+                    String usr=rs1.getString("usuario");
+                    String cont=rs1.getString("contrasena");
+                    String carg=rs1.getString("cargo");
+                    empleados.add(new Empleado(carg,new Registro(usr,cont),cedula));
+                }
+            }
+            empleados.forEach((e) -> { 
+                Registro r=e.getRegistro();
+                if (registro.equals(r)) {
+                    ingresar=true;
+                    cargo=e.getCargo();
+                }
+            });
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void verificarLoginCliente(String queryClt,Registro registro){
+        try {
+            Statement st= conection.createStatement();
+            LinkedList<clienteRegistrado> clientes=new LinkedList<>();
+            try (ResultSet rs2 = st.executeQuery(queryClt)) {
+                while(rs2.next()){
+                    String cedula=rs2.getString("cedula");
+                    String usr=rs2.getString("usuario");
+                    String cont=rs2.getString("contrasena");
+                    clientes.add(new clienteRegistrado(new Registro(usr,cont),cedula));
+                }
+            }
+            
+            clientes.stream().map((c) -> c.getRegistro()).filter((r) -> (registro.equals(r))).forEachOrdered((_item) -> {
+                ingresar=true;
+            });
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     

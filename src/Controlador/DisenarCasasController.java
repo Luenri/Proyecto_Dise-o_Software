@@ -17,6 +17,8 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import Modelos.MyHome;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 
 /**
@@ -36,35 +38,39 @@ public class DisenarCasasController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       
     }    
 
     @FXML
-    private void disenarOasis(MouseEvent event) throws IOException {
+    private void disenarOasis(MouseEvent event)  {
         setearPantalla("/Vista/DisenarOasis.fxml");
     }
 
     @FXML
-    private void disenarParaiso(MouseEvent event) throws IOException {
+    private void disenarParaiso(MouseEvent event) {
         setearPantalla("/Vista/DisenarParaiso.fxml");
     }
 
     @FXML
-    private void disenarCielo(MouseEvent event) throws IOException {
+    private void disenarCielo(MouseEvent event) {
         setearPantalla("/Vista/DisenarParaiso.fxml");
     }
     
    
     
-     public void setearPantalla(String ruta) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource(ruta));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
+     public void setearPantalla(String ruta){
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(ruta));
+            Scene sc = new Scene(root);
+            MyHome.ventanaPrincipal.setScene(sc);
+        } catch (IOException ex) {
+            Logger.getLogger(DisenarCasasController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 
     @FXML
-    private void volver(ActionEvent event) throws IOException {
+    private void volver(ActionEvent event) {
         Parent root = null;
         
         if(MyHome.tipoU.equalsIgnoreCase("Vendedor")){

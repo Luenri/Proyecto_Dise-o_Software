@@ -24,6 +24,8 @@ import static Modelos.MyHome.usuario;
 import Modelos.clienteRegistrado;
 import static Modelos.clienteRegistrado.obtenerCliente;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 
@@ -48,37 +50,46 @@ public class ClienteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       
+       
     }    
 
 
     @FXML
-    private void disenarCasas(MouseEvent event) throws IOException {
+    private void disenarCasas(MouseEvent event)  {
         setearPantalla("/Vista/DisenarCasas.fxml");
     }
     
      @FXML
-    private void cerrarsesion(MouseEvent event) throws IOException {
+    private void cerrarsesion(MouseEvent event) {
         MyHome.tipoU = null;
         setearPantalla("/Vista/PantallaPrincipal.fxml");
     }
     
-    public void setearPantalla(String ruta) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource(ruta));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
+    public void setearPantalla(String ruta) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(ruta));
+            Scene sc = new Scene(root);
+            MyHome.ventanaPrincipal.setScene(sc);
+        } catch (IOException ex) {
+            Logger.getLogger(ClienteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 
     @FXML
-    private void consultar(ActionEvent event) throws SQLException, IOException {
-        clienteRegistrado cliente=obtenerCliente(usuario,contra);
-        mostrarDatosCasa(cliente.getCedula());
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/verCasas.fxml"));
-        Scene sc = new Scene(root);
-        ventanaSecundaria=new Stage();
-        ventanaSecundaria.setScene(sc);
-        ventanaSecundaria.show();
+    private void consultar(ActionEvent event)  {
+        try {
+            clienteRegistrado cliente=obtenerCliente(usuario,contra);
+            mostrarDatosCasa(cliente.getCedula());
+            Parent root = FXMLLoader.load(getClass().getResource("/Vista/verCasas.fxml"));
+            Scene sc = new Scene(root);
+            ventanaSecundaria=new Stage();
+            ventanaSecundaria.setScene(sc);
+            ventanaSecundaria.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ClienteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 }

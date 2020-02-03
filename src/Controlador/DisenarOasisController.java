@@ -23,18 +23,18 @@ import Modelos.Decorator.orientacion;
 import Modelos.Decorator.pisoPorcelanato;
 import static Modelos.Decorator.pisoPorcelanato.IMPORTADO;
 import static Modelos.Decorator.pisoPorcelanato.NACIONAL;
-import static Modelos.MyHome.mostrarAlerta;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -173,11 +173,11 @@ public class DisenarOasisController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+     
     }    
 
     @FXML
-    private void guardarCasa(MouseEvent event) throws SQLException {
+    private void guardarCasa(MouseEvent event)  {
 
         RadioButton srb = (RadioButton) g1.getSelectedToggle();
         String spisos = srb.getText();
@@ -205,19 +205,20 @@ public class DisenarOasisController implements Initializable {
             visibilidad();
         } else {
             
-            clienteRegistrado cliente = obtenerCliente(usuario, contra);
-        System.out.println(cliente.getCedula());
-        
-        Casa c=new Casa(130,2,true,orientacion.NORTE,true,4, 3.5,spiso,sgri,silu,ban,ais);
-        
-        cliente.getCasasDisenadas().add(c);
-      
-        String linea1 = "insert into casa values (130,2,1,'Norte',1,4,3,'" + spisos + "','" + sgrif + "','" + silum + "'," + sbanos + "," + saislante + ",'" + cliente.getCedula() + "');";
-
-        System.out.println(linea1);
-
-        Statement st = conection.createStatement();
-        st.execute(linea1);
+            try {
+                clienteRegistrado cliente = obtenerCliente(usuario, contra);
+                
+                Casa c=new Casa(130,2,true,orientacion.NORTE,true,4, 3.5,spiso,sgri,silu,ban,ais);
+                
+                cliente.getCasasDisenadas().add(c);
+                
+                String linea1 = "insert into casa values (130,2,1,'Norte',1,4,3,'" + spisos + "','" + sgrif + "','" + silum + "'," + sbanos + "," + saislante + ",'" + cliente.getCedula() + "');";
+                
+                Statement st = conection.createStatement();
+                st.execute(linea1);
+            } catch (SQLException ex) {
+                Logger.getLogger(DisenarOasisController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     
@@ -269,41 +270,43 @@ public class DisenarOasisController implements Initializable {
 
 
     @FXML
-    private void registrar(MouseEvent event) throws SQLException {
+    private void registrar(MouseEvent event) {
         
-       // if(!verificarCampos()){
+        try {
             String linea1="insert into persona values"
-                + "('"+txtnombre.getText()+"', '"+txtapellido.getText()+"', '"+txtcedula.getText()+"','"+txtcelular.getText()+"','"+txtcorreo.getText()+"','"+txtdirdom.getText()+"','"+txtteleftrab.getText()+"','"+txtEstadoC.getText()+"','"+txtcargo.getText()+"',1);";
-        String linea2="insert into cliente values('"+txtdirtrab.getText()+"','"+txtempresa.getText()+"',"+txthijos.getText()+",'"+txtcedula.getText()+"');";
-        String linea3="insert into registro values('"+txtuser.getText()+"','"+txtcontra.getText()+"','"+txtcedula.getText()+"');";
+                    + "('"+txtnombre.getText()+"', '"+txtapellido.getText()+"', '"+txtcedula.getText()+"','"+txtcelular.getText()+"','"+txtcorreo.getText()+"','"+txtdirdom.getText()+"','"+txtteleftrab.getText()+"','"+txtEstadoC.getText()+"','"+txtcargo.getText()+"',1);";
+            String linea2="insert into cliente values('"+txtdirtrab.getText()+"','"+txtempresa.getText()+"',"+txthijos.getText()+",'"+txtcedula.getText()+"');";
+            String linea3="insert into registro values('"+txtuser.getText()+"','"+txtcontra.getText()+"','"+txtcedula.getText()+"');";
+            
+            System.out.println(linea1);
+            System.out.println(linea2);
+            System.out.println(linea3);
+            
+            Statement st= conection.createStatement();
+            st.execute(linea1);
+            st.execute(linea2);
+            st.execute(linea3);
+            
+            lblpreciof.setVisible(true);
+            MyHome.tipoU= "Cliente";
+        } catch (SQLException ex) {
+            Logger.getLogger(DisenarOasisController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        System.out.println(linea1);
-        System.out.println(linea2);
-        System.out.println(linea3);
-        
-        Statement st= conection.createStatement();
-        st.execute(linea1);
-        st.execute(linea2);
-        st.execute(linea3);
-        
-        lblpreciof.setVisible(true);
-        MyHome.tipoU= "Cliente";
-        
-       // limpiarDatos();
-         //  mostrarAlerta("Registro","El registro se ha completado con exito",Alert.AlertType.CONFIRMATION);
-        //}else{
-       //     mostrarAlerta("Registro","Todos los campos deben estar llenos",Alert.AlertType.ERROR);
-        //}
-        
+      
         
         
     }
 
     @FXML
-    private void volver(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarCasas.fxml"));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
+    private void volver(MouseEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/Vista/DisenarCasas.fxml"));
+            Scene sc = new Scene(root);
+            MyHome.ventanaPrincipal.setScene(sc);
+        } catch (IOException ex) {
+            Logger.getLogger(DisenarOasisController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void calcularPrecio() {
@@ -334,38 +337,5 @@ public class DisenarOasisController implements Initializable {
         }
     }
     
-    /* private  void limpiarDatos(){
-        txtnombre.setText("");
-        txtapellido.setText("");
-        txtcedula.setText("");
-        txtcorreo.setText("");
-        txtcelular.setText("");
-        txtEstadoC.setText("");
-        txtuser.setText("");
-        txtcontra.setText("");
-        txtdirdom.setText("");
-        txtdirtrab.setText("");
-        txtcargo.setText("");
-        txtteleftrab.setText("");
-        txtempresa.setText("");
-        txthijos.setText("");
-    }
-    
-    private boolean verificarCampos(){
-        boolean ver=(txtnombre.getText().isEmpty()&&
-        txtapellido.getText().isEmpty()&&
-        txtcedula.getText().isEmpty()&&
-        txtcorreo.getText().isEmpty()&&
-        txtcelular.getText().isEmpty()&&
-        txtEstadoC.getText().isEmpty()&&
-        txtuser.getText().isEmpty()&&
-        txtcontra.getText().isEmpty()&&
-        txtdirdom.getText().isEmpty()&&
-        txtdirtrab.getText().isEmpty()&&
-        txtcargo.getText().isEmpty()&&
-        txtteleftrab.getText().isEmpty()&&
-        txtempresa.getText().isEmpty()&&
-        txthijos.getText().isEmpty());
-        return ver;
-    }*/
+   
 }

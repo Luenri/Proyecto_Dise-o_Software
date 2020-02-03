@@ -21,8 +21,7 @@ public class Paraiso extends CasaBuilder{
         c.metrosCuadrados = 85;
         c.numPlantas = 1;
         c.esquinera = false;
-        orientacion o = null;
-        c.orientacion = o.ESTE ;
+        c.orientacion = orientacion.ESTE ;
     }
 
     @Override

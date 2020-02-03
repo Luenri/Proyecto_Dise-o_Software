@@ -78,7 +78,7 @@ public class ConsultDatosVendedorController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       
         try {
             
             
@@ -86,30 +86,30 @@ public class ConsultDatosVendedorController implements Initializable {
             Statement st= conection.createStatement();
             
             
-            ResultSet rt=st.executeQuery(sql);
-            clmNombres.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-            clmApellidos.setCellValueFactory(new PropertyValueFactory<>("apellido"));
-            clmCedula.setCellValueFactory(new PropertyValueFactory<>("cedula"));
-            clmCelular.setCellValueFactory(new PropertyValueFactory<>("celular"));
-            clmCorreo.setCellValueFactory(new PropertyValueFactory<>("correo"));
-            clmEstadoC.setCellValueFactory(new PropertyValueFactory<>("estadoCivil"));
-            clmDireccion.setCellValueFactory(new PropertyValueFactory<>("direccion"));
-            
-            ObservableList<clienteRegistrado> datos=FXCollections.observableArrayList();
-            
-            while(rt.next()){
-                if (Integer.valueOf(rt.getString("activo"))!=0){
-                    String cedula_=rt.getString("cedula");
-                String nombre_=rt.getString("nombre");
-                String apellido_=rt.getString("apellido");
-                String celular_=rt.getString("celular");
-                String correo_=rt.getString("correo");
-                String estado_=rt.getString("estadoCivil");
-                String direccion_=rt.getString("domicilio");
-                datos.add(new clienteRegistrado(nombre_,apellido_,cedula_,correo_,celular_,estado_,direccion_));
+            ObservableList<clienteRegistrado> datos;
+            try (ResultSet rt = st.executeQuery(sql)) {
+                clmNombres.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+                clmApellidos.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+                clmCedula.setCellValueFactory(new PropertyValueFactory<>("cedula"));
+                clmCelular.setCellValueFactory(new PropertyValueFactory<>("celular"));
+                clmCorreo.setCellValueFactory(new PropertyValueFactory<>("correo"));
+                clmEstadoC.setCellValueFactory(new PropertyValueFactory<>("estadoCivil"));
+                clmDireccion.setCellValueFactory(new PropertyValueFactory<>("direccion"));
+                datos = FXCollections.observableArrayList();
+                while(rt.next()){
+                    if (Integer.valueOf(rt.getString("activo"))!=0){
+                        String cedula_=rt.getString("cedula");
+                        String nombre_=rt.getString("nombre");
+                        String apellido_=rt.getString("apellido");
+                        String celular_=rt.getString("celular");
+                        String correo_=rt.getString("correo");
+                        String estado_=rt.getString("estadoCivil");
+                        String direccion_=rt.getString("domicilio");
+                        datos.add(new clienteRegistrado(nombre_,apellido_,cedula_,correo_,celular_,estado_,direccion_));
+                    }
+                    
+                    
                 }
-                
-                
             }
            
             tbvDatosC.setItems(datos);
@@ -119,51 +119,63 @@ public class ConsultDatosVendedorController implements Initializable {
     }    
 
     @FXML
-    private void volver(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/Vendedor.fxml"));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
+    private void volver(MouseEvent event)   {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/Vista/Vendedor.fxml"));
+            Scene sc = new Scene(root);
+            MyHome.ventanaPrincipal.setScene(sc);
+        } catch (IOException ex) {
+            Logger.getLogger(ConsultDatosVendedorController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
-    private void revisarCasas(ActionEvent event) throws SQLException, IOException {
-        clienteRegistrado cliente=tbvDatosC.getSelectionModel().getSelectedItem();
-        mostrarDatosCasa(cliente.getCedula());
-        
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/verCasas.fxml"));
-        Scene sc = new Scene(root);
-        ventanaSecundaria=new Stage();
-        ventanaSecundaria.setScene(sc);
-        ventanaSecundaria.show();
+    private void revisarCasas(ActionEvent event)   {
+        try {
+            clienteRegistrado cliente=tbvDatosC.getSelectionModel().getSelectedItem();
+            mostrarDatosCasa(cliente.getCedula());
+            
+            Parent root = FXMLLoader.load(getClass().getResource("/Vista/verCasas.fxml"));
+            Scene sc = new Scene(root);
+            ventanaSecundaria=new Stage();
+            ventanaSecundaria.setScene(sc);
+            ventanaSecundaria.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ConsultDatosVendedorController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
         
     }
     
     
-    public static void mostrarDatosCasa(String cedula) throws SQLException{
-        String query="select c.*  from casa c inner join cliente clt on c.clienteID = clt.cedulaClient where c.clienteID='"+cedula+"';";
-        Statement st=conection.createStatement();
-        ResultSet rs=st.executeQuery(query);
-        
-       str=new StringBuilder();
-        while(rs.next()){
-            double metros=Double.valueOf(rs.getString("metrosCuadrados"));
-            int plantas=Integer.valueOf(rs.getString("numPlantas"));
-            boolean esq=rs.getString("esquinera").equalsIgnoreCase("1");
-            orientacion or=orientacion.valueOf(rs.getString("orientacion").toUpperCase());
-            boolean pat=rs.getString("patioGrande").equalsIgnoreCase("1");
-            int hab=Integer.valueOf(rs.getString("numHabitaciones"));
-            double numB=Double.valueOf(rs.getString("numBaños"));
-            pisoPorcelanato piso=pisoPorcelanato.valueOf(rs.getString("pisoPorcelanato").toUpperCase());
-            griferia grif=griferia.valueOf(rs.getString("griferia").toUpperCase());
-            iluminacion ilu=iluminacion.valueOf(rs.getString("iluminacion").toUpperCase());
-            boolean ban=rs.getString("bañosInsonorizados").equalsIgnoreCase("1");
-            boolean ais=rs.getString("aislanteTermico").equalsIgnoreCase("1");
-            
-            Casa cas=new Casa(metros,plantas,esq,or,pat,hab,numB,piso,grif,ilu,ban,ais);
-            str.append(cas.toString());    
-           
+    public static void mostrarDatosCasa(String cedula){
+        try {
+            String query="select c.*  from casa c inner join cliente clt on c.clienteID = clt.cedulaClient where c.clienteID='"+cedula+"';";
+            Statement st=conection.createStatement();
+            try (ResultSet rs = st.executeQuery(query)) {
+                str=new StringBuilder();
+                while(rs.next()){
+                    double metros=Double.valueOf(rs.getString("metrosCuadrados"));
+                    int plantas=Integer.valueOf(rs.getString("numPlantas"));
+                    boolean esq=rs.getString("esquinera").equalsIgnoreCase("1");
+                    orientacion or=orientacion.valueOf(rs.getString("orientacion").toUpperCase());
+                    boolean pat=rs.getString("patioGrande").equalsIgnoreCase("1");
+                    int hab=Integer.valueOf(rs.getString("numHabitaciones"));
+                    double numB=Double.valueOf(rs.getString("numBaños"));
+                    pisoPorcelanato piso=pisoPorcelanato.valueOf(rs.getString("pisoPorcelanato").toUpperCase());
+                    griferia grif=griferia.valueOf(rs.getString("griferia").toUpperCase());
+                    iluminacion ilu=iluminacion.valueOf(rs.getString("iluminacion").toUpperCase());
+                    boolean ban=rs.getString("bañosInsonorizados").equalsIgnoreCase("1");
+                    boolean ais=rs.getString("aislanteTermico").equalsIgnoreCase("1");
+                    
+                    Casa cas=new Casa(metros,plantas,esq,or,pat,hab,numB,piso,grif,ilu,ban,ais);
+                    str.append(cas.toString());
+                    
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultDatosVendedorController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

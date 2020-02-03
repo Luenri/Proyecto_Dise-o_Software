@@ -21,8 +21,7 @@ public class Oasis extends CasaBuilder {
         c.metrosCuadrados = 63;
         c.numPlantas = 1;
         c.esquinera = false;
-        orientacion o = null;
-        c.orientacion = o.SUR ;
+        c.orientacion = orientacion.SUR ;
     }
 
     @Override

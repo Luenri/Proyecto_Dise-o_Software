@@ -21,8 +21,7 @@ public class Cielo extends CasaBuilder {
         c.metrosCuadrados = 130;
         c.numPlantas = 2;
         c.esquinera = true;
-        orientacion o = null;
-        c.orientacion = o.NORTE ;
+        c.orientacion = orientacion.NORTE ;
     }
 
     @Override

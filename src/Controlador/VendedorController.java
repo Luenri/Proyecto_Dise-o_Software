@@ -17,6 +17,8 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import Modelos.MyHome;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 
 /**
@@ -40,35 +42,43 @@ public class VendedorController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
 
     @FXML
-    private void consultarDatos(MouseEvent event) throws IOException {
+    private void consultarDatos(MouseEvent event) {
         setearPantalla("/Vista/ConsultDatosVendedor.fxml");
     }
 
     @FXML
-    private void disenarCasa(MouseEvent event) throws IOException {
+    private void disenarCasa(MouseEvent event) {
         setearPantalla("/Vista/DisenarCasas.fxml");
     }
 
     @FXML
-    private void cerrarSesion(MouseEvent event) throws IOException {
+    private void cerrarSesion(MouseEvent event) {
         setearPantalla("/Vista/PantallaPrincipal.fxml");
     }
 
-    private void salir(ActionEvent event) throws IOException {
-        MyHome.tipoU = null;
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
+    private void salir(ActionEvent event){
+        try {
+            MyHome.tipoU = null;
+            Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaPrincipal.fxml"));
+            Scene sc = new Scene(root);
+            MyHome.ventanaPrincipal.setScene(sc);
+        } catch (IOException ex) {
+            Logger.getLogger(VendedorController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
-    public void setearPantalla(String ruta) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource(ruta));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
+    public void setearPantalla(String ruta) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(ruta));
+            Scene sc = new Scene(root);
+            MyHome.ventanaPrincipal.setScene(sc);
+        } catch (IOException ex) {
+            Logger.getLogger(VendedorController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     

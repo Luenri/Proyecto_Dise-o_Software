@@ -17,6 +17,8 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import Modelos.MyHome;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 
 /**
@@ -40,28 +42,32 @@ public class UsuarioController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+      
     } 
 
     @FXML
-    private void disenarCasa(MouseEvent event) throws IOException {
+    private void disenarCasa(MouseEvent event)  {
         setearPantalla("/Vista/DisenarCasas.fxml");
     }
 
     @FXML
-    private void Salir(MouseEvent event) throws IOException {
+    private void Salir(MouseEvent event) {
         setearPantalla("/Vista/PantallaPrincipal.fxml");
     }
 
     @FXML
-    private void registrarse(ActionEvent event) throws IOException {
+    private void registrarse(ActionEvent event) {
         setearPantalla("/Vista/Registrar.fxml");
     }
     
-    public void setearPantalla(String ruta) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource(ruta));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
+    public void setearPantalla(String ruta){
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(ruta));
+            Scene sc = new Scene(root);
+            MyHome.ventanaPrincipal.setScene(sc);
+        } catch (IOException ex) {
+            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     

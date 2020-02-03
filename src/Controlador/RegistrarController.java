@@ -18,11 +18,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Font;
 import Modelos.MyHome;
 import static Modelos.MyHome.conection;
-import static Modelos.MyHome.mostrarAlerta;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert.AlertType;
 
 /**
  * FXML Controller class
@@ -79,52 +79,36 @@ public class RegistrarController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    
     }    
 
 
     @FXML
-    private void registrar(ActionEvent event) throws SQLException {
+    private void registrar(ActionEvent event) {
         
-        if(!verificarCampos()){
+       
+        try {
             String linea1="insert into persona values"
-                + "('"+txtnombres.getText()+"', '"+txtapellidos.getText()+"', '"+txtcedula.getText()+"','"+txtcelular.getText()+"','"+txtcorreo.getText()+"','"+txtdirecciondom.getText()+"','"+txttelefonotrab.getText()+"','"+txtestadoc.getText()+"','"+txtcargo.getText()+"',1);";
-        String linea2="insert into cliente values('"+txtdirecciontrab.getText()+"','"+txtempresa.getText()+"',"+txtnhijos.getText()+",'"+txtcedula.getText()+"');";
-        String linea3="insert into registro values('"+txtuser.getText()+"','"+txtcontra.getText()+"','"+txtcedula.getText()+"');";
-        
-        System.out.println(linea1);
-        System.out.println(linea2);
-        System.out.println(linea3);
-        
-        Statement st= conection.createStatement();
-        st.execute(linea1);
-        st.execute(linea2);
-        st.execute(linea3);
-        
+                    + "('"+txtnombres.getText()+"', '"+txtapellidos.getText()+"', '"+txtcedula.getText()+"','"+txtcelular.getText()+"','"+txtcorreo.getText()+"','"+txtdirecciondom.getText()+"','"+txttelefonotrab.getText()+"','"+txtestadoc.getText()+"','"+txtcargo.getText()+"',1);";
+            String linea2="insert into cliente values('"+txtdirecciontrab.getText()+"','"+txtempresa.getText()+"',"+txtnhijos.getText()+",'"+txtcedula.getText()+"');";
+            String linea3="insert into registro values('"+txtuser.getText()+"','"+txtcontra.getText()+"','"+txtcedula.getText()+"');";
             
-        mostrarAlerta("Registro","El registro se ha completado con exito",AlertType.CONFIRMATION);
-        limpiarDatos();
-        
-        }else{
-            mostrarAlerta("Registro","Todos los campos deben estar llenos",AlertType.ERROR);
             
+            Statement st= conection.createStatement();
+            st.execute(linea1);
+            st.execute(linea2);
+            st.execute(linea3);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+            
+       
          
     }
 
     @FXML
     private void limpiar(ActionEvent event) {
-        limpiarDatos();
-    }
-
-    @FXML
-    private void cancelar(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/Usuario.fxml"));
-        Scene sc = new Scene(root);
-        MyHome.ventanaPrincipal.setScene(sc);
-    }  
-    
-    public  void limpiarDatos(){
         txtnombres.setText("");
         txtapellidos.setText("");
         txtcedula.setText("");
@@ -140,22 +124,17 @@ public class RegistrarController implements Initializable {
         txtempresa.setText("");
         txtnhijos.setText("");
     }
+
+    @FXML
+    private void cancelar(ActionEvent event)  {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/Vista/Usuario.fxml"));
+            Scene sc = new Scene(root);
+            MyHome.ventanaPrincipal.setScene(sc);
+        } catch (IOException ex) {
+            Logger.getLogger(RegistrarController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }  
     
-    private boolean verificarCampos(){
-        boolean ver=(txtnombres.getText().isEmpty()&&
-        txtapellidos.getText().isEmpty()&&
-        txtcedula.getText().isEmpty()&&
-        txtcorreo.getText().isEmpty()&&
-        txtcelular.getText().isEmpty()&&
-        txtestadoc.getText().isEmpty()&&
-        txtuser.getText().isEmpty()&&
-        txtcontra.getText().isEmpty()&&
-        txtdirecciondom.getText().isEmpty()&&
-        txtdirecciontrab.getText().isEmpty()&&
-        txtcargo.getText().isEmpty()&&
-        txttelefonotrab.getText().isEmpty()&&
-        txtempresa.getText().isEmpty()&&
-        txtnhijos.getText().isEmpty());
-        return ver;
-    }
+   
 }

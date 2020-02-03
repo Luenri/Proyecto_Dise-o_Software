@@ -9,7 +9,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author Estudiante
@@ -19,16 +18,17 @@ public class conexion {
     public Connection getConnection()
     {
         Connection con = null;
-       String url = "jdbc:mysql://localhost/myhome?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-       
+              
         String user = "root";
         String pass = "Luis1403";
         try {
-            con = DriverManager.getConnection(url, user, pass);
+           
+            con=DriverManager.getConnection("jdbc:mysql://localhost/myhome?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"+"&user="+user+"&password="+pass);
+                    
+                    
             return con;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
-            System.out.println(ex.getMessage());
             return null;
         }
     }

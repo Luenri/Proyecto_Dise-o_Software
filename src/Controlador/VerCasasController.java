@@ -24,6 +24,8 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
@@ -49,12 +51,12 @@ public class VerCasasController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       
          informacion.setText(str.toString());
     }    
 
     @FXML
-    private void generarPDF(ActionEvent event) throws FileNotFoundException, IOException, DocumentException, ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
+    private void generarPDF(ActionEvent event)   {
         JFileChooser archivo=new JFileChooser();
         int opcion=archivo.showOpenDialog(null);
         
@@ -65,6 +67,10 @@ public class VerCasasController implements Initializable {
                 doc.open();
                 doc.add(new Paragraph(informacion.getText()));
                 doc.close();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(VerCasasController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException | DocumentException ex) {
+                Logger.getLogger(VerCasasController.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }
